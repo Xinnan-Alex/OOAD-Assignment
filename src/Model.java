@@ -36,7 +36,7 @@ public class Model {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Creating the first admin account");
-            String[] firstAdminAccountDetails = { "admin" ,"iamnotadmin","Admin_1" , "-" , UUID.randomUUID().toString() ,"admin"};
+            String[] firstAdminAccountDetails = { "admin" ,"iamnotadmin","Admin_1" , UUID.randomUUID().toString() ,"admin"};
             writeToUserDataCSV(firstAdminAccountDetails);
             System.out.println("Created the first admin account");
             userInfo.add(addUserInfo(firstAdminAccountDetails));
