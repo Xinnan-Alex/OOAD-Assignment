@@ -7,7 +7,7 @@
         
         {
             "type": "java",
-            "name": "Launch GUI",
+            "name": "Launch_GUI_XinNan",
             "request": "launch",
             "mainClass": "GUI",
             "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
