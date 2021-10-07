@@ -16,3 +16,12 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+
+After you clone the repository, right click the GUI.java and click on run, it will then add the GUI.java build setting into launch.json. After that find the one you have added
+and change the name from "Launch GUI" to "Launch_GUI_URNAME" and copy the content in the parentheses, do not copy the parentheses 
+( "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml" )
+and paste it below the ( "mainClass": "GUI", ) line.
+
+
+If you have any problem, please whatsapp me I will help you fix the problem.
