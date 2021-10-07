@@ -10,7 +10,7 @@
             "name": "Launch GUI",
             "request": "launch",
             "mainClass": "GUI",
-            "vmArgs": "--module-path /OOAD-Assignment/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
             "projectName": "OOAD-Assignment_10872fde"
         },
         {
