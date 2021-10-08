@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -5,8 +7,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import java.io.IOException;
-
 import javafx.stage.Stage;
 
 public class loginSceneController{

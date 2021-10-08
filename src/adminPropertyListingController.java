@@ -1,5 +1,7 @@
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.io.IOException;
+
 import javafx.collections.ObservableList;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,7 +18,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
-import java.io.IOException;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

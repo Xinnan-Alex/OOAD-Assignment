@@ -1,13 +1,14 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Alert;
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
+
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 
 public class Model {
     private static ArrayList<person> userInfo = new ArrayList<>();
