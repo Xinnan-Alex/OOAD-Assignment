@@ -8,6 +8,7 @@ public class user {
     private String userType;
     private UUID ID;
 
+    //User constructor
     public user(String username,String password, String fullName , String phoneNumber, String userType){
         this.username = username;
         this.password = password;
