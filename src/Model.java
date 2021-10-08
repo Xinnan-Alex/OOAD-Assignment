@@ -1,13 +1,14 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Alert;
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
+
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 
 public class Model {
     private static ArrayList<person> userInfo = new ArrayList<>();
@@ -35,11 +36,12 @@ public class Model {
                 line = br.readLine();
             }
         } catch (FileNotFoundException e) {
+            String[] firstAdminAccountDetails = { "admin" ,"iamnotadmin","Admin_1" ," ",UUID.randomUUID().toString() ,"admin"};
+            Admin firstAdmin = new Admin(firstAdminAccountDetails[0],firstAdminAccountDetails[1],firstAdminAccountDetails[2],firstAdminAccountDetails[3],UUID.fromString(firstAdminAccountDetails[4]),firstAdminAccountDetails[5]);
             System.out.println("Creating the first admin account");
-            String[] firstAdminAccountDetails = { "admin" ,"iamnotadmin","Admin_1" , UUID.randomUUID().toString() ,"admin"};
-            writeToUserDataCSV(firstAdminAccountDetails);
+            
+            writeToUserDataCSV(firstAdmin);
             System.out.println("Created the first admin account");
-            userInfo.add(addUserInfo(firstAdminAccountDetails));
         }
 
     }
@@ -314,11 +316,9 @@ public class Model {
         return registerInfoValid;
     }
 
-    public void writeToUserDataCSV(String[] data) throws IOException{
+    public void writeToUserDataCSV(person p) throws IOException{
         FileWriter fileWriter = new FileWriter(new File("userData.csv"));
-
-        person tempUser = new person(data[0],data[1],data[2],data[3],data[4]);
-        userInfo.add(tempUser);
+        userInfo.add(p);
 
         for (person u : userInfo) {
             fileWriter.write(u.toCSVFormat());
@@ -336,32 +336,22 @@ public class Model {
             while (line != null) {
 
                 String[] stringInfo = line.split(",");
-                Property property = createPropertyObject(stringInfo);
+                Property property = new Property.propertyBuilder(Long.parseLong(stringInfo[5])).projectName(stringInfo[0]).propertySize(Long.parseLong(stringInfo[1])).rentalRate(Long.parseLong(stringInfo[2]))
+                                    .propertyType(stringInfo[3]).propertyOwner(stringInfo[4]).contactNum(stringInfo[6]).hiddenStatus(Boolean.parseBoolean(stringInfo[7])).rentStatus(Boolean.parseBoolean(stringInfo[8]))
+                                    .build();
                 propertyList.add(property);
                 
                 line = br.readLine();
             }
         } catch (FileNotFoundException e) {
-          e.printStackTrace();
+            System.out.println("Preloading property list");
+            Property propertytoWrite1 = new Property.propertyBuilder(Globals.idGen.getAndIncrement()).projectName("7 Jalan Durian").propertySize(2000)
+            .propertyType("Apartment").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
+            
+            WriteToPropertyListCsv(propertytoWrite1);
+
+            System.out.println("Preloading property list completed");
         }
-    }
-
-    public Property createPropertyObject(String[] stringInfo){
-
-        Property propertyObject = (new Property.propertyBuilder(Long.parseLong(stringInfo[6].replaceAll("\\s+","")))
-        .propertySize(Long.parseLong(stringInfo[1].replaceAll("\\s+","")))
-        .rentalRate(Long.parseLong(stringInfo[2].replaceAll("\\s+","")))
-        .projectName(stringInfo[0])
-        .propertyType(stringInfo[3])
-        .rentStatus(Boolean.parseBoolean(stringInfo[8].replaceAll("\\s+","")))
-        .hiddenStatus(Boolean.parseBoolean(stringInfo[7].replaceAll("\\s+","")))
-        .propertyOwner(stringInfo[4])
-        .contactNum(stringInfo[5].replaceAll("\\s+",""))
-        .build()
-        );
-
-        return propertyObject;
-
     }
 
     public void printPropertyList(){
@@ -478,4 +468,17 @@ public class Model {
 
         return PropertyValidation;
     }
+
+    public void WriteToPropertyListCsv(Property propertytoWrite) throws IOException{
+        FileWriter fileWriter = new FileWriter(new File("PropertyList.csv"));
+        propertyList.add(propertytoWrite);
+
+        for (Property u : propertyList) {
+            fileWriter.write(propertytoWrite.toCSVFormat());
+            fileWriter.write("\n");
+        }
+        fileWriter.close();
+    }
+
+
 }

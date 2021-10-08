@@ -1,9 +1,10 @@
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Property {
 
-    //Property ID format : Bungalow = 1xxxxxxxxx , Semi-D = 2xxxxxxxxx , Terrace = 3xxxxxxxxx , Townhouse = 4xxxxxxxxx , 
-    //                     Penthouse = 5xxxxxxxxx , Condominium = 6xxxxxxxxx , Duplex = 7xxxxxxxxx , Apartment = 8xxxxxxxxx                 
+    //Property ID format : Bungalow = 1xxxxxxxx , Semi-D = 2xxxxxxxx , Terrace = 3xxxxxxxx , Townhouse = 4xxxxxxxx , 
+    //                     Penthouse = 5xxxxxxxx , Condominium = 6xxxxxxxx , Duplex = 7xxxxxxxx , Apartment = 8xxxxxxxx, Unspecified = 9xxxxxxxx          
 
     private final long propertyID;
     public String propertyOwner;
@@ -97,7 +98,6 @@ public class Property {
 
     public static class propertyBuilder{
 
-        private static AtomicInteger ID_GENERATOR = new AtomicInteger(100000000);
         public Long propertyID;
         public String propertyOwner;
         public long propertySize;
@@ -111,10 +111,6 @@ public class Property {
         //CONSTRUCTIR FOR MANDATORY PARAMETER
         public propertyBuilder (long uPropertyID) {
             this.propertyID = uPropertyID;
-        }
-
-        public propertyBuilder () {
-            this.propertyID = (long)ID_GENERATOR.getAndIncrement();
         }
 
         //CONSTRUCTOR FUNCTIONS FOR OPTIONAL PARAMETERS
@@ -135,6 +131,12 @@ public class Property {
 
         public propertyBuilder propertyType(String uPropertyType) {
             this.propertyType = uPropertyType;
+            for(int i = 1;i<Globals.propertyType.length;i++){
+                if (uPropertyType.equals(Globals.propertyType[i])){
+                    this.propertyID = Long.parseLong(Long.toString(propertyID).replaceFirst("9",Integer.toString(i)));
+                }
+            }
+            
             return this;
         }
 

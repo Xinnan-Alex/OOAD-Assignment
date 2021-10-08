@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -6,9 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.*;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 
@@ -48,7 +49,7 @@ public class RegisterSceneController implements Initializable{
         
         //check for existing username in csv file
         if (logicModel.registerInfoValidation(registerInfo_validation)){
-            logicModel.writeToUserDataCSV(registerInfo_write);
+            logicModel.writeToUserDataCSV(logicModel.addUserInfo(registerInfo_write));
 
             Alert registerDoneAlert = new Alert(AlertType.INFORMATION,"Your account has been created successfully!");
             registerDoneAlert.show();
