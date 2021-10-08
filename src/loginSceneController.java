@@ -41,24 +41,30 @@ public class loginSceneController{
             FXMLLoader loader = new FXMLLoader();
             if(logicModel.getUsertype(loginUsernameInput).equals("tenant")){
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
+                Parent root = loader.load();
+
+                stage = (Stage) loginButton.getScene().getWindow();
+                stage.setScene(new Scene(root));
+
             }
             else if(logicModel.getUsertype(loginUsernameInput).equals("admin")){
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
+                Parent root = loader.load();
+
+                adminHomepageSceneController controller =  loader.getController();
+                controller.displayName(logicModel.getFullname(loginUsernameInput));
+                controller.displayID(logicModel.getUserID(loginUsernameInput));
+                controller.initUserObejct(loginUsernameInput);
+                
+                stage = (Stage) loginButton.getScene().getWindow();
+                stage.setScene(new Scene(root));
+
             }
             else if(logicModel.getUsertype(loginUsernameInput).equals("property owner")){
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/property owner/propertyownerHomepageScene.fxml"));
             }
             
-            Parent root = loader.load();
-
-            adminHomepageSceneController controller =  loader.getController();
-            controller.displayName(logicModel.getFullname(loginUsernameInput));
-            controller.displayID(logicModel.getUserID(loginUsernameInput));
-            controller.initUserObejct(loginUsernameInput);
             
-            stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-
         }
         else{
             Alert usernameIncorrect = new Alert(AlertType.ERROR,"Invalid login details please try again");

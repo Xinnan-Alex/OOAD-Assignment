@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -45,7 +46,7 @@ public class RegisterSceneController implements Initializable{
 
     public void registerNextButtonHandler() throws IOException{
         String[] registerInfo_validation = {registerUsername.getText(),registerFullname.getText(),registerPass.getText(),registerRePass.getText(),registerContactNum.getText()};
-        String[] registerInfo_write = {registerUsername.getText(),registerPass.getText(),registerFullname.getText(),registerContactNum.getText(),userRegisterSelectionSceneController.getUserType()};
+        String[] registerInfo_write = {registerUsername.getText(),registerPass.getText(),registerFullname.getText(),registerContactNum.getText(),UUID.randomUUID().toString(),userRegisterSelectionSceneController.getUserType()};
         
         //check for existing username in csv file
         if (logicModel.registerInfoValidation(registerInfo_validation)){

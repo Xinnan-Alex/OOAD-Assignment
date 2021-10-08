@@ -172,11 +172,7 @@ public class Model {
             person tempUser = addUserInfo(data);
             userInfo.add(tempUser);
         }
-        else if(userType.equals("agent")){
-            String[] data = {username,password,fullname,contactnumber,"agent"};
-            person tempUser = addUserInfo(data);
-            userInfo.add(tempUser);
-        }
+
         else if(userType.equals("property owner")){
             String[] data = {username,password,fullname,contactnumber,"property owner"};
             person tempUser = addUserInfo(data);
