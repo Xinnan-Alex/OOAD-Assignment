@@ -5,7 +5,7 @@ public class Admin extends person{
     //Scanner input = new Scanner(System.in);
 
     // ADMIN CONSTRUCTOR
-    private Admin(String username, String password, String fullName, String phoneNumber, UUID ID, String userType) {
+    Admin(String username, String password, String fullName, String phoneNumber, UUID ID, String userType) {
         super(username, password, fullName, phoneNumber, ID, userType);
     }
 

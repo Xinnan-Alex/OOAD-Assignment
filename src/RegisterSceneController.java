@@ -49,7 +49,7 @@ public class RegisterSceneController implements Initializable{
         
         //check for existing username in csv file
         if (logicModel.registerInfoValidation(registerInfo_validation)){
-            logicModel.writeToUserDataCSV(registerInfo_write);
+            logicModel.writeToUserDataCSV(logicModel.addUserInfo(registerInfo_write));
 
             Alert registerDoneAlert = new Alert(AlertType.INFORMATION,"Your account has been created successfully!");
             registerDoneAlert.show();

@@ -52,6 +52,7 @@ public class GUI extends Application {
     public static void main(String[] args) throws IOException {
         Model logicModel = new Model();
         logicModel.loadUserInfo();
+        logicModel.loadPropertyList();
         launch(args); //launching the GUI
     }
 }
