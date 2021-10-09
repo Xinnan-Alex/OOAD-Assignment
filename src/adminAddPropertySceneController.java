@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TextFormatter;
 import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,7 +21,7 @@ public class adminAddPropertySceneController implements Initializable{
     Admin admin;
 
     @FXML
-    ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,PropOwnerComboBox;
+    ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
 
     @FXML
     TextField propNameTextField,propSizeTextField,propOwnerContactNumTextField,propRentalRateTextField;
@@ -36,7 +37,7 @@ public class adminAddPropertySceneController implements Initializable{
         propHiddenStatusComboBox.getItems().addAll("true","false");
         propRentalStatusComboBox.getItems().clear();
         propRentalStatusComboBox.getItems().addAll("active", "not Active");
-        PropOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
+        propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
         propOwnerContactNumTextField.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
@@ -65,8 +66,8 @@ public class adminAddPropertySceneController implements Initializable{
         
     }
 
-    public void propOwnerComboBoxHandler() {
-        propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(PropOwnerComboBox.getValue()));
+    public void propOwnerComboBoxHandler(ActionEvent e) {
+        propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue())));
     
     }
 
@@ -86,7 +87,7 @@ public class adminAddPropertySceneController implements Initializable{
         }
         else{
             propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-            PropOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),Long.toString(Globals.idGen.incrementAndGet()),propHiddenStatusComboBox.getSelectionModel().getSelectedItem(),
+            propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),Long.toString(Globals.idGen.incrementAndGet()),propHiddenStatusComboBox.getSelectionModel().getSelectedItem(),
             propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
             
             if (Globals.LogicModel.addingPropertyValidation(propInfoList_tobeAdded)){
@@ -108,7 +109,7 @@ public class adminAddPropertySceneController implements Initializable{
     public void clearButtonHandler(){
 
         propNameTextField.clear();
-        PropOwnerComboBox.setValue(null);
+        propOwnerComboBox.setValue(null);
         propOwnerContactNumTextField.clear();
         propRentalRateTextField.clear();
         propTypeComboBox.setValue(null);

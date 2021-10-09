@@ -28,7 +28,7 @@ public class loginSceneController{
     }
 
     public void loginButtonHandler() throws IOException{
-        logicModel.loadUserInfo();
+        //logicModel.loadUserInfo();
         String loginUsernameInput = loginUsername.getText();
         String loginPassInput = loginPass.getText(); 
         

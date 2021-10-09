@@ -99,6 +99,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <ComboBox fx:id="PropOwnerComboBox" layoutX="312.0" layoutY="158.0" onAction="#propOwnerComboBoxHandler" prefWidth="150.0" />
+      <ComboBox fx:id="propOwnerComboBox" layoutX="312.0" layoutY="158.0" onAction="#propOwnerComboBoxHandler" prefWidth="150.0" />
    </children>
 </AnchorPane>

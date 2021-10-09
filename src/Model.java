@@ -67,6 +67,23 @@ public class Model {
         return login;
     }
 
+    public String getUsername(String fullname){
+        String username = "";
+
+        for (person p: userInfo){
+            if (p.getFullname().equals(fullname)){
+
+                username = p.getUsername();
+                break;
+            }
+            else{
+                username = "user not found";
+            }
+        }
+
+        return username;
+    }
+
     public String getFullname(String username){
         String fullname = "";
 
@@ -170,9 +187,9 @@ public class Model {
         String[] propOwnerNameList = new String[userInfo.size()];
         int propOwnerNameListIndex = 0;
 
-        for(int i=0;i<userInfo.size();i++){
-            if (userInfo.get(0).getUsertype().equals("property owner")){
-                propOwnerNameList[propOwnerNameListIndex] = userInfo.get(i).getFullname();
+        for (person p: userInfo){
+            if (p.getUsertype().equals("property owner")){
+                propOwnerNameList[propOwnerNameListIndex] = p.getFullname();
                 propOwnerNameListIndex++;
             }
         }
