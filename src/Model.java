@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
@@ -371,11 +372,13 @@ public class Model {
                 
                 line = br.readLine();
             }
+
+            Globals.setCurrentID(propertyList.get(propertyList.size()-1).getPropertyID());
         } catch (FileNotFoundException e) {
             System.out.println("Preloading property list");
-            Property propertytoWrite1 = new Property.propertyBuilder(Globals.idGen.getAndIncrement()).projectName("7 Jalan Durian").propertySize(2000)
+            Property propertytoWrite1 = new Property.propertyBuilder(Globals.generatePropertyID()).projectName("7 Jalan Durian").propertySize(2000)
             .propertyType("Apartment").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
-            Property propertytoWrite2 = new Property.propertyBuilder(Globals.idGen.getAndIncrement()).projectName("30 Jalan Durian").propertySize(2000)
+            Property propertytoWrite2 = new Property.propertyBuilder(Globals.generatePropertyID()).projectName("30 Jalan Durian").propertySize(2000)
             .propertyType("Terrace").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
             
             WriteToPropertyListCsv(propertytoWrite1);
@@ -388,6 +391,60 @@ public class Model {
         for (Property p: propertyList){
             System.out.println(p.toString());
         }
+    }
+
+    public Property getPropertyObject(String[] propertyinfo){
+        //      0          1           2           3           4           5            6           7           8
+        //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
+
+        String projectName =  propertyinfo[0];
+
+        long propertySize;
+        if (propertyinfo[1].equals("")){
+            propertySize = 0;
+        } 
+        else{
+            propertySize = Long.parseLong(propertyinfo[1]);
+        }
+
+        long rentalRate;
+        if (propertyinfo[2].equals("")){
+            rentalRate = 0;
+        } 
+        else{
+            rentalRate = Long.parseLong(propertyinfo[2]);
+        }
+
+        String propertyType = propertyinfo[3];
+        String propertyOwner = propertyinfo[4];
+        String contactNum = propertyinfo[5];
+        //long propertyID = Long.parseLong(propertyinfo[6]);
+        Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[6]);
+
+        Boolean rentStatus;
+        if (propertyinfo[7]==null){
+            rentStatus = false;
+        } 
+        else{
+            if (propertyinfo[8].equals("not Active")){
+                rentStatus = true;
+            }
+            else{
+                rentStatus = false;
+            }
+        }
+        
+        
+        Property returnProperty = new Property.propertyBuilder(Globals.generatePropertyID())
+                                            .projectName(projectName)
+                                            .propertySize(propertySize)
+                                            .rentalRate(rentalRate)
+                                            .propertyType(propertyType)
+                                            .rentStatus(rentStatus)
+                                            .hiddenStatus(hiddenStatus)
+                                            .build();
+
+        return returnProperty;
     }
 
     public ArrayList<Property> getPropertyList(){
@@ -474,25 +531,41 @@ public class Model {
         return validPropertySize;
     }
 
-    public Boolean addingPropertyValidation(String[] propInfoList){
+    public Boolean addingPropertyValidation(String[] propValidationInfo,String[] propInfoList){
+        Boolean hiddenStatusValid = false;
+        Boolean propownerselected = false;
         Boolean PropertyValidation = false;
 
-        // Property Details Validation
-        //      0          1           2           3           4           5            6           7           8
-        //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
+        //String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
         for (int i=0;i<propInfoList.length;i++){
-            if(propInfoList[i] == null){
-                if (propInfoList[7].equals("false")){
-                    PropertyValidation = false;
+            if(propInfoList[i].equals("")){
+                if (propValidationInfo[0].equals("false")){
+                    hiddenStatusValid = false;
                     (new Alert(AlertType.ERROR,"Incomplete Property Details can't be displayed on property listing")).show();
+                    break;
                 }
                 else{
-                    PropertyValidation = true;
+                    hiddenStatusValid = true;
                 }
             }
             else{
-                PropertyValidation = true;
+                hiddenStatusValid = true;
             }
+        }
+
+        if (propValidationInfo[1].equals("")){
+            propownerselected = false;
+            (new Alert(AlertType.ERROR,"Property Owner can't be empty, please select a property owner")).show();
+        }
+        else{
+            propownerselected = true;
+        }
+
+        if (hiddenStatusValid && propownerselected){
+            PropertyValidation = true;
+        }
+        else{
+            PropertyValidation = false;
         }
 
         return PropertyValidation;

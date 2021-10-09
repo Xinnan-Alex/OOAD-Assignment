@@ -32,7 +32,7 @@ public class adminAddPropertySceneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         propTypeComboBox.getItems().clear();
-        propTypeComboBox.getItems().addAll("appartment","terress","flat");
+        propTypeComboBox.getItems().addAll(Globals.propertyType);
         propHiddenStatusComboBox.getItems().clear();
         propHiddenStatusComboBox.getItems().addAll("true","false");
         propRentalStatusComboBox.getItems().clear();
@@ -71,27 +71,30 @@ public class adminAddPropertySceneController implements Initializable{
     
     }
 
-
-    public void confirmButtonHandler(){
+    public void confirmButtonHandler() throws IOException{
         //Extract info from TextFields
         //propInfoList content 
         //      0          1           2           3           4           5            6           7           8
         //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
-        String[] propInfoList_tobeAdded = new String[8];
+        String[] propInfoList_tobeAdded = {"","","","","","","","",""};
+        String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
         //If property rental status = active means the property is active and there is no tenant = false
         //If property rental status = not active means the property is not active and there is tenant = true
 
-        if(propHiddenStatusComboBox.getSelectionModel().getSelectedItem() == null){
+        if(propHiddenStatusComboBox.getValue() == null){
             (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
         }
         else{
-            propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-            propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),Long.toString(Globals.idGen.incrementAndGet()),propHiddenStatusComboBox.getSelectionModel().getSelectedItem(),
-            propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
-            
-            if (Globals.LogicModel.addingPropertyValidation(propInfoList_tobeAdded)){
-                System.out.println("data is correct");
+            if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
+
+                propInfoList_tobeAdded  = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getValue(),
+                    propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
+                    propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
+
+                Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
+
+                Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
             }
             else{
                 System.out.println("data is incorrect");

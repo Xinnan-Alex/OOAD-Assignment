@@ -127,9 +127,11 @@ public class Property {
 
         public propertyBuilder propertyType(String uPropertyType) {
             this.propertyType = uPropertyType;
+            String firstDigit = Long.toString(this.propertyID).substring(0, 1);
+
             for(int i = 1;i<Globals.propertyType.length;i++){
                 if (uPropertyType.equals(Globals.propertyType[i])){
-                    this.propertyID = Long.parseLong(Long.toString(propertyID).replaceFirst("9",Integer.toString(i)));
+                    this.propertyID = Long.parseLong(Long.toString(propertyID).replaceFirst(firstDigit,Integer.toString(i)));
                 }
             }
             
