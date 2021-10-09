@@ -166,6 +166,20 @@ public class Model {
         return tempP;
     }
 
+    public String[] getListofPropOwnerName(){
+        String[] propOwnerNameList = new String[userInfo.size()];
+        int propOwnerNameListIndex = 0;
+
+        for(int i=0;i<userInfo.size();i++){
+            if (userInfo.get(0).getUsertype().equals("property owner")){
+                propOwnerNameList[propOwnerNameListIndex] = userInfo.get(i).getFullname();
+                propOwnerNameListIndex++;
+            }
+        }
+
+        return propOwnerNameList;
+    }
+
     public void registerUser(String username, String password, String fullname, String contactnumber,String userType){
         if (userType.equals("tenant")){
             String[] data = {username,password,fullname,contactnumber,"tenant"};
@@ -332,8 +346,9 @@ public class Model {
             while (line != null) {
 
                 String[] stringInfo = line.split(",");
-                Property property = new Property.propertyBuilder(Long.parseLong(stringInfo[5])).projectName(stringInfo[0]).propertySize(Long.parseLong(stringInfo[1])).rentalRate(Long.parseLong(stringInfo[2]))
-                                    .propertyType(stringInfo[3]).propertyOwner(stringInfo[4]).contactNum(stringInfo[6]).hiddenStatus(Boolean.parseBoolean(stringInfo[7])).rentStatus(Boolean.parseBoolean(stringInfo[8]))
+                //7 Jalan Durian,2000,0,Apartment,Leong Xin Nan,0102529375,800000001,false,false
+                Property property = new Property.propertyBuilder(Long.parseLong(stringInfo[6])).projectName(stringInfo[0]).propertySize(Long.parseLong(stringInfo[1])).rentalRate(Long.parseLong(stringInfo[2]))
+                                    .propertyType(stringInfo[3]).propertyOwner(stringInfo[4]).contactNum(stringInfo[5]).hiddenStatus(Boolean.parseBoolean(stringInfo[7])).rentStatus(Boolean.parseBoolean(stringInfo[8]))
                                     .build();
                 propertyList.add(property);
                 
@@ -343,16 +358,18 @@ public class Model {
             System.out.println("Preloading property list");
             Property propertytoWrite1 = new Property.propertyBuilder(Globals.idGen.getAndIncrement()).projectName("7 Jalan Durian").propertySize(2000)
             .propertyType("Apartment").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
+            Property propertytoWrite2 = new Property.propertyBuilder(Globals.idGen.getAndIncrement()).projectName("30 Jalan Durian").propertySize(2000)
+            .propertyType("Terrace").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
             
             WriteToPropertyListCsv(propertytoWrite1);
-
+            WriteToPropertyListCsv(propertytoWrite2);
             System.out.println("Preloading property list completed");
         }
     }
 
     public void printPropertyList(){
         for (Property p: propertyList){
-            System.out.println(p.toCSVFormat());
+            System.out.println(p.toString());
         }
     }
 
@@ -390,22 +407,22 @@ public class Model {
     // Property Name Validation
     public Boolean propertyNameValidation(String propertyName){
         Boolean validPropertyName = false;
-        System.out.println("propertyName.length():" + propertyName.length());
         
-        if (propertyName.length() > 0){
-            for (Property p: propertyList){
-                System.out.println(p.getProjectName().replaceAll("\\s+","") + " compare " + propertyName.replaceAll("\\s+",""));
-                if (p.getProjectName().replaceAll("\\s+","").equals(propertyName.replaceAll("\\s+",""))){
-                    validPropertyName = false;
-                    break;
-                }
-                else{
-                    validPropertyName = true;
-                }
+        //Checking if property name is duplicated
+        for (Property p: propertyList){
+            System.out.println(p.getProjectName().replaceAll("\\s+","") + " compare " + propertyName.replaceAll("\\s+",""));
+            if (p.getProjectName().replaceAll("\\s+","").equals(propertyName.replaceAll("\\s+",""))){
+                validPropertyName = false;
+                break;
+            }
+            else{
+                validPropertyName = true;
             }
         }
-        else{
-            validPropertyName = false;
+        
+        //Checking if the property name is blank
+        if (propertyName.length() == 0){
+            validPropertyName = true;
         }
 
         return validPropertyName;
@@ -415,16 +432,14 @@ public class Model {
     public Boolean propertyRentalRateValidation(String propertyRentalRate){
         Boolean validRentalRate = false;
 
-        if (propertyRentalRate.length() > 0){
-            if (Long.parseLong(propertyRentalRate) <= 0 ){
+        if (Long.parseLong(propertyRentalRate) <= 0 ){
                     validRentalRate = false;
             }
-            else{
-                validRentalRate = true;
-            }
-        }else{
-            validRentalRate = false;
+        else{
+            validRentalRate = true;
         }
+
+
 
         return validRentalRate;
     }
@@ -432,34 +447,35 @@ public class Model {
     public Boolean propertySizeValidation(String propertySize){
         Boolean validPropertySize = false;
 
-        if (propertySize.length() > 0){
-            if (Long.parseLong(propertySize) < 0 ){
-                    validPropertySize = false;
-            }
-            else{
-                validPropertySize = true;
-            }
+        if (Long.parseLong(propertySize) < 0 ){
+                validPropertySize = false;
         }
         else{
-            validPropertySize = false;
-        }
-        
+            validPropertySize = true;
+        }     
 
         return validPropertySize;
     }
- 
+
     public Boolean addingPropertyValidation(String[] propInfoList){
         Boolean PropertyValidation = false;
 
         // Property Details Validation
         //      0          1           2           3           4           5            6           7           8
         //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
-        if(propertyIDValidation(propInfoList[6]) && propertyNameValidation(propInfoList[0]) && propertyRentalRateValidation(propInfoList[2]) && propertySizeValidation(propInfoList[1]) 
-        && ContactnumValidation(propInfoList[5])){
-            PropertyValidation = true;
-        }
-        else{
-            PropertyValidation = false;
+        for (int i=0;i<propInfoList.length;i++){
+            if(propInfoList[i] == null){
+                if (propInfoList[7].equals("false")){
+                    PropertyValidation = false;
+                    (new Alert(AlertType.ERROR,"Incomplete Property Details can't be displayed on property listing")).show();
+                }
+                else{
+                    PropertyValidation = true;
+                }
+            }
+            else{
+                PropertyValidation = true;
+            }
         }
 
         return PropertyValidation;
@@ -470,7 +486,7 @@ public class Model {
         propertyList.add(propertytoWrite);
 
         for (Property u : propertyList) {
-            fileWriter.write(propertytoWrite.toCSVFormat());
+            fileWriter.write(u.toCSVFormat());
             fileWriter.write("\n");
         }
         fileWriter.close();

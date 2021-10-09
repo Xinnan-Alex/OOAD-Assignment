@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 public class settingSceneController {
 
     Model logicModel =  new Model();
-    person loggedinPerson;
+    Admin loggedinPerson;
 
     @FXML
     Button changePassButton,backButton;
@@ -20,8 +20,7 @@ public class settingSceneController {
     @FXML
     Label fullnameLabel,usernameLabel,contactnumLabel,useridLabel,usertypeLabel;
     
-    public void setUserInfo(person u){
-
+    public void setUserInfo(Admin u){
         loggedinPerson = u;
         fullnameLabel.setText(loggedinPerson.getFullname());
         usernameLabel.setText(loggedinPerson.getUsername());
@@ -42,8 +41,8 @@ public class settingSceneController {
         adminHomepageSceneController controller =  loader.getController();
         controller.displayName(loggedinPerson.getFullname());
         controller.displayID(loggedinPerson.getID());
-
-        controller.initUserObejct(loggedinPerson.getUsername());
+        
+        controller.initUserObejct(loggedinPerson);
         
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));

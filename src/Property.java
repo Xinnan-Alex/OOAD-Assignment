@@ -1,6 +1,3 @@
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-
 public class Property {
 
     //Property ID format : Bungalow = 1xxxxxxxx , Semi-D = 2xxxxxxxx , Terrace = 3xxxxxxxx , Townhouse = 4xxxxxxxx , 
@@ -87,8 +84,7 @@ public class Property {
     }
 
     public String toString() {
-        return ("ProjectName: " + this.projectName + "PropertyType: " + this.propertyType + "PropertySize: " + 
-        this.propertySize + "RentalRate: " + this.rentalRate);
+        return ("projectName: " + projectName + ",propertySize: " + propertySize + ",rentalRate: " + rentalRate + ",propertyType: " + propertyType + ",propertyOwner: " + propertyOwner + ",contactNum: " +  contactNum + ",propertyID: " + propertyID + ",hiddenStatus: " + hiddenStatus + ",rentStatus: " + rentStatus);
     }
 
     //7 Jalan Durian,2000,300,Apartment,Leong Xin Nan, 0102529375, 10000, false, active
@@ -99,18 +95,18 @@ public class Property {
     public static class propertyBuilder{
 
         public Long propertyID;
-        public String propertyOwner;
-        public long propertySize;
-        public String contactNum;
-        public long rentalRate;
-        public String projectName;
-        public String propertyType;
-        public Boolean rentStatus; //(true -> has tenant  false -> no tenant)
-        public Boolean hiddenStatus; //(true -> keep hidden  false -> show on viewboard)
+        public String propertyOwner = "";
+        public long propertySize = 0;
+        public String contactNum = "";
+        public long rentalRate = 0;
+        public String projectName = "";
+        public String propertyType = "";
+        public Boolean rentStatus = false; //(true -> has tenant  false -> no tenant/default)
+        public Boolean hiddenStatus = true; //(true -> keep hidden/default  false -> show on viewboard)
     
         //CONSTRUCTIR FOR MANDATORY PARAMETER
         public propertyBuilder (long uPropertyID) {
-            this.propertyID = uPropertyID;
+            this.propertyID = uPropertyID; 
         }
 
         //CONSTRUCTOR FUNCTIONS FOR OPTIONAL PARAMETERS
@@ -142,7 +138,7 @@ public class Property {
 
         public propertyBuilder rentStatus(Boolean uRentStatus) {
             this.rentStatus = uRentStatus;
-            return this;
+            return this;            
         }
 
         public propertyBuilder hiddenStatus(Boolean uHiddenStatus) {

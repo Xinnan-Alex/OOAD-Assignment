@@ -48,13 +48,15 @@ public class loginSceneController{
 
             }
             else if(logicModel.getUsertype(loginUsernameInput).equals("admin")){
+                person user = logicModel.getPersonObeject(loginUsernameInput);
+
+                Admin admin = new Admin(user);
+
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
                 Parent root = loader.load();
 
                 adminHomepageSceneController controller =  loader.getController();
-                controller.displayName(logicModel.getFullname(loginUsernameInput));
-                controller.displayID(logicModel.getUserID(loginUsernameInput));
-                controller.initUserObejct(loginUsernameInput);
+                controller.initUserObejct(admin);
                 
                 stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));

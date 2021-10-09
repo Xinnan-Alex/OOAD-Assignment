@@ -1,18 +1,20 @@
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-public class adminHomepageSceneController {
+public class adminHomepageSceneController implements Initializable{
 
     private Admin admin = new Admin();
     private String usertype;
-    private Model logicModel = new Model();
 
     @FXML
     Label homepageAdminFullname,homepageID;
@@ -20,6 +22,11 @@ public class adminHomepageSceneController {
     Button logoutButton,settingButton,propertyListButton,accountAdminstrationButton,createaAdminButton;
 
     private Stage stage;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+     
+    }
 
     public void displayName(String name){
         homepageAdminFullname.setText(name);
@@ -29,11 +36,11 @@ public class adminHomepageSceneController {
         homepageID.setText(ID);
     }
 
-    public void initUserObejct(String username){
-        usertype = logicModel.getPersonObeject(username).getUsertype();
-        person user = logicModel.getPersonObeject(username);
-
-        admin = new Admin(user);
+    public void initUserObejct(Admin passedIN){
+        admin = passedIN;
+        homepageAdminFullname.setText(admin.getFullname());
+        homepageID.setText(admin.getID());
+        usertype = admin.getUsertype();
 
     }
 
@@ -56,10 +63,12 @@ public class adminHomepageSceneController {
     }
 
     public void propertyListButton() throws IOException{
-        logicModel.loadPropertyList();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminPropertyListing.fxml"));
         Parent root = loader.load();
+
+        adminPropertyListingController propertyListingController =  loader.getController();
+        propertyListingController.initialiseAdminInfo(admin);
 
         stage = (Stage) propertyListButton.getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -70,5 +79,4 @@ public class adminHomepageSceneController {
 
     public void createaAdminButton() throws IOException{
     }
-    
 }

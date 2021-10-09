@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 public class adminPropertyListingController implements Initializable{
 
     private Model logicModel = new Model();
+    private Admin admin;
 
     @FXML
     TableView<Property> propTableView;
@@ -36,7 +37,7 @@ public class adminPropertyListingController implements Initializable{
     Label homepageID;
 
     @FXML
-    Button addPropertyButton;
+    Button addPropertyButton,backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,8 +71,27 @@ public class adminPropertyListingController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminAddPropertyScene.fxml"));
         Parent root = loader.load();
 
+        adminAddPropertySceneController controller = loader.getController();
+        controller.passedInAdminObject(admin);
+
         Stage stage = (Stage) addPropertyButton.getScene().getWindow();
         stage.setScene(new Scene(root));
+    }
+
+    public void backButtonHandler() throws IOException{
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
+        Parent root = loader.load();
+
+        adminHomepageSceneController controller =  loader.getController();
+        controller.initUserObejct(admin);
+
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+
+    public void initialiseAdminInfo(Admin passedIn){
+        admin = passedIn;
     }
     
 }
