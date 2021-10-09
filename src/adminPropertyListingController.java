@@ -26,6 +26,7 @@ public class adminPropertyListingController implements Initializable{
 
     private Model logicModel = new Model();
     private Admin admin;
+    ObservableList<Property> observableList;
 
     @FXML
     TableView<Property> propTableView;
@@ -37,11 +38,11 @@ public class adminPropertyListingController implements Initializable{
     Label homepageID;
 
     @FXML
-    Button addPropertyButton,backButton;
+    Button addPropertyButton,deletePropertyButton,backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Property> observableList = FXCollections.observableList(logicModel.getPropertyList());
+        observableList = logicModel.getVisiblePropertyList();
         noColumn.setCellValueFactory(new Callback<CellDataFeatures<Property, String>, ObservableValue<String>>() {
             @Override 
             public ObservableValue<String> call(CellDataFeatures<Property, String> p) {
@@ -92,6 +93,14 @@ public class adminPropertyListingController implements Initializable{
 
     public void initialiseAdminInfo(Admin passedIn){
         admin = passedIn;
+    }
+    
+    public void deletePropertyButtonHandler() throws IOException{
+        ObservableList<Property> propertyToBeDeleted = propTableView.getSelectionModel().getSelectedItems();
+
+        logicModel.removeSelectedProperty(propertyToBeDeleted);
+        observableList.removeAll(propertyToBeDeleted);
+        
     }
     
 }

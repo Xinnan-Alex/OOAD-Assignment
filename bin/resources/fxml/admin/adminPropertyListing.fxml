@@ -45,7 +45,7 @@
                   <Tooltip text="Add property" />
                </tooltip>
             </Button>
-            <Button layoutX="203.0" layoutY="6.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
+            <Button fx:id="deletePropertyButton" layoutX="203.0" layoutY="6.0" mnemonicParsing="false" onAction="#deletePropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>

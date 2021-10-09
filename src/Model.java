@@ -9,11 +9,13 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javafx.scene.control.Alert.AlertType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
-public class Model {
-    private static ArrayList<person> userInfo = new ArrayList<>();
-    private static ArrayList<Property> propertyList = new ArrayList<>();
+public final class Model {
+    public static  ArrayList<person>userInfo = new ArrayList<>();
+    public static ObservableList<Property> propertyList = FXCollections.observableArrayList();
 
     public Model(){
         
@@ -426,7 +428,7 @@ public class Model {
             rentStatus = false;
         } 
         else{
-            if (propertyinfo[8].equals("not Active")){
+            if (propertyinfo[7].equals("not Active")){
                 rentStatus = true;
             }
             else{
@@ -437,6 +439,8 @@ public class Model {
         
         Property returnProperty = new Property.propertyBuilder(Globals.generatePropertyID())
                                             .projectName(projectName)
+                                            .propertyOwner(propertyOwner)
+                                            .contactNum(contactNum)
                                             .propertySize(propertySize)
                                             .rentalRate(rentalRate)
                                             .propertyType(propertyType)
@@ -447,19 +451,21 @@ public class Model {
         return returnProperty;
     }
 
-    public ArrayList<Property> getPropertyList(){
+    public ObservableList<Property> getPropertyList(){
         return propertyList;
     }
 
-    public static boolean isNumeric(String str) { 
+    public ObservableList<Property> getVisiblePropertyList(){
+        ObservableList<Property> visiblePropList = FXCollections.observableArrayList();
 
-        try {  
-            Long.parseLong(str);  
-            return true;
-        } catch(NumberFormatException e){  
-            return false;  
-        }  
-      }
+        for(Property property:propertyList){
+            if (!property.getHiddenStatus()){
+                visiblePropList.add(property);
+            }
+        }
+
+        return visiblePropList;
+    }
 
     // Property ID Validation
     public Boolean propertyIDValidation(String propertyID){
@@ -580,6 +586,21 @@ public class Model {
             fileWriter.write("\n");
         }
         fileWriter.close();
+    }
+
+    public void WriteToPropertyListCsv() throws IOException{
+        FileWriter fileWriter = new FileWriter(new File("PropertyList.csv"));
+
+        for (Property u : propertyList) {
+            fileWriter.write(u.toCSVFormat());
+            fileWriter.write("\n");
+        }
+        fileWriter.close();
+    }
+
+    public void removeSelectedProperty(ObservableList<Property> selectedProperty) throws IOException{
+        propertyList.removeAll(selectedProperty);
+        WriteToPropertyListCsv();
     }
 
 

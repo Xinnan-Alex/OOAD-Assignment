@@ -76,7 +76,9 @@ public class adminAddPropertySceneController implements Initializable{
         //propInfoList content 
         //      0          1           2           3           4           5            6           7           8
         //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
-        String[] propInfoList_tobeAdded = {"","","","","","","","",""};
+        String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getValue(),
+                    propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
+                    propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
         String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
         //If property rental status = active means the property is active and there is no tenant = false
@@ -88,9 +90,11 @@ public class adminAddPropertySceneController implements Initializable{
         else{
             if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
 
-                propInfoList_tobeAdded  = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getValue(),
-                    propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
-                    propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
+                for (int i=0;i<propInfoList_tobeAdded.length;i++){
+                    System.out.print(propInfoList_tobeAdded[i]);
+                    System.out.print(",");
+                }
+                System.out.println();
 
                 Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
 
@@ -100,11 +104,6 @@ public class adminAddPropertySceneController implements Initializable{
                 System.out.println("data is incorrect");
             }
 
-        }
-
-        for(int i=0;i<propInfoList_tobeAdded.length;i++){
-            System.out.print(propInfoList_tobeAdded[i]);
-            System.out.print(":");
         }
     
     }
