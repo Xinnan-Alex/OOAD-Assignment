@@ -18,6 +18,7 @@ import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class adminPropertyListingController implements Initializable{
     private Model logicModel = new Model();
     private Admin admin;
     FilteredList<Property> propertyFilteredList;
+    public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
 
     @FXML
     TableView<Property> propTableView;
@@ -50,7 +52,8 @@ public class adminPropertyListingController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         propertyFilteredList = new FilteredList<>(Model.propertyList,b->true);
 
-        propertyTypeFilter.getItems().addAll(Globals.propertyType);
+        propertyTypeFilter.getItems().addAll(propertyTypeFilterList);
+        propertyTypeFilter.setValue("All");
         noColumn.setCellValueFactory(new Callback<CellDataFeatures<Property, String>, ObservableValue<String>>() {
             @Override 
             public ObservableValue<String> call(CellDataFeatures<Property, String> p) {
@@ -91,7 +94,7 @@ public class adminPropertyListingController implements Initializable{
 
         propertyTypeFilter.valueProperty().addListener((Observable,oldValue,newValue) -> {
             propertyFilteredList.setPredicate(Property ->{
-                if (newValue == null || newValue.isEmpty()){
+                if (newValue.equals("All") || newValue.isEmpty()){
                     return true;
                 }
 
@@ -144,11 +147,16 @@ public class adminPropertyListingController implements Initializable{
     }
     
     public void deletePropertyButtonHandler() throws IOException{
-        ObservableList<Property> propertyToBeDeleted = propTableView.getSelectionModel().getSelectedItems();
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
 
-        logicModel.removeSelectedProperty(propertyToBeDeleted);
-        propertyFilteredList.removeAll(propertyToBeDeleted);
-        
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+            ObservableList<Property> propertyToBeDeleted = propTableView.getSelectionModel().getSelectedItems();
+
+            logicModel.removeSelectedProperty(propertyToBeDeleted);
+
+        }
+            
     }
 
     public void clearSearchButtonHandler(){

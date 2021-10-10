@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.Parent;
@@ -80,36 +81,42 @@ public class adminAddPropertySceneController implements Initializable{
     }
 
     public void confirmButtonHandler() throws IOException{
-        //Extract info from TextFields
-        String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-                    propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
-                    propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
-        String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to add in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
 
-        //If property rental status = active means the property is active and there is no tenant = false
-        //If property rental status = not active means the property is not active and there is tenant = true
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+             //Extract info from TextFields
+            String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
+                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
+                propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
+            String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
-        if(propHiddenStatusComboBox.getValue().isEmpty()){
-            (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
-        }
-        else{
-            if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
+            //If property rental status = active means the property is active and there is no tenant = false
+            //If property rental status = not active means the property is not active and there is tenant = true
 
-                for (int i=0;i<propInfoList_tobeAdded.length;i++){
-                    System.out.print(propInfoList_tobeAdded[i]);
-                    System.out.print(",");
-                }
-                System.out.println();
-
-                Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
-
-                Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
+            if(propHiddenStatusComboBox.getValue().isEmpty()){
+                (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
             }
             else{
-                (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
-            }
+                if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
 
+                    for (int i=0;i<propInfoList_tobeAdded.length;i++){
+                        System.out.print(propInfoList_tobeAdded[i]);
+                        System.out.print(",");
+                    }
+                    System.out.println();
+
+                    Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
+
+                    Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
+                }
+                else{
+                    (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
+                }
+
+            }
         }
+       
     
     }
 

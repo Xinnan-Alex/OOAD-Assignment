@@ -611,7 +611,7 @@ public final class Model {
     }
 
 
-    public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided){
+    public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided) throws IOException{
 
         if(selectedPropertyData_TobeValided[0].isEmpty()){
             (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
@@ -625,6 +625,19 @@ public final class Model {
                 }
                 System.out.println();
 
+                Property tempProperty = getPropertyObject(selectedPropertyData);
+
+                //7 Jalan Durian,2000,0,Apartment,Leong Xin Nan,0102529375,800000001,false,false
+                selectedProperty.setProjectName(tempProperty.getProjectName());
+                selectedProperty.setPropertySize(tempProperty.getPropertySize());
+                selectedProperty.setRentalRate(tempProperty.getRentalRate());
+                selectedProperty.setPropertyType(tempProperty.getPropertyType());
+                selectedProperty.setPropertyOwner(tempProperty.getPropertyOwner());
+                selectedProperty.setContactNum(tempProperty.getContactNum());
+                selectedProperty.setHiddenStatus(tempProperty.getHiddenStatus());
+                selectedProperty.setRentStatus(tempProperty.getRentStatus());
+
+                WriteToPropertyListCsv();
             }
             else{
                 (new Alert(AlertType.ERROR,"Error occured please try again.")).show();

@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.TextFormatter;
 
 public class adminEditPropertySceneController implements Initializable{
 
@@ -42,6 +43,31 @@ public class adminEditPropertySceneController implements Initializable{
 
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
+        propOwnerContactNumTextField.setTextFormatter(new TextFormatter<>(c -> {
+            if (!c.getControlNewText().matches("\\d*")) 
+                return null;
+            else
+                return c;
+            }
+        ));
+        
+        propSizeTextField.setTextFormatter(new TextFormatter<>(c -> {
+            if (!c.getControlNewText().matches("\\d*")) 
+                return null;
+            else
+                return c;
+            }
+        ));
+
+        
+        propRentalRateTextField.setTextFormatter(new TextFormatter<>(c -> {
+            if (!c.getControlNewText().matches("\\d*")) 
+                return null;
+            else
+                return c;
+            }
+        ));
+
     }
 
     public void passPropertyToBeEdited(Property propertypassedin){
@@ -68,7 +94,7 @@ public class adminEditPropertySceneController implements Initializable{
         propOwnerComboBox.setValue(propertyToBeEdited.getPropertyOwner());
     }
 
-    public void confirmButtonHandler(){
+    public void confirmButtonHandler() throws IOException{
         String[] selectedPropertyData_Edited = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
             propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
             propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
