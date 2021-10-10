@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,10 +9,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 public class adminEditPropertySceneController implements Initializable{
 
     Property propertyToBeEdited;
+    Admin admin;
 
     @FXML
     ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
@@ -65,13 +71,24 @@ public class adminEditPropertySceneController implements Initializable{
 
     }
 
-    public void backButtonHandler(){
-        
+    public void backButtonHandler() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminPropertyListing.fxml"));
+        Parent root = loader.load();
+
+        adminPropertyListingController controller =  loader.getController();
+        controller.initialiseAdminInfo(admin);
+
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 
     public void propOwnerComboBoxHandler(ActionEvent e) {
         propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue())));
     
+    }
+
+    public void passedInAdminObject(Admin a){
+        admin = a;
     }
     
 }

@@ -167,6 +167,7 @@ public class adminPropertyListingController implements Initializable{
 
             adminEditPropertySceneController controller = loader.getController();
             controller.passPropertyToBeEdited(propertyToBeEdited.get(0));
+            controller.passedInAdminObject(admin);
             
             Stage stage = (Stage) editPropertyButton.getScene().getWindow();
             stage.setScene(new Scene(parent));
