@@ -100,15 +100,10 @@ public class adminAddPropertySceneController implements Initializable{
             else{
                 if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
 
-                    for (int i=0;i<propInfoList_tobeAdded.length;i++){
-                        System.out.print(propInfoList_tobeAdded[i]);
-                        System.out.print(",");
-                    }
-                    System.out.println();
-
                     Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
 
                     Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
+                    (new Alert(AlertType.CONFIRMATION,"Property added!")).showAndWait();
                 }
                 else{
                     (new Alert(AlertType.ERROR,"Error occured please try again.")).show();

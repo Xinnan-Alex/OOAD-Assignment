@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 public final class Globals {
@@ -7,6 +6,9 @@ public final class Globals {
     public static String[] propertyType = {"Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
 
     public static Long generatePropertyID(){
+        for (Property propertyList : Model.propertyList ){
+            setCurrentID(propertyList.getPropertyID());
+        }
         AtomicLong idGen = new AtomicLong(currentPropID);
         Long generatedId = idGen.incrementAndGet();
         setCurrentID(generatedId);

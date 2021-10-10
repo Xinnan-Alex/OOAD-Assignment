@@ -525,9 +525,6 @@ public final class Model {
         else{
             validRentalRate = true;
         }
-
-
-
         return validRentalRate;
     }
 
@@ -610,7 +607,6 @@ public final class Model {
         WriteToPropertyListCsv();
     }
 
-
     public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided) throws IOException{
 
         if(selectedPropertyData_TobeValided[0].isEmpty()){
@@ -619,15 +615,8 @@ public final class Model {
         else{
             if (Globals.LogicModel.addingPropertyValidation(selectedPropertyData_TobeValided,selectedPropertyData)){
 
-                for (int i=0;i<selectedPropertyData.length;i++){
-                    System.out.print(selectedPropertyData[i]);
-                    System.out.print(",");
-                }
-                System.out.println();
-
                 Property tempProperty = getPropertyObject(selectedPropertyData);
 
-                //7 Jalan Durian,2000,0,Apartment,Leong Xin Nan,0102529375,800000001,false,false
                 selectedProperty.setProjectName(tempProperty.getProjectName());
                 selectedProperty.setPropertySize(tempProperty.getPropertySize());
                 selectedProperty.setRentalRate(tempProperty.getRentalRate());

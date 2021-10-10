@@ -19,9 +19,9 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="7.0" layoutY="731.0" prefHeight="82.0" prefWidth="876.0">
+      <AnchorPane layoutX="7.0" layoutY="731.0" prefHeight="73.0" prefWidth="968.0">
          <children>
-            <Button fx:id="addPropertyButton" layoutX="89.0" layoutY="6.0" mnemonicParsing="false" onAction="#addPropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
+            <Button fx:id="addPropertyButton" layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#addPropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,7 +33,7 @@
                   <Tooltip text="Add property" />
                </tooltip>
             </Button>
-            <Button fx:id="deletePropertyButton" layoutX="203.0" layoutY="6.0" mnemonicParsing="false" onAction="#deletePropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
+            <Button fx:id="deletePropertyButton" layoutX="217.0" layoutY="10.0" mnemonicParsing="false" onAction="#deletePropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +45,7 @@
                   <Tooltip text="Delete selected property" />
                </tooltip>
             </Button>
-            <Button fx:id="editPropertyButton" layoutX="336.0" layoutY="6.0" mnemonicParsing="false" onAction="#editPropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
+            <Button fx:id="editPropertyButton" layoutX="517.0" layoutY="10.0" mnemonicParsing="false" onAction="#editPropertyButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,19 +57,7 @@
                   <Tooltip text="Edit selected property" />
                </tooltip>
             </Button>
-            <Button layoutX="464.0" layoutY="6.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;" />
-            <Button layoutX="580.0" layoutY="7.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/question_mark_16px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Help" />
-               </tooltip></Button>
-            <Button fx:id="backButton" layoutX="706.0" layoutY="6.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
+            <Button fx:id="backButton" layoutX="667.0" layoutY="10.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="53.0" prefWidth="84.0" style="-fx-background-color: grey; -fx-border-color: white;">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -36,7 +36,7 @@ public class loginSceneController{
         if (logicModel.loginStatus(loginUsernameInput,loginPassInput)){
 
             Alert loginSuccessfuAlert = new Alert(AlertType.INFORMATION,"Login successfully");
-            loginSuccessfuAlert.show();
+            loginSuccessfuAlert.showAndWait();
 
             FXMLLoader loader = new FXMLLoader();
             if(logicModel.getUsertype(loginUsernameInput).equals("tenant")){

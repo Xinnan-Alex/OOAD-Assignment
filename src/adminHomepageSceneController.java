@@ -6,10 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 
 public class adminHomepageSceneController implements Initializable{
 
@@ -45,9 +48,14 @@ public class adminHomepageSceneController implements Initializable{
     }
 
     public void logoutButtonHandler() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
-        stage = (Stage) logoutButton.getScene().getWindow();
-        stage.setScene(new Scene(root));
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to update in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
+
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+            Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
+            stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        }
     }
 
     public void settingButtonHandler() throws IOException{
