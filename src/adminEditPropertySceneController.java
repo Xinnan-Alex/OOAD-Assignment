@@ -69,8 +69,13 @@ public class adminEditPropertySceneController implements Initializable{
     }
 
     public void confirmButtonHandler(){
-        propertyToBeEdited.
+        String[] selectedPropertyData_Edited = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
+            propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
+            propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
 
+        String[] selectedPropertyData_TobeValided  = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
+
+        Globals.LogicModel.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
 
     }
 

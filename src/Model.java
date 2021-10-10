@@ -186,7 +186,15 @@ public final class Model {
     }
 
     public String[] getListofPropOwnerName(){
-        String[] propOwnerNameList = new String[userInfo.size()];
+        int propOwnerNameListSize = 0;
+
+        for (person p: userInfo){
+            if (p.getUsertype().equals("property owner")){
+                propOwnerNameListSize++;
+            }
+        }
+
+        String[] propOwnerNameList = new String[propOwnerNameListSize];
         int propOwnerNameListIndex = 0;
 
         for (person p: userInfo){
@@ -602,5 +610,28 @@ public final class Model {
         WriteToPropertyListCsv();
     }
 
+
+    public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided){
+
+        if(selectedPropertyData_TobeValided[0].isEmpty()){
+            (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
+        }
+        else{
+            if (Globals.LogicModel.addingPropertyValidation(selectedPropertyData_TobeValided,selectedPropertyData)){
+
+                for (int i=0;i<selectedPropertyData.length;i++){
+                    System.out.print(selectedPropertyData[i]);
+                    System.out.print(",");
+                }
+                System.out.println();
+
+            }
+            else{
+                (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
+            }
+
+        }
+    
+    }
 
 }

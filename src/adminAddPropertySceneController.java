@@ -81,9 +81,6 @@ public class adminAddPropertySceneController implements Initializable{
 
     public void confirmButtonHandler() throws IOException{
         //Extract info from TextFields
-        //propInfoList content 
-        //      0          1           2           3           4           5            6           7           8
-        //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
         String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
                     propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
                     propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
