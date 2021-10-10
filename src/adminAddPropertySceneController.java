@@ -88,16 +88,11 @@ public class adminAddPropertySceneController implements Initializable{
                     propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
                     propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
         String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
-        for(int i=0;i<propInfoList_tobeAdded.length;i++){
-            System.out.print(propInfoList_tobeAdded[i]);
-            System.out.print(" , ");
-        }
-        System.out.println();
 
         //If property rental status = active means the property is active and there is no tenant = false
         //If property rental status = not active means the property is not active and there is tenant = true
 
-        if(propHiddenStatusComboBox.getValue() == null){
+        if(propHiddenStatusComboBox.getValue().isEmpty()){
             (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
         }
         else{
@@ -114,7 +109,7 @@ public class adminAddPropertySceneController implements Initializable{
                 Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
             }
             else{
-                System.out.println("data is incorrect");
+                (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
             }
 
         }

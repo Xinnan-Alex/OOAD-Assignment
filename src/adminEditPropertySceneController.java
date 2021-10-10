@@ -33,7 +33,7 @@ public class adminEditPropertySceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         propTypeComboBox.getItems().addAll(Globals.propertyType);
 
         propHiddenStatusComboBox.getItems().addAll("true","false");
@@ -69,6 +69,8 @@ public class adminEditPropertySceneController implements Initializable{
     }
 
     public void confirmButtonHandler(){
+        propertyToBeEdited.
+
 
     }
 

@@ -3,7 +3,7 @@ public class Property {
     //Property ID format : Bungalow = 1xxxxxxxx , Semi-D = 2xxxxxxxx , Terrace = 3xxxxxxxx , Townhouse = 4xxxxxxxx , 
     //                     Penthouse = 5xxxxxxxx , Condominium = 6xxxxxxxx , Duplex = 7xxxxxxxx , Apartment = 8xxxxxxxx, Unspecified = 9xxxxxxxx          
 
-    private final long propertyID;
+    private long propertyID;
     public String propertyOwner;
     private long propertySize;
     public String contactNum;
@@ -16,6 +16,7 @@ public class Property {
     //IMPLEMENT BUILDER DP FOR THE CONSTRUCTOR - use propertyBuilder class - different 
     //ID based on property type
 
+    //Constructor
     public Property(propertyBuilder builder) {
         this.propertyID = builder.propertyID;
         this.projectName = builder.projectName;
@@ -28,6 +29,7 @@ public class Property {
         this.contactNum = builder.contactNum;
     }
 
+    //Setters
     public void setRentStatus() {
         if (this.rentStatus == false) {
             this.rentStatus = true;
@@ -46,7 +48,47 @@ public class Property {
         }
     }
 
+    public void setProjectName(String projectName){
+        this.projectName = projectName;
+    }
 
+    public void setPropertySize(Long propertySize){
+        this.propertySize = propertySize;
+    }
+
+    public void setRentalRate(Long rentalRate){
+        this.rentalRate = rentalRate;
+    }
+    
+    public void setPropertyType(String propertyType){
+        this.propertyType = propertyType;
+        String firstDigit = Long.toString(this.propertyID).substring(0, 1);
+
+        for(int i = 0;i<Globals.propertyType.length;i++){
+            if (propertyType.equals(Globals.propertyType[i])){
+                this.propertyID = Long.parseLong(Long.toString(this.propertyID).replaceFirst(firstDigit,Integer.toString(i+1)));
+            }
+        }
+    
+    }
+
+    public void setPropertyOwner(String propertyOwner){
+        this.propertyOwner = propertyOwner;
+    }
+
+    public void setContactNum(String contactNum){
+        this.contactNum = contactNum;
+    }
+
+    public void setRentStatus(Boolean rentStatus){
+        this.rentStatus = rentStatus;
+    }
+    
+    public void setHiddenStatus(Boolean hiddenStatus){
+        this.hiddenStatus = hiddenStatus;
+    }
+
+    //Getters
     public long getPropertyID() {
         return this.propertyID;
     }
@@ -83,15 +125,17 @@ public class Property {
         return contactNum;
     }
 
+    //ToString Format for easy printing
     public String toString() {
         return ("projectName: " + projectName + ",propertySize: " + propertySize + ",rentalRate: " + rentalRate + ",propertyType: " + propertyType + ",propertyOwner: " + propertyOwner + ",contactNum: " +  contactNum + ",propertyID: " + propertyID + ",hiddenStatus: " + hiddenStatus + ",rentStatus: " + rentStatus);
     }
 
-    //7 Jalan Durian,2000,300,Apartment,Leong Xin Nan, 0102529375, 10000, false, active
+    //ToCSV Format for easy writing into CSV file
     public String toCSVFormat(){
         return (projectName + "," + propertySize + "," + rentalRate + "," + propertyType + "," + propertyOwner + "," +  contactNum + "," + propertyID + "," + hiddenStatus + "," + rentStatus);
     }
 
+    //Property Builder Class
     public static class propertyBuilder{
 
         public Long propertyID;
