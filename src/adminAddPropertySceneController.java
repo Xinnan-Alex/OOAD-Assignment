@@ -32,11 +32,19 @@ public class adminAddPropertySceneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         propTypeComboBox.getItems().clear();
+        propTypeComboBox.setValue("Unspecified");
         propTypeComboBox.getItems().addAll(Globals.propertyType);
+
         propHiddenStatusComboBox.getItems().clear();
+        propHiddenStatusComboBox.setValue("");
         propHiddenStatusComboBox.getItems().addAll("true","false");
+
         propRentalStatusComboBox.getItems().clear();
+        propRentalStatusComboBox.setValue("");
         propRentalStatusComboBox.getItems().addAll("active", "not Active");
+
+        propOwnerComboBox.getItems().clear();
+        propOwnerComboBox.setValue("");
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
         propOwnerContactNumTextField.setTextFormatter(new TextFormatter<>(c -> {
@@ -76,10 +84,15 @@ public class adminAddPropertySceneController implements Initializable{
         //propInfoList content 
         //      0          1           2           3           4           5            6           7           8
         //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
-        String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getValue(),
+        String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
                     propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
                     propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
         String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
+        for(int i=0;i<propInfoList_tobeAdded.length;i++){
+            System.out.print(propInfoList_tobeAdded[i]);
+            System.out.print(" , ");
+        }
+        System.out.println();
 
         //If property rental status = active means the property is active and there is no tenant = false
         //If property rental status = not active means the property is not active and there is tenant = true
@@ -111,12 +124,12 @@ public class adminAddPropertySceneController implements Initializable{
     public void clearButtonHandler(){
 
         propNameTextField.clear();
-        propOwnerComboBox.setValue(null);
+        propOwnerComboBox.setValue("");
         propOwnerContactNumTextField.clear();
         propRentalRateTextField.clear();
-        propTypeComboBox.setValue(null);
-        propHiddenStatusComboBox.setValue(null);
-        propRentalStatusComboBox.setValue(null);
+        propTypeComboBox.setValue("Unspecified");
+        propHiddenStatusComboBox.setValue("");
+        propRentalStatusComboBox.setValue("");
 
     }
 

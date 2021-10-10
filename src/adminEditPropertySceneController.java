@@ -33,12 +33,13 @@ public class adminEditPropertySceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        propTypeComboBox.getItems().clear();
+        
         propTypeComboBox.getItems().addAll(Globals.propertyType);
-        propHiddenStatusComboBox.getItems().clear();
+
         propHiddenStatusComboBox.getItems().addAll("true","false");
-        propRentalStatusComboBox.getItems().clear();
+
         propRentalStatusComboBox.getItems().addAll("active", "not Active");
+
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
     }

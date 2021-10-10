@@ -544,7 +544,7 @@ public final class Model {
         //String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
         for (int i=0;i<propInfoList.length;i++){
             if(propInfoList[i].equals("")){
-                if (propValidationInfo[0].equals("false")){
+                if (propValidationInfo[0].equals("false") || propValidationInfo[0].isEmpty()){
                     hiddenStatusValid = false;
                     (new Alert(AlertType.ERROR,"Incomplete Property Details can't be displayed on property listing")).show();
                     break;
