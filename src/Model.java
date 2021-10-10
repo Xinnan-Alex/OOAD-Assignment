@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
 
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
