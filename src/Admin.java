@@ -10,7 +10,7 @@ public class Admin extends person{
     }
 
     public Admin (person p){
-        super(p.getUsername(), p.getPassword(), p.getFullname(), p.getPhonenumber(), p.getUUID(), p.getUsertype());
+        super(p.getUsername(), p.getPassword(), p.getFullName(), p.getPhoneNumber(), p.getUUID(), p.getUserType());
     }
 
     public Admin() {

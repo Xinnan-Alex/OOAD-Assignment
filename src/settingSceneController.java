@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.UUID;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,11 +21,11 @@ public class settingSceneController {
     
     public void setUserInfo(Admin u){
         loggedinPerson = u;
-        fullnameLabel.setText(loggedinPerson.getFullname());
+        fullnameLabel.setText(loggedinPerson.getFullName());
         usernameLabel.setText(loggedinPerson.getUsername());
-        contactnumLabel.setText(loggedinPerson.getPhonenumber());
+        contactnumLabel.setText(loggedinPerson.getPhoneNumber());
         useridLabel.setText(loggedinPerson.getID());
-        usertypeLabel.setText(loggedinPerson.getUsertype());
+        usertypeLabel.setText(loggedinPerson.getUserType());
         
     }
 
@@ -39,7 +38,7 @@ public class settingSceneController {
         Parent root = loader.load();
         
         adminHomepageSceneController controller =  loader.getController();
-        controller.displayName(loggedinPerson.getFullname());
+        controller.displayName(loggedinPerson.getFullName());
         controller.displayID(loggedinPerson.getID());
         
         controller.initUserObejct(loggedinPerson);

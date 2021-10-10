@@ -4,6 +4,7 @@ public final class Globals {
     public static Long currentPropID = (long) 900000000;
     public static Model LogicModel = new Model();
     public static String[] propertyType = {"Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
+    public static String[] personType = {"admin","tenant","property owner"};
 
     public static Long generatePropertyID(){
         for (Property propertyList : Model.propertyList ){

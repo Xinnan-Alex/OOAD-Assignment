@@ -37,15 +37,15 @@ public class person {
         return password;
     }
 
-    public String getFullname(){
+    public String getFullName(){
         return fullName;
     }
 
-    public String getPhonenumber(){
+    public String getPhoneNumber(){
         return phoneNumber;
     }
 
-    public String getUsertype(){
+    public String getUserType(){
         return userType;
     }
 

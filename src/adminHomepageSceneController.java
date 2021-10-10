@@ -41,9 +41,9 @@ public class adminHomepageSceneController implements Initializable{
 
     public void initUserObejct(Admin passedIN){
         admin = passedIN;
-        homepageAdminFullname.setText(admin.getFullname());
+        homepageAdminFullname.setText(admin.getFullName());
         homepageID.setText(admin.getID());
-        usertype = admin.getUsertype();
+        usertype = admin.getUserType();
 
     }
 
@@ -82,9 +82,18 @@ public class adminHomepageSceneController implements Initializable{
         stage.setScene(new Scene(root));
     }
 
-    public void accountAdminstrationButton() throws IOException{
+    public void accountAdminstrationButtonHandler() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
+        Parent root = loader.load();
+
+        adminAccountAdminstrationController accountAdminstrationController =  loader.getController();
+        accountAdminstrationController.initialiseAdminInfo(admin);
+
+        stage = (Stage) accountAdminstrationButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        
     }
 
-    public void createaAdminButton() throws IOException{
+    public void createaAdminButtonHandler() throws IOException{
     }
 }

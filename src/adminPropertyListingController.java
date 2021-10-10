@@ -43,13 +43,14 @@ public class adminPropertyListingController implements Initializable{
     TextField propertyNameSearch;
 
     @FXML
-    Button addPropertyButton,deletePropertyButton,editPropertyButton,backButton,clearSearchButton;
+    Button addPropertyButton,deletePropertyButton,editPropertyButton,backButton;
 
     @FXML
     ComboBox<String> propertyTypeFilter;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        propTableView.setStyle("-fx-selection-bar: #87CEFA;");
         propertyFilteredList = new FilteredList<>(Model.propertyList,b->true);
 
         propertyTypeFilter.getItems().addAll(propertyTypeFilterList);
@@ -157,10 +158,6 @@ public class adminPropertyListingController implements Initializable{
 
         }
             
-    }
-
-    public void clearSearchButtonHandler(){
-        propertyTypeFilter.getSelectionModel().clearSelection();
     }
 
     public void editPropertyButtonHandler() throws IOException{

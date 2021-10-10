@@ -72,7 +72,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="createaAdminButton" layoutX="166.0" layoutY="233.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="287.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Create Admin Account" textFill="WHITE">
+      <Button fx:id="createaAdminButton" layoutX="166.0" layoutY="233.0" mnemonicParsing="false" onAction="#createaAdminButtonHandler" prefHeight="47.0" prefWidth="287.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Create Admin Account" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
@@ -84,7 +84,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="accountAdminstrationButton" layoutX="164.0" layoutY="179.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Account Adminstration" textFill="WHITE">
+      <Button fx:id="accountAdminstrationButton" layoutX="164.0" layoutY="179.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Account Adminstration" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>

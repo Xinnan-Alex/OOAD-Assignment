@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
@@ -13,7 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 public final class Model {
-    public static  ArrayList<person>userInfo = new ArrayList<>();
+    public static  ObservableList<person>userInfo = FXCollections.observableArrayList();
     public static ObservableList<Property> propertyList = FXCollections.observableArrayList();
 
     public Model(){
@@ -73,7 +72,7 @@ public final class Model {
         String username = "";
 
         for (person p: userInfo){
-            if (p.getFullname().equals(fullname)){
+            if (p.getFullName().equals(fullname)){
 
                 username = p.getUsername();
                 break;
@@ -92,7 +91,7 @@ public final class Model {
         for (person p: userInfo){
             if (p.getUsername().equals(username)){
 
-                fullname = p.getFullname();
+                fullname = p.getFullName();
                 break;
             }
             else{
@@ -109,7 +108,7 @@ public final class Model {
         for (person p: userInfo){
             if (p.getUsername().equals(username)){
 
-                usertype = p.getUsertype();
+                usertype = p.getUserType();
                 break;
             }
             else{
@@ -160,7 +159,7 @@ public final class Model {
         for (person p: userInfo){
             if (p.getUsername().equals(username)){
 
-                getUserContactNum = p.getPhonenumber();
+                getUserContactNum = p.getPhoneNumber();
                 break;
             }
             else{
@@ -189,7 +188,7 @@ public final class Model {
         int propOwnerNameListSize = 0;
 
         for (person p: userInfo){
-            if (p.getUsertype().equals("property owner")){
+            if (p.getUserType().equals("property owner")){
                 propOwnerNameListSize++;
             }
         }
@@ -198,8 +197,8 @@ public final class Model {
         int propOwnerNameListIndex = 0;
 
         for (person p: userInfo){
-            if (p.getUsertype().equals("property owner")){
-                propOwnerNameList[propOwnerNameListIndex] = p.getFullname();
+            if (p.getUserType().equals("property owner")){
+                propOwnerNameList[propOwnerNameListIndex] = p.getFullName();
                 propOwnerNameListIndex++;
             }
         }
@@ -260,7 +259,7 @@ public final class Model {
             }
             else{
                 for (int i=0;i<userInfo.size();i++){
-                    if (fullname.equals(userInfo.get(i).getFullname())){
+                    if (fullname.equals(userInfo.get(i).getFullName())){
                          registerFullnameValid = false;
                          break;
                     }

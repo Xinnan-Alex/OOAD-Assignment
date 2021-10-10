@@ -16,7 +16,6 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //TODO Auto-generated method stub
         this.primaryStage = primaryStage;
 
         root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
