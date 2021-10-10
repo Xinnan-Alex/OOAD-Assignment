@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.Alert;
@@ -25,6 +26,9 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableRow;
+import javafx.event.EventHandler;
+
 
 public class adminPropertyListingController implements Initializable{
 
@@ -117,6 +121,24 @@ public class adminPropertyListingController implements Initializable{
         TableViewSelectionModel propTableViewSelectionModel = propTableView.getSelectionModel();
         propTableViewSelectionModel.setSelectionMode(SelectionMode.SINGLE);
 
+        propTableView.setRowFactory(new Callback<TableView<Property>, TableRow<Property>>() {  
+            @Override  
+            public TableRow<Property> call(TableView<Property> tableView2) {  
+                final TableRow<Property> row = new TableRow<>();  
+                row.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {  
+                    @Override  
+                    public void handle(MouseEvent event) {  
+                        final int index = row.getIndex();  
+                        if (index >= 0 && index < propTableView.getItems().size() && propTableView.getSelectionModel().isSelected(index)  ) {
+                            propTableView.getSelectionModel().clearSelection();
+                            event.consume();  
+                        }  
+                    }  
+                });  
+                return row;  
+            }  
+        });  
+
         
     }
 
@@ -148,16 +170,19 @@ public class adminPropertyListingController implements Initializable{
     }
     
     public void deletePropertyButtonHandler() throws IOException{
-        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        confirmation_Alert.showAndWait();
+        ObservableList<Property> propertyToBeDeleted = propTableView.getSelectionModel().getSelectedItems();
 
-        if (confirmation_Alert.getResult() == ButtonType.YES){
-            ObservableList<Property> propertyToBeDeleted = propTableView.getSelectionModel().getSelectedItems();
-
-            logicModel.removeSelectedProperty(propertyToBeDeleted);
-
+        if (propertyToBeDeleted.isEmpty()){
+            (new Alert(AlertType.ERROR,"Please select a property to delete")).show();
         }
+        else{
+            Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+            confirmation_Alert.showAndWait();
             
+            if (confirmation_Alert.getResult() == ButtonType.YES){
+                logicModel.removeSelectedProperty(propertyToBeDeleted);
+            }
+        }
     }
 
     public void editPropertyButtonHandler() throws IOException{
