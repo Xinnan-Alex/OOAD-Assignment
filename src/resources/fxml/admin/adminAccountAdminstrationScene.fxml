@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="855.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" stylesheets="@../../focus_css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminAccountAdminstrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="855.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminAccountAdminstrationController">
    <children>
       <Label layoutX="335.0" layoutY="14.0" text="Account Adminstration">
          <font>
@@ -24,8 +24,8 @@
             <Font name="Arial Black" size="12.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="personTypeFilter" layoutX="385.0" layoutY="94.0" prefWidth="150.0" promptText="User Type" style="-fx-background-color: #E6E6FA;" stylesheets="@../../comboboxStyle.css" />
-      <TableView fx:id="userInfoTableView" layoutX="48.0" layoutY="134.0" prefHeight="583.0" prefWidth="751.0" stylesheets="@../../tableviewStyle.css">
+      <ComboBox fx:id="personTypeFilter" layoutX="385.0" layoutY="94.0" prefWidth="150.0" promptText="User Type" style="-fx-background-color: #E6E6FA;" stylesheets="@../../css/comboboxStyle.css" />
+      <TableView fx:id="userInfoTableView" layoutX="48.0" layoutY="134.0" prefHeight="583.0" prefWidth="751.0" stylesheets="@../../css/tableviewStyle.css">
         <columns>
           <TableColumn fx:id="noColumn" prefWidth="38.0" style="-fx-border-color: grey;" text="No." />
             <TableColumn fx:id="personIDColumn" minWidth="0.0" prefWidth="264.0" style="-fx-border-color: grey;" text="ID" />

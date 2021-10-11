@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -6,10 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import javafx.scene.control.TextFormatter;
 
-public class loginSceneController{
+public class loginSceneController implements Initializable{
 
     private Stage stage;
     public Model logicModel = new Model(); 
@@ -18,6 +22,17 @@ public class loginSceneController{
     Button registerButton,loginButton;
     @FXML
     TextField loginUsername,loginPass;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loginUsername.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getText().equals(" ")) {
+                change.setText("");
+            }
+            return change;
+        }));
+        
+    }
 
 
     public void registerButtonHandler() throws IOException{
@@ -76,5 +91,7 @@ public class loginSceneController{
 
         
     }
+
+
     
 }

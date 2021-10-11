@@ -70,6 +70,9 @@ public class adminAddPersonSceneController implements Initializable{
             if (Globals.LogicModel.registerInfoValidation(addPersonInfo_validation)){
                 String[] addPersonInfo_Write = {username.getText(),password.getText(),fullname.getText(),contactnum.getText(),UUID.randomUUID().toString(),userType.getValue()};
                 Globals.LogicModel.writeToUserDataCSV(Globals.LogicModel.addUserInfo(addPersonInfo_Write));
+                (new Alert(AlertType.INFORMATION,"Account created succesfully")).showAndWait();
+                backButtonHandler();
+
             }
             else{
                 (new Alert(AlertType.ERROR,"Invalid information inputted, please try again!")).showAndWait();

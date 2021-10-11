@@ -363,6 +363,16 @@ public final class Model {
         fileWriter.close();
     }
 
+    public void writeToUserDataCSV() throws IOException{
+        FileWriter fileWriter = new FileWriter(new File("userData.csv"));
+
+        for (person u : userInfo) {
+            fileWriter.write(u.toCSVFormat());
+            fileWriter.write("\n");
+        }
+        fileWriter.close();
+    }
+
     public void loadPropertyList() throws IOException {
         String file = "propertyList.csv";
 
@@ -606,6 +616,11 @@ public final class Model {
         WriteToPropertyListCsv();
     }
 
+    public void removeSelectedPerson(ObservableList<person> selectedPerson) throws IOException{
+        userInfo.removeAll(selectedPerson);
+        writeToUserDataCSV();
+    }
+
     public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided) throws IOException{
 
         if(selectedPropertyData_TobeValided[0].isEmpty()){
@@ -633,6 +648,55 @@ public final class Model {
 
         }
     
+    }
+
+    public boolean editSelectedPersonDataValidation(String[] selectedPersonData_TobeValid){
+        Boolean completeData = false;
+        Boolean passwordMatch =  registerPasswordValidation(selectedPersonData_TobeValid[2],selectedPersonData_TobeValid[3]);
+        Boolean editSelectedPersonDataValid = false;
+        Boolean validContactNum = ContactnumValidation(selectedPersonData_TobeValid[4]);
+
+        //String[] editPersonInfo_validation = {username.getText(),fullname.getText(),password.getText(),reEnterPassword.getText(),contactnum.getText()};
+        for (int i=0;i<selectedPersonData_TobeValid.length;i++){
+            if (selectedPersonData_TobeValid[i].isEmpty()){
+                completeData = false;
+                break;
+            }
+            else{
+                completeData = true;
+            }
+        }
+
+        if(completeData && passwordMatch && validContactNum){
+            editSelectedPersonDataValid = true;
+        }
+        else{
+            editSelectedPersonDataValid = false;
+        }
+
+        //ERROR MESSAGES
+        if(!completeData){  
+            (new Alert(AlertType.ERROR,"Incomplete data, please fill in the information before committing to the changes!")).showAndWait();
+        }
+        if(!passwordMatch){
+            (new Alert(AlertType.ERROR,"Password does not match, please try again!")).showAndWait();
+        }
+        if(!validContactNum){
+            (new Alert(AlertType.ERROR,"Invalid phone number, please try again!")).showAndWait();
+        }
+
+        return editSelectedPersonDataValid;
+    }
+
+    public void editSelectedPersonData(person selectedPerson, String[] selectedPersonData) throws IOException{
+        //{username.getText(),password.getText(),fullname.getText(),contactnum.getText(),userType.getValue()};
+        selectedPerson.setUsername(selectedPersonData[0]);
+        selectedPerson.setPassword(selectedPersonData[1]);
+        selectedPerson.setFullname(selectedPersonData[2]);
+        selectedPerson.setPhonenumber(selectedPersonData[3]);
+        selectedPerson.setUsertype(selectedPersonData[4]);
+
+        writeToUserDataCSV();
     }
 
 }

@@ -166,21 +166,53 @@ public class adminAccountAdminstrationController implements Initializable{
 
     }
 
-    public void deletePersonButtonHandler(){
+    public void deletePersonButtonHandler() throws IOException{
         ObservableList<person> selectedPerson = userInfoTableView.getSelectionModel().getSelectedItems();
 
-        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete this person details?",ButtonType.YES,ButtonType.NO,ButtonType.CANCEL);
-        confirmation_Alert.showAndWait();
-
-        if (confirmation_Alert.getResult() == ButtonType.YES){
-            //DELETE PERSON
+        if (selectedPerson.isEmpty()){
+            (new Alert(AlertType.ERROR,"Please select a person to delete")).showAndWait();
+        }
+        else{
+            Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete this person details?",ButtonType.YES,ButtonType.NO,ButtonType.CANCEL);
+            confirmation_Alert.showAndWait();
+    
+            if (confirmation_Alert.getResult() == ButtonType.YES){
+                if (selectedPerson.get(0).getUUID() == admin.getUUID()){
+                    (new Alert(AlertType.ERROR,"You can't delete your own acount, please select another account!")).showAndWait();
+                }
+                else{
+                    Globals.LogicModel.removeSelectedPerson(selectedPerson);
+                }
+                
+            }
         }
        
     }
 
-    public void editPersonButtonHandler(){
+    public void editPersonButtonHandler() throws IOException{
         ObservableList<person> selectedPerson = userInfoTableView.getSelectionModel().getSelectedItems();
 
+        if (selectedPerson.isEmpty()){
+            (new Alert(AlertType.ERROR,"Please select a person to edit")).showAndWait();
+        }
+        else{
+            Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to edit this person details?",ButtonType.YES,ButtonType.NO,ButtonType.CANCEL);
+            confirmation_Alert.showAndWait();
+
+            if (confirmation_Alert.getResult() == ButtonType.YES){
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminEditPersonScene.fxml"));
+                Parent root = loader.load();
+
+                adminEditPersonSceneController controller =  loader.getController();
+                controller.initialiseAdminInfo(admin);
+                controller.initialiseSelectedPersonInfo(selectedPerson.get(0));
+
+                Stage stage = (Stage) editPersonButton.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            }
+            
+        }
 
         
     }

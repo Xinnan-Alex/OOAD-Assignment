@@ -28,6 +28,7 @@ public class RegisterSceneController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         registerContactNum.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
                 return null;
@@ -35,6 +36,13 @@ public class RegisterSceneController implements Initializable{
                 return c;
             }
         ));
+
+        registerUsername.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getText().equals(" ")) {
+                change.setText("");
+            }
+            return change;
+        }));
         
     }
 
