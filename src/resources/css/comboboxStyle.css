@@ -1,0 +1,11 @@
+/* for the main button of the ComboBox  */
+.combo-box .cell{
+    -fx-text-fill: black;
+    -fx-font: 12px "Arial Black";
+}
+.customcell {
+    -fx-text-fill: black;
+    -fx-font: 12px "Arial Black";
+    /* No alternate highlighting */
+    -fx-background-color: #FFF;
+}
