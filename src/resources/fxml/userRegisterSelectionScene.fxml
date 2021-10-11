@@ -27,5 +27,10 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="backButton" layoutX="268.0" layoutY="300.0" mnemonicParsing="false" onAction="#backButtonHandler" text="Back">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

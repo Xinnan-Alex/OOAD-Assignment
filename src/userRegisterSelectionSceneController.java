@@ -12,7 +12,7 @@ public class userRegisterSelectionSceneController {
     private static String usertype;
 
     @FXML
-    Button registerAgentButton,registerPropertyOwnerButton,registerTenantButton;
+    Button registerAgentButton,registerPropertyOwnerButton,registerTenantButton,backButton;
 
     public void registerPropertyOwnerButtonHandler() throws IOException{
         usertype = "property owner";
@@ -34,5 +34,11 @@ public class userRegisterSelectionSceneController {
 
     public static String getUserType(){
         return usertype;
+    }
+
+    public void backButtonHandler() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
+        stage = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 }

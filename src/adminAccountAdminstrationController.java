@@ -7,9 +7,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SelectionMode;
 import javafx.collections.transformation.FilteredList;
@@ -17,11 +19,16 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableRow;
+import javafx.event.EventHandler;
 
 public class adminAccountAdminstrationController implements Initializable{
 
@@ -111,6 +118,24 @@ public class adminAccountAdminstrationController implements Initializable{
         TableViewSelectionModel userInfoTableViewSelectionModel = userInfoTableView.getSelectionModel();
         userInfoTableViewSelectionModel.setSelectionMode(SelectionMode.SINGLE);
 
+        userInfoTableView.setRowFactory(new Callback<TableView<person>, TableRow<person>>() {  
+            @Override  
+            public TableRow<person> call(TableView<person> tableView2) {  
+                final TableRow<person> row = new TableRow<>();  
+                row.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {  
+                    @Override  
+                    public void handle(MouseEvent event) {  
+                        final int index = row.getIndex();  
+                        if (index >= 0 && index < userInfoTableView.getItems().size() && userInfoTableView.getSelectionModel().isSelected(index)  ) {
+                            userInfoTableView.getSelectionModel().clearSelection();
+                            event.consume();  
+                        }  
+                    }  
+                });  
+                return row;  
+            }  
+        });  
+
     }
 
     public void initialiseAdminInfo(Admin passedIn){
@@ -127,5 +152,39 @@ public class adminAccountAdminstrationController implements Initializable{
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
+    public void addPersonButtonHandler() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminAddPersonScene.fxml"));
+        Parent root = loader.load();
+
+        adminAddPersonSceneController controller =  loader.getController();
+        controller.initialiseAdminInfo(admin);
+
+        Stage stage = (Stage) addPersonButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
+
+    }
+
+    public void deletePersonButtonHandler(){
+        ObservableList<person> selectedPerson = userInfoTableView.getSelectionModel().getSelectedItems();
+
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to delete this person details?",ButtonType.YES,ButtonType.NO,ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
+
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+            //DELETE PERSON
+        }
+       
+    }
+
+    public void editPersonButtonHandler(){
+        ObservableList<person> selectedPerson = userInfoTableView.getSelectionModel().getSelectedItems();
+
+
+        
+    }
+
+
 
 }
