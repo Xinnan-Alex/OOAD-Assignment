@@ -95,5 +95,13 @@ public class adminHomepageSceneController implements Initializable{
     }
 
     public void createaAdminButtonHandler() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminCreateAdmin.fxml"));
+        Parent root = loader.load();
+
+        adminCreateAdminController controller =  loader.getController();
+        controller.initialiseAdminInfo(admin);
+
+        stage = (Stage) createaAdminButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 }
