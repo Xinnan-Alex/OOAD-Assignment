@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;

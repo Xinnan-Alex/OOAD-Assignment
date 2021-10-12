@@ -2,6 +2,7 @@ import java.util.UUID;
 import java.util.ArrayList;
 
 public class Admin extends person{
+    static String secretPhrase = "No-Brainer";
     //Scanner input = new Scanner(System.in);
 
     // ADMIN CONSTRUCTOR

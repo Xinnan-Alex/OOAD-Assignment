@@ -699,4 +699,80 @@ public final class Model {
         writeToUserDataCSV();
     }
 
+    public Boolean createAdminAccountValidation(String username,String password, String reenterPassowrd, String adminSecretPhrase, String fullname) throws IOException{
+        Boolean validAdminAccountInfo = false;
+        Boolean validAdminSecretPhrase = false;
+        Boolean validUsername = false;
+        Boolean validPassword = false;
+        Boolean validFullname = false;
+
+        //Validating secret phrase for creating admin account
+        if (adminSecretPhrase.equals(Admin.secretPhrase)){
+            validAdminSecretPhrase = true;
+        }
+        else{
+            validAdminSecretPhrase = false;
+        }
+
+        //Validating duplicate admin username
+        for (person u : userInfo){
+            if (u.getUserType().equals("admin")){
+                if(u.getUsername().equals(username)){
+                    validUsername = false;
+                    break;
+                }
+                else{
+                    validUsername = true;
+                }
+            }
+        }
+
+        //Validating duplicate admin fullname
+        for (person u : userInfo){
+            if (u.getUserType().equals("admin")){
+                if(u.getFullName().toLowerCase().equals(fullname.toLowerCase())){
+                    validFullname = false;
+                    break;
+                }
+                else{
+                    validFullname = true;
+                }
+            }
+        }
+
+        //Validating password
+        if(password.equals(reenterPassowrd)){
+            validPassword = true;
+        }
+        else{
+            validPassword = false;
+        }
+
+        //Alert Dialog
+        if(!validAdminSecretPhrase){
+            (new Alert(AlertType.ERROR,"Invalid Admin Secret Phrase, please try again")).showAndWait();
+        }
+        if(!validFullname){
+            (new Alert(AlertType.ERROR,"Invalid Fullname, please try again")).showAndWait();
+        }
+        if(!validPassword){
+            (new Alert(AlertType.ERROR,"Invalid Password, please try again")).showAndWait();
+        }
+        if(!validUsername){
+            (new Alert(AlertType.ERROR,"Invalid Username, please try again")).showAndWait();
+        }
+
+        //Final Validation for Admin Account Info
+        if(validAdminSecretPhrase && validFullname && validPassword && validUsername){
+            validAdminAccountInfo = true;
+            person admin = new person(username, password, fullname, "", "admin");
+            writeToUserDataCSV(admin);
+        }
+        else{
+            validAdminAccountInfo = false;
+        }
+
+        return validAdminAccountInfo;
+    }
+
 }
