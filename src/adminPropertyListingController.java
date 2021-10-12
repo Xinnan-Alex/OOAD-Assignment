@@ -1,7 +1,11 @@
+//ADMIN PROPERTY LISTING INTERFACE CONTROLLER
+
+//JAVA IMPORTS
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.IOException;
 
+//JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.beans.value.ObservableValue;
@@ -29,7 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableRow;
 import javafx.event.EventHandler;
 
-
+//adminPropertyListingController class
 public class adminPropertyListingController implements Initializable{
 
     private Admin admin;

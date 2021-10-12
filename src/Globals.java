@@ -1,5 +1,9 @@
+//GLOBALS CLASS FOR INITIALISING GLOBAL VARIABLE FOR EASIER ACCESS OF SOME METHODS
+
+//JAVA IMPORTS
 import java.util.concurrent.atomic.AtomicLong;
 
+//Global class
 public final class Globals {
     public static Long currentPropID = (long) 900000000;
     public static Model LogicModel = new Model();

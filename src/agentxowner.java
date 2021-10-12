@@ -1,6 +1,10 @@
+//AGENT AND OWNER CLASS
+
+//JAVA IMPORTS
 import java.util.ArrayList;
 import java.util.UUID;
 
+//agentxowner class
 public class agentxowner extends person{
     ArrayList<Property> properties = new ArrayList<Property>();
 

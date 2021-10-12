@@ -1,7 +1,11 @@
+//ADMIN EDIT PERSON'S DATA INTERFACE CONTROLLER (Admin Feature)
+
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,7 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextFormatter;
 
-
+//adminEditPersonSceneController java
 public class adminEditPersonSceneController implements Initializable{
 
     Admin admin;

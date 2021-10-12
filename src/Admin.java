@@ -1,13 +1,15 @@
-//Admin class, this class is  used for the admin user
+//ADMIN CLASS FOR USERTYPE ADMIN, AND ADMIN RELATED METHODS
 
+//JAVA IMPORTS
 import java.io.IOException;
 import java.util.UUID;
 
+//JAVAFX IMPORTS
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.ObservableList;
 
-
+//Admin class
 public class Admin extends person{
 
     //secret phrase for creating admin account

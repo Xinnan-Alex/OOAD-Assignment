@@ -1,7 +1,11 @@
+//ADMIN EDIT PROPERTY INTERFACE CONTROLLER (Admin Feature)
+
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -18,6 +22,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 
+//adminEditPropertySceneController class
 public class adminEditPropertySceneController implements Initializable{
 
     Property propertyToBeEdited;
@@ -132,6 +137,7 @@ public class adminEditPropertySceneController implements Initializable{
     
     }
 
+    //Passing in admin object from previous interface(Admin Feature)
     public void passedInAdminObject(Admin a){
         admin = a;
     }

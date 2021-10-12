@@ -1,3 +1,6 @@
+//PROPERTY CLASS FOR PROPERTY IN OUR PROGRAM
+
+//Property class
 public class Property {
 
     //Property ID format : Bungalow = 1xxxxxxxx , Semi-D = 2xxxxxxxx , Terrace = 3xxxxxxxx , Townhouse = 4xxxxxxxx , 

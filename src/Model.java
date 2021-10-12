@@ -1,6 +1,5 @@
 //Model class for mostly doing validation and returning the specific data requested by the interfaces
 
-
 //JAVA IMPORTS
 import java.io.IOException;
 import java.io.FileReader;

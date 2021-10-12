@@ -1,5 +1,9 @@
+//GUI CLASS, THE MAIN EXECUTABLE FILE FOR OUR ASSIGNMENT.
+
+//JAVA IMPORTS
 import java.io.IOException;
 
+//JAVAFX IMPORTS
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.Parent;
 
+//Gui class
 public class GUI extends Application {
 
     private Scene scene;

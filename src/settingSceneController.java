@@ -1,5 +1,9 @@
+//PROFILE SETTING INTERFACE CONTROLLER
+
+//JAVA IMPORTS
 import java.io.IOException;
 
+//JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -8,9 +12,9 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+//settingSceneController class
 public class settingSceneController {
 
-    Model logicModel =  new Model();
     Admin loggedinPerson;
 
     @FXML

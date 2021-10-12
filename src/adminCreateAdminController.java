@@ -1,9 +1,11 @@
 //Create Admin Account's Scene Controller (Admin Feature)
 
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -18,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+//adminCreateAdminController class
 public class adminCreateAdminController implements Initializable{
     Admin admin;
 

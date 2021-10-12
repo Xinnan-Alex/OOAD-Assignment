@@ -1,7 +1,11 @@
+//ADMIN ACCOUNT ADMINSTRATION INTERFACE CONTROLLER (Admin Feature)
+
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,6 +33,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableRow;
 import javafx.event.EventHandler;
 
+//adminAccountAdminstrationController java
 public class adminAccountAdminstrationController implements Initializable{
 
     FilteredList<person> personFilteredList;
@@ -111,7 +116,6 @@ public class adminAccountAdminstrationController implements Initializable{
 
         });
 
-
         userInfoTableView.setItems(personFilteredList);
 
         TableViewSelectionModel userInfoTableViewSelectionModel = userInfoTableView.getSelectionModel();
@@ -161,8 +165,6 @@ public class adminAccountAdminstrationController implements Initializable{
 
         Stage stage = (Stage) addPersonButton.getScene().getWindow();
         stage.setScene(new Scene(root));
-
-
     }
 
     public void deletePersonButtonHandler() throws IOException{
@@ -182,10 +184,8 @@ public class adminAccountAdminstrationController implements Initializable{
                 else{
                     admin.removeSelectedPerson(selectedPerson);
                 }
-                
             }
         }
-       
     }
 
     public void editPersonButtonHandler() throws IOException{
@@ -210,12 +210,7 @@ public class adminAccountAdminstrationController implements Initializable{
                 Stage stage = (Stage) editPersonButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
             }
-            
-        }
-
-        
+        }   
     }
-
-
 
 }

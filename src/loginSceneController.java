@@ -1,7 +1,11 @@
+//LOGIN INTERFACE CONTROLLER
+
+//JAVA IMPORT
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -13,6 +17,7 @@ import javafx.scene.*;
 import javafx.stage.Stage;
 import javafx.scene.control.TextFormatter;
 
+//loginSceneController class
 public class loginSceneController implements Initializable{
 
     private Stage stage;

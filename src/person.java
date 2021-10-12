@@ -1,5 +1,9 @@
+//PERSON CLASS IS THE SUPERCLASS OF ALL USERTYPE OBJECT IN OUR PROGRAM
+
+//JAVA IMPORTS
 import java.util.UUID;
 
+//person class
 public class person {
     private String fullName;
     private UUID ID;
