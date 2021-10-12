@@ -19,7 +19,7 @@ public class Property {
     //IMPLEMENT BUILDER DP FOR THE CONSTRUCTOR - use propertyBuilder class - different 
     //ID based on property type
 
-    //Constructor
+    //Property Constructor
     public Property(propertyBuilder builder) {
         this.propertyID = builder.propertyID;
         this.projectName = builder.projectName;
@@ -32,7 +32,7 @@ public class Property {
         this.contactNum = builder.contactNum;
     }
 
-    //Setters
+    //Property class Setters
     public void setRentStatus() {
         if (this.rentStatus == false) {
             this.rentStatus = true;
@@ -91,7 +91,7 @@ public class Property {
         this.hiddenStatus = hiddenStatus;
     }
 
-    //Getters
+    //Property Getters
     public long getPropertyID() {
         return this.propertyID;
     }
