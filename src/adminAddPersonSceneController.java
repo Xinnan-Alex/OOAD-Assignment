@@ -69,7 +69,7 @@ public class adminAddPersonSceneController implements Initializable{
             String[] addPersonInfo_validation = {username.getText(),fullname.getText(),password.getText(),reEnterPassword.getText(),contactnum.getText()};
             if (Globals.LogicModel.registerInfoValidation(addPersonInfo_validation)){
                 String[] addPersonInfo_Write = {username.getText(),password.getText(),fullname.getText(),contactnum.getText(),UUID.randomUUID().toString(),userType.getValue()};
-                Globals.LogicModel.writeToUserDataCSV(Globals.LogicModel.addUserInfo(addPersonInfo_Write));
+                admin.addPerson(addPersonInfo_Write);
                 (new Alert(AlertType.INFORMATION,"Account created succesfully")).showAndWait();
                 backButtonHandler();
 

@@ -32,7 +32,6 @@ import javafx.event.EventHandler;
 
 public class adminPropertyListingController implements Initializable{
 
-    private Model logicModel = new Model();
     private Admin admin;
     FilteredList<Property> propertyFilteredList;
     public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
@@ -180,7 +179,7 @@ public class adminPropertyListingController implements Initializable{
             confirmation_Alert.showAndWait();
             
             if (confirmation_Alert.getResult() == ButtonType.YES){
-                logicModel.removeSelectedProperty(propertyToBeDeleted);
+                admin.removeSelectedProperty(propertyToBeDeleted);
             }
         }
     }

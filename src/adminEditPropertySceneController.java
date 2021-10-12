@@ -109,7 +109,7 @@ public class adminEditPropertySceneController implements Initializable{
 
             String[] selectedPropertyData_TobeValided  = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
-            Globals.LogicModel.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
+            admin.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
 
             (new Alert(AlertType.CONFIRMATION,"Property edited!")).showAndWait();
         }

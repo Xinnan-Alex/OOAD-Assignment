@@ -1,3 +1,7 @@
+//Model class for mostly doing validation and returning the specific data requested by the interfaces
+
+
+//JAVA IMPORTS
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -6,11 +10,14 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
 
+//JAVAFX IMPORTS
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
+
+//Model Class
 public final class Model {
     public static  ObservableList<person>userInfo = FXCollections.observableArrayList();
     public static ObservableList<Property> propertyList = FXCollections.observableArrayList();
@@ -19,6 +26,9 @@ public final class Model {
         
     }
     
+
+    //Method for loading the person's info into the program
+    //Written by Leong Xin Nan
     public void loadUserInfo() throws IOException { 
 
         String file = "userData.csv";
@@ -47,10 +57,14 @@ public final class Model {
 
     }
 
+    //Method for creating a person's object
+    //Written by Leong Xin Nan
     public person addUserInfo(String[] data){
         return new person(data[0],data[1],data[2],data[3],UUID.fromString(data[4]),data[5]);
     }
 
+    //Method for validating login status
+    //Written by Leong Xin Nan
     public boolean loginStatus(String loginUsername, String loginPass){
         boolean login = false;
         for (person p: userInfo){
@@ -68,6 +82,8 @@ public final class Model {
         return login;
     }
 
+    //Method for getting persons's username by passing in the person's fullname
+    //Written by Leong Xin Nan
     public String getUsername(String fullname){
         String username = "";
 
@@ -85,6 +101,8 @@ public final class Model {
         return username;
     }
 
+    //Method for getting person's fullname by passing in the person's username 
+    //Written by Leong Xin Nan
     public String getFullname(String username){
         String fullname = "";
 
@@ -102,6 +120,8 @@ public final class Model {
         return fullname;
     }
 
+    //Method for getting person's usertype by passing in the person's username 
+    //Written by Leong Xin Nan
     public String getUsertype(String username){
         String usertype = "";
 
@@ -119,6 +139,8 @@ public final class Model {
         return usertype;
     }
 
+    //Method for getting person's ID by passing in the person's username
+    //Written by Leong Xin Nan
     public String getUserID(String username){
         String userID = "";
 
@@ -136,6 +158,8 @@ public final class Model {
         return userID;
     }
 
+    //Method for getting person's password by passing in the person's username 
+    //Written by Leong Xin Nan
     public String getUserPassword (String username){
         String userPassword = "";
 
@@ -153,6 +177,8 @@ public final class Model {
         return userPassword;
     }
 
+    //Method for getting person's contact number by passing in the person's username 
+    //Written by Leong Xin Nan
     public String getUserContactNum(String username){
         String getUserContactNum = "";
 
@@ -170,6 +196,8 @@ public final class Model {
         return getUserContactNum;
     }
 
+    //Method for getting person object by passing in the person's username 
+    //Written by Leong Xin Nan
     public person getPersonObeject(String username){
 
         person tempP = new person();
@@ -184,6 +212,8 @@ public final class Model {
         return tempP;
     }
 
+    //Method for getting the list of property owner
+    //Written by Leong Xin Nan
     public String[] getListofPropOwnerName(){
         int propOwnerNameListSize = 0;
 
@@ -205,22 +235,9 @@ public final class Model {
 
         return propOwnerNameList;
     }
-
-    public void registerUser(String username, String password, String fullname, String contactnumber,String userType){
-        if (userType.equals("tenant")){
-            String[] data = {username,password,fullname,contactnumber,"tenant"};
-            person tempUser = addUserInfo(data);
-            userInfo.add(tempUser);
-        }
-
-        else if(userType.equals("property owner")){
-            String[] data = {username,password,fullname,contactnumber,"property owner"};
-            person tempUser = addUserInfo(data);
-            userInfo.add(tempUser);
-        }
-        
-    }
     
+    //Method for validating the username for account registration
+    //Written by Leong Xin Nan
     public boolean registerUsernameValidation(String username){
         boolean registerusernameValid = false;
 
@@ -247,6 +264,8 @@ public final class Model {
         return registerusernameValid;
     }
 
+    //Method for validating the fullname for account registration
+    //Written by Leong Xin Nan
     public boolean registerFullnameValidation(String fullname){
         boolean registerFullnameValid = false;
 
@@ -273,6 +292,8 @@ public final class Model {
         return registerFullnameValid;
     }
 
+    //Method for validating the password for account registration
+    //Written by Leong Xin Nan
     public boolean registerPasswordValidation(String password, String rePassword){
         boolean registerPasswordValid = false;
         
@@ -291,6 +312,8 @@ public final class Model {
         return registerPasswordValid;
     }
 
+    //Method for validating the contact number for account registration
+    //Written by Leong Xin Nan
     public boolean ContactnumValidation(String contactnum){
         boolean registerContactNumValid = false;
 
@@ -314,8 +337,10 @@ public final class Model {
         return registerContactNumValid;
     }
 
+    //Method for validating the infos for account registration
+    //Written by Leong Xin Nan
     public boolean registerInfoValidation(String[] registerInfo){
-        //{registerUsername.getText(),registerFullname.getText(),registerPass.getText(),registerRePass.getText(),registerContactNum.getText()}
+        
         boolean registerInfoValid = false;
         boolean registerusernameValid = registerUsernameValidation(registerInfo[0]);
         boolean registerFullnameValid= registerFullnameValidation(registerInfo[1]);
@@ -352,6 +377,8 @@ public final class Model {
         return registerInfoValid;
     }
 
+    //Method 1 for writing person data into the userData csv file
+    //Written by Leong Xin Nan
     public void writeToUserDataCSV(person p) throws IOException{
         FileWriter fileWriter = new FileWriter(new File("userData.csv"));
         userInfo.add(p);
@@ -363,6 +390,8 @@ public final class Model {
         fileWriter.close();
     }
 
+    //Method 2 for writing person data into the userData csv file
+    //Written by Leong Xin Nan
     public void writeToUserDataCSV() throws IOException{
         FileWriter fileWriter = new FileWriter(new File("userData.csv"));
 
@@ -373,6 +402,8 @@ public final class Model {
         fileWriter.close();
     }
 
+    //Method for loading property list into the program
+    //Written by Leong Xin Nan
     public void loadPropertyList() throws IOException {
         String file = "propertyList.csv";
 
@@ -411,9 +442,9 @@ public final class Model {
         }
     }
 
+    //Method for getting a property object
+    //Written by Leong Xin Nan
     public Property getPropertyObject(String[] propertyinfo){
-        //      0          1           2           3           4           5            6           7           8
-        //projectName,propertySize,rentalRate,propertyType, propertyOwner,contactNum,propertyID,hiddenStatus,rentStatus
 
         String projectName =  propertyinfo[0];
 
@@ -436,7 +467,6 @@ public final class Model {
         String propertyType = propertyinfo[3];
         String propertyOwner = propertyinfo[4];
         String contactNum = propertyinfo[5];
-        //long propertyID = Long.parseLong(propertyinfo[6]);
         Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[6]);
 
         Boolean rentStatus;
@@ -467,10 +497,14 @@ public final class Model {
         return returnProperty;
     }
 
+    //Method for getting the property list 
+    //Written by Leong Xin Nan
     public ObservableList<Property> getPropertyList(){
         return propertyList;
     }
 
+    //Method for getting the lsit of property list with the hiddenstatus = false
+    //Written by Leong Xin Nan
     public ObservableList<Property> getVisiblePropertyList(){
         ObservableList<Property> visiblePropList = FXCollections.observableArrayList();
 
@@ -483,7 +517,8 @@ public final class Model {
         return visiblePropList;
     }
 
-    // Property ID Validation
+    //Method for Property ID Validation
+    //Written by Leong Xin Nan
     public Boolean propertyIDValidation(String propertyID){
         Boolean validPropertyID = false;
 
@@ -500,7 +535,8 @@ public final class Model {
         return validPropertyID;
     }
 
-    // Property Name Validation
+    //Method for Property Name Validation
+    //Written by Leong Xin Nan
     public Boolean propertyNameValidation(String propertyName){
         Boolean validPropertyName = false;
         
@@ -524,7 +560,8 @@ public final class Model {
         return validPropertyName;
     }
 
-    // Property Rental Rate Validation
+    //Method for Property Rental Rate Validation
+    //Written by Leong Xin Nan
     public Boolean propertyRentalRateValidation(String propertyRentalRate){
         Boolean validRentalRate = false;
 
@@ -537,6 +574,8 @@ public final class Model {
         return validRentalRate;
     }
 
+    //Method for Property Size Validation
+    //Written by Leong Xin Nan
     public Boolean propertySizeValidation(String propertySize){
         Boolean validPropertySize = false;
 
@@ -550,6 +589,8 @@ public final class Model {
         return validPropertySize;
     }
 
+    //Method for Validating property info that will be added
+    //Written by Leong Xin Nan
     public Boolean addingPropertyValidation(String[] propValidationInfo,String[] propInfoList){
         Boolean hiddenStatusValid = false;
         Boolean propownerselected = false;
@@ -590,6 +631,8 @@ public final class Model {
         return PropertyValidation;
     }
 
+    //Method 1 for writing property into the propertylist csv file (takes a property object as a parameter)
+    //Written by Leong Xin Nan
     public void WriteToPropertyListCsv(Property propertytoWrite) throws IOException{
         FileWriter fileWriter = new FileWriter(new File("PropertyList.csv"));
         propertyList.add(propertytoWrite);
@@ -601,6 +644,8 @@ public final class Model {
         fileWriter.close();
     }
 
+    //Method 2 for writing property into the propertylist csv file (takes nothing as parameter)
+    //Written by Leong Xin Nan
     public void WriteToPropertyListCsv() throws IOException{
         FileWriter fileWriter = new FileWriter(new File("PropertyList.csv"));
 
@@ -611,52 +656,15 @@ public final class Model {
         fileWriter.close();
     }
 
-    public void removeSelectedProperty(ObservableList<Property> selectedProperty) throws IOException{
-        propertyList.removeAll(selectedProperty);
-        WriteToPropertyListCsv();
-    }
-
-    public void removeSelectedPerson(ObservableList<person> selectedPerson) throws IOException{
-        userInfo.removeAll(selectedPerson);
-        writeToUserDataCSV();
-    }
-
-    public void editSelectedPropertyData(Property selectedProperty, String[] selectedPropertyData, String[] selectedPropertyData_TobeValided) throws IOException{
-
-        if(selectedPropertyData_TobeValided[0].isEmpty()){
-            (new Alert(AlertType.ERROR,"Property Hidden Status can't be blank")).show();
-        }
-        else{
-            if (Globals.LogicModel.addingPropertyValidation(selectedPropertyData_TobeValided,selectedPropertyData)){
-
-                Property tempProperty = getPropertyObject(selectedPropertyData);
-
-                selectedProperty.setProjectName(tempProperty.getProjectName());
-                selectedProperty.setPropertySize(tempProperty.getPropertySize());
-                selectedProperty.setRentalRate(tempProperty.getRentalRate());
-                selectedProperty.setPropertyType(tempProperty.getPropertyType());
-                selectedProperty.setPropertyOwner(tempProperty.getPropertyOwner());
-                selectedProperty.setContactNum(tempProperty.getContactNum());
-                selectedProperty.setHiddenStatus(tempProperty.getHiddenStatus());
-                selectedProperty.setRentStatus(tempProperty.getRentStatus());
-
-                WriteToPropertyListCsv();
-            }
-            else{
-                (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
-            }
-
-        }
-    
-    }
-
+    //Method for validating the edited person's data before commiting the changes
+    //Written by Leong Xin Nan
     public boolean editSelectedPersonDataValidation(String[] selectedPersonData_TobeValid){
         Boolean completeData = false;
         Boolean passwordMatch =  registerPasswordValidation(selectedPersonData_TobeValid[2],selectedPersonData_TobeValid[3]);
         Boolean editSelectedPersonDataValid = false;
         Boolean validContactNum = ContactnumValidation(selectedPersonData_TobeValid[4]);
 
-        //String[] editPersonInfo_validation = {username.getText(),fullname.getText(),password.getText(),reEnterPassword.getText(),contactnum.getText()};
+        //Checking whether the edited selected person's data is empty
         for (int i=0;i<selectedPersonData_TobeValid.length;i++){
             if (selectedPersonData_TobeValid[i].isEmpty()){
                 completeData = false;
@@ -667,6 +675,7 @@ public final class Model {
             }
         }
 
+        //Final validating for edited person's data before committing the edits
         if(completeData && passwordMatch && validContactNum){
             editSelectedPersonDataValid = true;
         }
@@ -688,17 +697,8 @@ public final class Model {
         return editSelectedPersonDataValid;
     }
 
-    public void editSelectedPersonData(person selectedPerson, String[] selectedPersonData) throws IOException{
-        //{username.getText(),password.getText(),fullname.getText(),contactnum.getText(),userType.getValue()};
-        selectedPerson.setUsername(selectedPersonData[0]);
-        selectedPerson.setPassword(selectedPersonData[1]);
-        selectedPerson.setFullname(selectedPersonData[2]);
-        selectedPerson.setPhonenumber(selectedPersonData[3]);
-        selectedPerson.setUsertype(selectedPersonData[4]);
-
-        writeToUserDataCSV();
-    }
-
+    //Method for validating the admin account's information before creating the admin account
+    //Written by Leong Xin Nan
     public Boolean createAdminAccountValidation(String username,String password, String reenterPassowrd, String adminSecretPhrase, String fullname) throws IOException{
         Boolean validAdminAccountInfo = false;
         Boolean validAdminSecretPhrase = false;
@@ -707,48 +707,67 @@ public final class Model {
         Boolean validFullname = false;
 
         //Validating secret phrase for creating admin account
-        if (adminSecretPhrase.equals(Admin.secretPhrase)){
-            validAdminSecretPhrase = true;
+        if (adminSecretPhrase.isEmpty()){
+            validAdminSecretPhrase = false;
         }
         else{
-            validAdminSecretPhrase = false;
+            if (adminSecretPhrase.equals(Admin.secretPhrase)){
+                validAdminSecretPhrase = true;
+            }
+            else{
+                validAdminSecretPhrase = false;
+            }
         }
 
         //Validating duplicate admin username
-        for (person u : userInfo){
-            if (u.getUserType().equals("admin")){
-                if(u.getUsername().equals(username)){
-                    validUsername = false;
-                    break;
-                }
-                else{
-                    validUsername = true;
+        if (username.isEmpty()){
+            validUsername = false;
+        }else{
+            for (person u : userInfo){
+                if (u.getUserType().equals("admin")){
+                    if(u.getUsername().equals(username)){
+                        validUsername = false;
+                        break;
+                    }
+                    else{
+                        validUsername = true;
+                    }
                 }
             }
         }
 
         //Validating duplicate admin fullname
-        for (person u : userInfo){
-            if (u.getUserType().equals("admin")){
-                if(u.getFullName().toLowerCase().equals(fullname.toLowerCase())){
-                    validFullname = false;
-                    break;
+        if (fullname.isEmpty()){
+            validFullname = false;
+        }
+        else{
+            for (person u : userInfo){
+                if (u.getUserType().equals("admin")){
+                    if(u.getFullName().toLowerCase().equals(fullname.toLowerCase())){
+                        validFullname = false;
+                        break;
+                    }
+                    else{
+                        validFullname = true;
+                    }
                 }
-                else{
-                    validFullname = true;
-                }
+            }
+        }     
+
+        //Validating password
+        if (password.isEmpty() || reenterPassowrd.isEmpty()){
+            validFullname = false;
+        }
+        else{
+            if(password.equals(reenterPassowrd)){
+                validPassword = true;
+            }
+            else{
+                validPassword = false;
             }
         }
 
-        //Validating password
-        if(password.equals(reenterPassowrd)){
-            validPassword = true;
-        }
-        else{
-            validPassword = false;
-        }
-
-        //Alert Dialog
+        //ERROR MESSAGES
         if(!validAdminSecretPhrase){
             (new Alert(AlertType.ERROR,"Invalid Admin Secret Phrase, please try again")).showAndWait();
         }
@@ -765,8 +784,6 @@ public final class Model {
         //Final Validation for Admin Account Info
         if(validAdminSecretPhrase && validFullname && validPassword && validUsername){
             validAdminAccountInfo = true;
-            person admin = new person(username, password, fullname, "", "admin");
-            writeToUserDataCSV(admin);
         }
         else{
             validAdminAccountInfo = false;

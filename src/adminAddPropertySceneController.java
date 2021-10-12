@@ -1,7 +1,11 @@
+//Admin adding properrty interface controller
+
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//JAVAFX IMPORTS
 import javafx.scene.control.TextFormatter;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
@@ -17,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+
+//adminAddPropertySceneController class
 public class adminAddPropertySceneController implements Initializable{
 
     Admin admin;
@@ -32,22 +38,28 @@ public class adminAddPropertySceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //Setting the propTypeComboBox   "unspecified", and populate it with list of property type
         propTypeComboBox.getItems().clear();
         propTypeComboBox.setValue("Unspecified");
         propTypeComboBox.getItems().addAll(Globals.propertyType);
 
+        //Setting the propHiddenStatusComboBox into a blank string, and populate it with "true" and "not false" hidden status choices
         propHiddenStatusComboBox.getItems().clear();
         propHiddenStatusComboBox.setValue("");
         propHiddenStatusComboBox.getItems().addAll("true","false");
 
+        //Setting the propRentalStatusComboBox into a blank string, and populate it with "active" and "not Active" rental status choices
         propRentalStatusComboBox.getItems().clear();
         propRentalStatusComboBox.setValue("");
         propRentalStatusComboBox.getItems().addAll("active", "not Active");
 
+        //Setting the propOwnerComboBox value into a blank string, and populate it with list of property owner
         propOwnerComboBox.getItems().clear();
         propOwnerComboBox.setValue("");
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
+        //Limitting propOwnerContactNumTextField to only accept numbers
         propOwnerContactNumTextField.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
                 return null;
@@ -56,6 +68,7 @@ public class adminAddPropertySceneController implements Initializable{
             }
         ));
         
+        //Limitting propSizeTextField to only accept numbers
         propSizeTextField.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
                 return null;
@@ -64,7 +77,7 @@ public class adminAddPropertySceneController implements Initializable{
             }
         ));
 
-        
+        //Limitting propRentalRateTextField to only accept numbers
         propRentalRateTextField.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
                 return null;
@@ -101,8 +114,8 @@ public class adminAddPropertySceneController implements Initializable{
                 if (Globals.LogicModel.addingPropertyValidation(propInfoList_TobeValided,propInfoList_tobeAdded)){
 
                     Property propertyToBeAdded = Globals.LogicModel.getPropertyObject(propInfoList_tobeAdded);
-
-                    Globals.LogicModel.WriteToPropertyListCsv(propertyToBeAdded);
+                    admin.addProperty(propertyToBeAdded);
+                    
                     (new Alert(AlertType.CONFIRMATION,"Property added!")).showAndWait();
                 }
                 else{

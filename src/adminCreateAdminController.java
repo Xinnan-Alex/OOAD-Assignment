@@ -1,3 +1,5 @@
+//Create Admin Account's Scene Controller (Admin Feature)
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,6 +57,8 @@ public class adminCreateAdminController implements Initializable{
             String admnSecretPhrase = adminSecretPhrase.getText();
 
             if(Globals.LogicModel.createAdminAccountValidation(admUsername, admPassword, admReEnterPassword, admnSecretPhrase, admnFullname)){
+                person admin_created = admin.createAdminAccount(admUsername, admPassword, admnFullname);
+                Globals.LogicModel.writeToUserDataCSV(admin_created);
                 (new Alert(AlertType.CONFIRMATION,"Admin account: " + admUsername + " has been succesfully created!")).showAndWait();
                 backButtonHandler();
             }
