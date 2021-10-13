@@ -4,6 +4,8 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //JAVAFX IMPORTS
 import javafx.scene.control.TextFormatter;
@@ -14,12 +16,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 
 
 //adminAddPropertySceneController class
@@ -29,6 +33,9 @@ public class adminAddPropertySceneController implements Initializable{
 
     @FXML
     ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
+    
+    @FXML
+    ComboBox<Integer> propNumofRoomComboBox,propNumofBathroomComboBox;
 
     @FXML
     TextField propNameTextField,propSizeTextField,propOwnerContactNumTextField,propRentalRateTextField;
@@ -36,8 +43,16 @@ public class adminAddPropertySceneController implements Initializable{
     @FXML
     Button confirmButton,clearButton,backButton;
 
+    @FXML
+    TextArea commentsTextBox;
+
+    @FXML
+    Label titleLabel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        titleLabel.setText("Adding a Property: Please complete the information below");
 
         //Setting the propTypeComboBox   "unspecified", and populate it with list of property type
         propTypeComboBox.getItems().clear();
@@ -58,6 +73,20 @@ public class adminAddPropertySceneController implements Initializable{
         propOwnerComboBox.getItems().clear();
         propOwnerComboBox.setValue("");
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
+
+        //Setting the propNumofRoomComboBox value to the default value "1", and populate it with the range of 100
+        propNumofRoomComboBox.getItems().clear();
+        propNumofRoomComboBox.setValue(1);
+        propNumofRoomComboBox.getItems().setAll(
+            IntStream.rangeClosed(1,100).boxed().collect(Collectors.toList())
+        );  
+
+        //Setting the propNumofBathroomComboBox value to the default value "1", and populate it with the range of 100
+        propNumofBathroomComboBox.getItems().clear();
+        propNumofBathroomComboBox.setValue(1);
+        propNumofBathroomComboBox.getItems().setAll(
+            IntStream.rangeClosed(1,100).boxed().collect(Collectors.toList())
+        );  
 
         //Limitting propOwnerContactNumTextField to only accept numbers
         propOwnerContactNumTextField.setTextFormatter(new TextFormatter<>(c -> {
@@ -100,8 +129,8 @@ public class adminAddPropertySceneController implements Initializable{
         if (confirmation_Alert.getResult() == ButtonType.YES){
              //Extract info from TextFields
             String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
-                propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
+                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),Integer.toString(propNumofRoomComboBox.getValue()),Integer.toString(propNumofBathroomComboBox.getValue()),
+                commentsTextBox.getText(),propHiddenStatusComboBox.getValue(),propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
             String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
             //If property rental status = active means the property is active and there is no tenant = false

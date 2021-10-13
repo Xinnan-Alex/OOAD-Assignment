@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //PROPERTY CLASS FOR PROPERTY IN OUR PROGRAM
 
 //Property class
@@ -6,15 +8,18 @@ public class Property {
     //Property ID format : Bungalow = 1xxxxxxxx , Semi-D = 2xxxxxxxx , Terrace = 3xxxxxxxx , Townhouse = 4xxxxxxxx , 
     //                     Penthouse = 5xxxxxxxx , Condominium = 6xxxxxxxx , Duplex = 7xxxxxxxx , Apartment = 8xxxxxxxx, Unspecified = 9xxxxxxxx          
 
-    private long propertyID;
-    public String propertyOwner;
-    private long propertySize;
-    public String contactNum;
-    private long rentalRate;
-    private String projectName;
-    private String propertyType;
-    private Boolean rentStatus; //(true/not active -> has tenant  false/active -> no tenant)
-    private Boolean hiddenStatus; //(true -> keep hidden  false -> show on viewboard)
+        private Long propertyID;
+        private String propertyOwner;
+        private long propertySize;
+        private String contactNum;
+        private long rentalRate;
+        private String projectName;
+        private String propertyType;
+        private int numofRoom;
+        private int numofBathroom;
+        private String facilities;
+        private Boolean rentStatus;
+        private Boolean hiddenStatus;
 
     //IMPLEMENT BUILDER DP FOR THE CONSTRUCTOR - use propertyBuilder class - different 
     //ID based on property type
@@ -30,6 +35,9 @@ public class Property {
         this.hiddenStatus = builder.hiddenStatus;
         this.propertyOwner = builder.propertyOwner;
         this.contactNum = builder.contactNum;
+        this.numofBathroom = builder.numofBathroom;
+        this.numofRoom = builder.numofRoom;
+        this.facilities = builder.facilities;
     }
 
     //Property class Setters
@@ -83,6 +91,18 @@ public class Property {
         this.contactNum = contactNum;
     }
 
+    public void setFacilities(String facilities){
+        this.facilities = facilities;
+    }
+
+    public void setNumofRoom(int numofRoom){
+        this.numofRoom = numofRoom;
+    }
+
+    public void setNumofBathroom(int numofBathroom){
+        this.numofBathroom = numofBathroom;
+    }
+
     public void setRentStatus(Boolean rentStatus){
         this.rentStatus = rentStatus;
     }
@@ -126,30 +146,46 @@ public class Property {
 
     public String getContactNum(){
         return contactNum;
+
+    }
+
+    public String getFacilities(){
+        return facilities;
+    }
+
+    public int getNumofRoom(){
+        return numofRoom;
+    }
+
+    public int getNumofBathroom(){
+        return numofBathroom;
     }
 
     //ToString Format for easy printing
     public String toString() {
-        return ("projectName: " + projectName + ",propertySize: " + propertySize + ",rentalRate: " + rentalRate + ",propertyType: " + propertyType + ",propertyOwner: " + propertyOwner + ",contactNum: " +  contactNum + ",propertyID: " + propertyID + ",hiddenStatus: " + hiddenStatus + ",rentStatus: " + rentStatus);
+        return ("projectName: " + projectName + ",propertySize: " + propertySize + ",rentalRate: " + rentalRate + ",propertyType: " + propertyType + ",propertyOwner: " + propertyOwner + ",contactNum: " +  contactNum + ",propertyID: " + propertyID + ",numofRoom: " + numofRoom + ",numofBathroom: " + numofBathroom + ",Facilities: " + facilities + ",hiddenStatus: " + hiddenStatus + ",rentStatus: " + rentStatus);
     }
 
     //ToCSV Format for easy writing into CSV file
     public String toCSVFormat(){
-        return (projectName + "," + propertySize + "," + rentalRate + "," + propertyType + "," + propertyOwner + "," +  contactNum + "," + propertyID + "," + hiddenStatus + "," + rentStatus);
+        return ("\"" + projectName + "\"" + "," + propertySize + "," + rentalRate + "," + propertyType + "," + propertyOwner + "," +  contactNum + "," + propertyID + "," + numofRoom + "," + numofBathroom + "," + "\"" + facilities + "\"" + "," + hiddenStatus + "," + rentStatus);
     }
 
     //Property Builder Class
     public static class propertyBuilder{
 
-        public Long propertyID;
-        public String propertyOwner = "";
-        public long propertySize = 0;
-        public String contactNum = "";
-        public long rentalRate = 0;
-        public String projectName = "";
-        public String propertyType = "";
-        public Boolean rentStatus = false; //(true -> has tenant  false -> no tenant/default)
-        public Boolean hiddenStatus = true; //(true -> keep hidden/default  false -> show on viewboard)
+        private Long propertyID;
+        private String propertyOwner = "";
+        private long propertySize = 0;
+        private String contactNum = "";
+        private long rentalRate = 0;
+        private String projectName = "";
+        private String propertyType = "";
+        private int numofRoom = 1; //default number of room is 1
+        private int numofBathroom = 1; //default number of bathroom is 1
+        private String facilities =  "";
+        private Boolean rentStatus = false; //(true -> has tenant  false -> no tenant/default)
+        private Boolean hiddenStatus = true; //(true -> keep hidden/default  false -> show on viewboard)
     
         //CONSTRUCTIR FOR MANDATORY PARAMETER
         public propertyBuilder (long uPropertyID) {
@@ -202,6 +238,21 @@ public class Property {
 
         public propertyBuilder contactNum(String ucontactNum){
             this.contactNum = ucontactNum;
+            return this;
+        }
+
+        public propertyBuilder facilities(String facilities){
+            this.facilities = facilities;
+            return this;
+        }
+
+        public propertyBuilder numofRoom(int numofRoom){
+            this.numofRoom = numofRoom;
+            return this;
+        }
+    
+        public propertyBuilder numofBathroom(int numofBathroom){
+            this.numofBathroom = numofBathroom;
             return this;
         }
 

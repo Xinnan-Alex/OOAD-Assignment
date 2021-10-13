@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
@@ -32,13 +33,19 @@ public class adminEditPropertySceneController implements Initializable{
     ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
 
     @FXML
+    ComboBox<Integer> propNumofRoomComboBox,propNumofBathroomComboBox;
+
+    @FXML
     TextField propNameTextField,propSizeTextField,propOwnerContactNumTextField,propRentalRateTextField;
 
     @FXML
     Button confirmButton,backButton;
 
     @FXML
-    Label propertyID;
+    TextArea commentsTextBox;
+
+    @FXML
+    Label titleLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,9 +92,13 @@ public class adminEditPropertySceneController implements Initializable{
         propSizeTextField.setText(Long.toString(propertyToBeEdited.getPropertySize()));
         propOwnerContactNumTextField.setText(propertyToBeEdited.getContactNum());
         propRentalRateTextField.setText(Long.toString(propertyToBeEdited.getRentalRate()));
+        propNumofRoomComboBox.setValue(propertyToBeEdited.getNumofRoom());
+        propNumofBathroomComboBox.setValue(propertyToBeEdited.getNumofBathroom());
         propTypeComboBox.setValue(propertyToBeEdited.getPropertyType());
         propHiddenStatusComboBox.setValue(Boolean.toString(propertyToBeEdited.getHiddenStatus()));
-        propertyID.setText(Long.toString(propertyToBeEdited.getPropertyID()));
+        commentsTextBox.setText(propertyToBeEdited.getFacilities());
+
+        titleLabel.setText("Editing a Property with the ID:" + Long.toString(propertyToBeEdited.getPropertyID()));
         
         String rentalStatus;
         if (propertyToBeEdited.getRentStatus()){

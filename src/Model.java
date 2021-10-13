@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.UUID;
+import java.util.Random;
 
 //JAVAFX IMPORTS
 import javafx.scene.control.Alert.AlertType;
@@ -45,13 +46,34 @@ public final class Model {
                 
                 line = br.readLine();
             }
-        } catch (FileNotFoundException e) {
-            String[] firstAdminAccountDetails = { "admin" ,"iamnotadmin","Admin_1" ," ",UUID.randomUUID().toString() ,"admin"};
-            Admin firstAdmin = new Admin(firstAdminAccountDetails[0],firstAdminAccountDetails[1],firstAdminAccountDetails[2],firstAdminAccountDetails[3],UUID.fromString(firstAdminAccountDetails[4]),firstAdminAccountDetails[5]);
+        } catch (FileNotFoundException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Creating the first admin account");
-            
+            Admin firstAdmin = new Admin("admin","iamnotadmin","Admin_1","",UUID.randomUUID(),"admin");
             writeToUserDataCSV(firstAdmin);
             System.out.println("Created the first admin account");
+            
+            System.out.println("Preloading the property owner accounts");
+            agentxowner preload_PropOwner1 = new agentxowner("hajiwan488", "zdahalan8083", "Haji Wan Luthfi", "0160660488", UUID.randomUUID(), "property owner");
+            agentxowner preload_PropOwner2 = new agentxowner("wenchao", "9aef5cd5", "Wen Chew Zao", "0155838897", UUID.randomUUID(), "property owner");
+            agentxowner preload_PropOwner3 = new agentxowner("zhonzee", "6bc5f52d", "Zhong Thee Zee", "01112562590", UUID.randomUUID(), "property owner");
+            writeToUserDataCSV(preload_PropOwner1);
+            writeToUserDataCSV(preload_PropOwner2);
+            writeToUserDataCSV(preload_PropOwner3);
+            System.out.println("Preloaded the property owner accounts");
+
+            System.out.println("Preloading the tenant accounts");
+            tenant preload_Tenant1 = new tenant("chiewpei", "db9612f8", "Chiew Thok Pei", "0152221731", UUID.randomUUID(), "tenant");
+            tenant preload_Tenant2 = new tenant("hjhmarzi", "4cf3ae40", "Marlina Robani", "0193086426", UUID.randomUUID(), "tenant");
+            tenant preload_Tenant3 = new tenant("rameshan", "4e39290b", "Ramesh Sivanesan", "0188404994", UUID.randomUUID(), "tenant");
+            tenant preload_Tenant4 = new tenant("kangpoh", "d01d29a4", "Kang Sui Poh", "0109426448", UUID.randomUUID(), "tenant");
+            tenant preload_Tenant5 = new tenant("muhamif", "33f7536e", "Muhamed Zakri Yusseri", "0154945845", UUID.randomUUID(), "tenant");
+            writeToUserDataCSV(preload_Tenant1);
+            writeToUserDataCSV(preload_Tenant2);
+            writeToUserDataCSV(preload_Tenant3);
+            writeToUserDataCSV(preload_Tenant4);
+            writeToUserDataCSV(preload_Tenant5);
+            System.out.println("Preloaded the property owner accounts");
+
         }
 
     }
@@ -234,6 +256,19 @@ public final class Model {
 
         return propOwnerNameList;
     }
+
+    public ObservableList<person> getListofPropertyOwner(){
+        ObservableList<person> propownerList = FXCollections.observableArrayList();
+
+        for (person p: userInfo){
+            if (p.getUserType().equals("property owner")){
+                propownerList.add(p);
+            }
+        }
+
+        return propownerList;
+    }
+
     
     //Method for validating the username for account registration
     //Written by Leong Xin Nan
@@ -411,26 +446,34 @@ public final class Model {
             String line = br.readLine();
             while (line != null) {
 
-                String[] stringInfo = line.split(",");
-                //7 Jalan Durian,2000,0,Apartment,Leong Xin Nan,0102529375,800000001,false,false
-                Property property = new Property.propertyBuilder(Long.parseLong(stringInfo[6])).projectName(stringInfo[0]).propertySize(Long.parseLong(stringInfo[1])).rentalRate(Long.parseLong(stringInfo[2]))
-                                    .propertyType(stringInfo[3]).propertyOwner(stringInfo[4]).contactNum(stringInfo[5]).hiddenStatus(Boolean.parseBoolean(stringInfo[7])).rentStatus(Boolean.parseBoolean(stringInfo[8]))
-                                    .build();
+                //projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,propertyID,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus
+                String[] stringInfo = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                Property property = getPropertyObjectWithID(stringInfo);
                 propertyList.add(property);
                 
                 line = br.readLine();
             }
 
             Globals.setCurrentID(propertyList.get(propertyList.size()-1).getPropertyID());
-        } catch (FileNotFoundException e) {
-            System.out.println("Preloading property list");
-            Property propertytoWrite1 = new Property.propertyBuilder(Globals.generatePropertyID()).projectName("7 Jalan Durian").propertySize(2000)
-            .propertyType("Apartment").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
-            Property propertytoWrite2 = new Property.propertyBuilder(Globals.generatePropertyID()).projectName("30 Jalan Durian").propertySize(2000)
-            .propertyType("Terrace").propertyOwner("Leong Xin Nan").contactNum("0102529375").hiddenStatus(false).rentStatus(false).build();
+        } catch (FileNotFoundException | IndexOutOfBoundsException e) {
+
+            Random rand = new Random();
+
+            person owner_property1 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty1 = {"\"5, Jalan 4/2S, Bandar Segambut, 78083 Umbai, Melaka\"","2000","300","Terrace",owner_property1.getFullName(),owner_property1.getPhoneNumber(),"5","4","\"Aircond,Pool,Indoor Gym,Washing Machine,Cooking Utensil\"","false","active"};
+            person owner_property2 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty2 = {"\"8-6, Jln 5/43I, Bandar Laksamana, 89335 Kota Kinabalu, Sabah \"","1000","100","Townhouse",owner_property2.getFullName(),owner_property2.getPhoneNumber(),"2","1","\"Frontyard,Garage,Backyard,Train near by\"","false","active"};
+            // String [] preloadProperty3 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
+            // String [] preloadProperty4 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
+            // String [] preloadProperty5 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             
-            WriteToPropertyListCsv(propertytoWrite1);
-            WriteToPropertyListCsv(propertytoWrite2);
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty1));
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty2));
+            // WriteToPropertyListCsv(getPropertyObject(preloadProperty3));
+            // WriteToPropertyListCsv(getPropertyObject(preloadProperty4));
+            // WriteToPropertyListCsv(getPropertyObject(preloadProperty5));
+
             System.out.println("Preloading property list completed");
         }
     }
@@ -445,7 +488,7 @@ public final class Model {
     //Written by Leong Xin Nan
     public Property getPropertyObject(String[] propertyinfo){
 
-        String projectName =  propertyinfo[0];
+        String projectName =  propertyinfo[0].replace("\"", "");
 
         long propertySize;
         if (propertyinfo[1].equals("")){
@@ -466,10 +509,14 @@ public final class Model {
         String propertyType = propertyinfo[3];
         String propertyOwner = propertyinfo[4];
         String contactNum = propertyinfo[5];
-        Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[6]);
+        int numofRoom = Integer.parseInt(propertyinfo[6]);
+        int numofBathroom = Integer.parseInt(propertyinfo[7]);
+        String facilities = propertyinfo[8].replace("\"", "");
+
+        Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[9]);
 
         Boolean rentStatus;
-        if (propertyinfo[7]==null){
+        if (propertyinfo[10]==null){
             rentStatus = false;
         } 
         else{
@@ -489,11 +536,16 @@ public final class Model {
                                             .propertySize(propertySize)
                                             .rentalRate(rentalRate)
                                             .propertyType(propertyType)
+                                            .numofRoom(numofRoom)
+                                            .numofBathroom(numofBathroom)
+                                            .facilities(facilities)
                                             .rentStatus(rentStatus)
                                             .hiddenStatus(hiddenStatus)
                                             .build();
 
         return returnProperty;
+
+
     }
 
     //Method for getting the property list 
@@ -516,6 +568,68 @@ public final class Model {
         return visiblePropList;
     }
 
+    //Method for getting a property object with ID
+    //Written by Leong Xin Nan
+    public Property getPropertyObjectWithID(String[] propertyinfo){
+        String projectName =  propertyinfo[0].replace("\"", "");
+
+        long propertySize;
+        if (propertyinfo[1].equals("")){
+            propertySize = 0;
+        } 
+        else{
+            propertySize = Long.parseLong(propertyinfo[1]);
+        }
+
+        long rentalRate;
+        if (propertyinfo[2].equals("")){
+            rentalRate = 0;
+        } 
+        else{
+            rentalRate = Long.parseLong(propertyinfo[2]);
+        }
+
+        String propertyType = propertyinfo[3];
+        String propertyOwner = propertyinfo[4];
+        String contactNum = propertyinfo[5];
+        Long propertyID = Long.parseLong(propertyinfo[6]);
+        int numofRoom = Integer.parseInt(propertyinfo[7]);
+        int numofBathroom = Integer.parseInt(propertyinfo[8]);
+        String facilities = propertyinfo[9].replace("\"", "");
+
+        Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[10]);
+
+        Boolean rentStatus;
+        if (propertyinfo[11]==null){
+            rentStatus = false;
+        } 
+        else{
+            if (propertyinfo[7].equals("not Active")){
+                rentStatus = true;
+            }
+            else{
+                rentStatus = false;
+            }
+        }
+        
+        
+        Property returnProperty = new Property.propertyBuilder(propertyID)
+                                            .projectName(projectName)
+                                            .propertyOwner(propertyOwner)
+                                            .contactNum(contactNum)
+                                            .propertySize(propertySize)
+                                            .rentalRate(rentalRate)
+                                            .propertyType(propertyType)
+                                            .numofRoom(numofRoom)
+                                            .numofBathroom(numofBathroom)
+                                            .facilities(facilities)
+                                            .rentStatus(rentStatus)
+                                            .hiddenStatus(hiddenStatus)
+                                            .build();
+
+        return returnProperty;
+    }
+
     //Method for Property ID Validation
     //Written by Leong Xin Nan
     public Boolean propertyIDValidation(String propertyID){
@@ -533,6 +647,8 @@ public final class Model {
 
         return validPropertyID;
     }
+
+    
 
     //Method for Property Name Validation
     //Written by Leong Xin Nan
