@@ -47,6 +47,9 @@ public class adminPropertyListingController implements Initializable{
     TableColumn<Property,String> noColumn,propAdressColumn,propSizeColumn,propRentanRateColumn,propOwnerColumn,propOwnerContactNumColumn,propRentalStatus,propTypeColumn,propIDColumn;
 
     @FXML
+    TableColumn<Property,Integer> numofRoomColumn,numofBathroomColumn;
+
+    @FXML
     TextField propertyNameSearch;
 
     @FXML
@@ -78,6 +81,8 @@ public class adminPropertyListingController implements Initializable{
         propRentalStatus.setCellValueFactory(new PropertyValueFactory<>("rentStatus"));
         propTypeColumn.setCellValueFactory(new PropertyValueFactory<>("propertyType"));
         propIDColumn.setCellValueFactory(new PropertyValueFactory<>("propertyID"));
+        numofRoomColumn.setCellValueFactory(new PropertyValueFactory<>("numofRoom"));
+        numofBathroomColumn.setCellValueFactory(new PropertyValueFactory<>("numofBathroom"));
 
         propertyNameSearch.textProperty().addListener((Observable,oldValue,newValue) -> {
             propertyFilteredList.setPredicate(Property ->{
