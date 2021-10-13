@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="972.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminPropertyListingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="972.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminPropertyListingController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="48.0" prefWidth="972.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" text="Admin Property Listing View">
          <font>
@@ -91,7 +91,7 @@
                   <Image url="@../../images/search_96px.png" />
                </image>
             </ImageView>
-            <TextField fx:id="propertyNameSearch" layoutX="68.0" layoutY="4.0" prefHeight="27.0" prefWidth="475.0" promptText="Search Property Name/ID">
+            <TextField fx:id="propertyNameSearch" layoutX="68.0" layoutY="4.0" prefHeight="27.0" prefWidth="475.0" promptText="Search Property Name/ID/Facilities">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>

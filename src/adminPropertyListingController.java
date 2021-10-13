@@ -93,6 +93,9 @@ public class adminPropertyListingController implements Initializable{
                 else if(Long.toString(Property.getPropertyID()).toLowerCase().contains(propertyNameSearchToLowerCase)){
                     return true;
                 }
+                else if(Property.getFacilities().toLowerCase().contains(propertyNameSearchToLowerCase)){
+                    return true;
+                }
                 else{
                     return false;
                 }
