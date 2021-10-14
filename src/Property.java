@@ -10,9 +10,9 @@ public class Property {
 
         private Long propertyID;
         private String propertyOwner;
-        private long propertySize;
+        private Long propertySize;
         private String contactNum;
-        private long rentalRate;
+        private Long rentalRate;
         private String projectName;
         private String propertyType;
         private int numofRoom;
@@ -41,24 +41,6 @@ public class Property {
     }
 
     //Property class Setters
-    public void setRentStatus() {
-        if (this.rentStatus == false) {
-            this.rentStatus = true;
-        }
-        else {
-            this.rentStatus = false;
-        }
-    }
-
-    public void setHiddenStatus() {
-        if (this.hiddenStatus == false) {
-            this.hiddenStatus = true;
-        }
-        else {
-            this.hiddenStatus = false;
-        }
-    }
-
     public void setProjectName(String projectName){
         this.projectName = projectName;
     }
@@ -112,15 +94,15 @@ public class Property {
     }
 
     //Property Getters
-    public long getPropertyID() {
+    public Long getPropertyID() {
         return this.propertyID;
     }
 
-    public long getPropertySize() {
+    public Long getPropertySize() {
         return this.propertySize;
     }
 
-    public long getRentalRate() {
+    public Long getRentalRate() {
         return this.rentalRate;
     }
 
