@@ -21,7 +21,6 @@ import javafx.scene.control.TextFormatter;
 public class loginSceneController implements Initializable{
 
     private Stage stage;
-    public Model logicModel = new Model(); 
 
     @FXML
     Button registerButton,loginButton;
@@ -48,18 +47,18 @@ public class loginSceneController implements Initializable{
     }
 
     public void loginButtonHandler() throws IOException{
-        //logicModel.loadUserInfo();
+        //Globals.LogicModel.loadUserInfo();
         String loginUsernameInput = loginUsername.getText();
         String loginPassInput = loginPass.getText(); 
         
 
-        if (logicModel.loginStatus(loginUsernameInput,loginPassInput)){
+        if (Globals.LogicModel.loginStatus(loginUsernameInput,loginPassInput)){
 
             Alert loginSuccessfuAlert = new Alert(AlertType.INFORMATION,"Login successfully");
             loginSuccessfuAlert.showAndWait();
 
             FXMLLoader loader = new FXMLLoader();
-            if(logicModel.getUsertype(loginUsernameInput).equals("tenant")){
+            if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("tenant")){
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
                 Parent root = loader.load();
 
@@ -67,8 +66,8 @@ public class loginSceneController implements Initializable{
                 stage.setScene(new Scene(root));
 
             }
-            else if(logicModel.getUsertype(loginUsernameInput).equals("admin")){
-                person user = logicModel.getPersonObeject(loginUsernameInput);
+            else if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("admin")){
+                person user = Globals.LogicModel.getPersonObeject(loginUsernameInput);
 
                 Admin admin = new Admin(user);
 
@@ -82,7 +81,7 @@ public class loginSceneController implements Initializable{
                 stage.setScene(new Scene(root));
 
             }
-            else if(logicModel.getUsertype(loginUsernameInput).equals("property owner")){
+            else if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("property owner")){
                 loader = new FXMLLoader(getClass().getResource("resources/fxml/property owner/propertyownerHomepageScene.fxml"));
             }
             
