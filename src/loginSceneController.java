@@ -1,6 +1,6 @@
 //LOGIN INTERFACE CONTROLLER
 
-//JAVA IMPORT
+//JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
