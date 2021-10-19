@@ -14,29 +14,47 @@ import javafx.stage.Stage;
 //tenantHomepageSceneController class
 public class tenantHomepageSceneController {
 
-    @FXML
-    private Button btn1, btn2;
+    tenant loggedinPerson;
 
     @FXML
-    void handlebtn() throws IOException {
+    private Button btn1;
 
-        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenentprofile.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("resources//fxml//tenant//tenantProfileScene.fxml"));
+    @FXML
+    public void handlebtn() throws IOException {
 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantProfileScene.fxml"));
+        Parent root = fxmlLoader.load();
+        
+        tenantProfileSceneController controller = fxmlLoader.getController();
+        controller.initUserObejct(loggedinPerson);
+        
         Stage window = (Stage)btn1.getScene().getWindow();
         window.setScene(new Scene(root, 750, 500)); 
 
     }
 
-    // @FXML
-    // void handlebtn2() throws IOException {
-
-    //     //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenentprofile.fxml"));
-    //     Parent root = FXMLLoader.load(getClass().getResource("mainfame.fxml"));
-
-    //     Stage window = (Stage)btn2.getScene().getWindow();
-    //     window.setScene(new Scene(root, 750, 500)); 
-
-    // }
-
+    public void initUserObejct(tenant passedIN){
+        loggedinPerson = passedIN;
+        
+    }
 }
+
+
+
+// public class tenantHomepageSceneController {
+
+//     @FXML
+//     private Button btn1;
+
+//     @FXML
+//     public void handlebtn() throws IOException {
+
+//         //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenentprofile.fxml"));
+//         Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/tenant/tenantProfileScene.fxml"));
+
+//         Stage window = (Stage)btn1.getScene().getWindow();
+//         window.setScene(new Scene(root, 750, 500)); 
+
+        
+//     }
+// }

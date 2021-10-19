@@ -63,17 +63,17 @@ public class adminHomepageSceneController implements Initializable{
         }
     }
 
-    public void settingButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/settingScene.fxml"));
-        Parent root = loader.load();
+    // public void settingButtonHandler() throws IOException{
+    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
+    //     Parent root = loader.load();
 
-        settingSceneController settingController =  loader.getController();
+    //     tenantProfileSceneController settingController =  loader.getController();
 
-        settingController.setUserInfo(admin);
+    //     settingController.setUserInfo(admin);
         
-        stage = (Stage) logoutButton.getScene().getWindow();
-        stage.setScene(new Scene(root));
-    }
+    //     stage = (Stage) logoutButton.getScene().getWindow();
+    //     stage.setScene(new Scene(root));
+    // }
 
     public void propertyListButton() throws IOException{
 

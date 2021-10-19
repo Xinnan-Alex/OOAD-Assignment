@@ -10,4 +10,7 @@ public class tenant extends person{
         super(username, password, fullName, phoneNumber, ID, userType);
     }
     
+    public tenant(person p){
+        super(p.getUsername(), p.getPassword(), p.getFullName(), p.getPhoneNumber(), p.getUUID(), p.getUserType());
+    }
 }
