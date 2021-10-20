@@ -30,7 +30,6 @@ public class tenantHomepageSceneController {
         
         Stage window = (Stage)btn1.getScene().getWindow();
         window.setScene(new Scene(root, 750, 500)); 
-
     }
 
     public void initUserObejct(tenant passedIN){
