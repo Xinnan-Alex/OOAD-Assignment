@@ -53,7 +53,7 @@ public class adminHomepageSceneController implements Initializable{
     }
 
     public void logoutButtonHandler() throws IOException{
-        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to update in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to logout?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         confirmation_Alert.showAndWait();
 
         if (confirmation_Alert.getResult() == ButtonType.YES){

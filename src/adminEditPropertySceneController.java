@@ -128,6 +128,7 @@ public class adminEditPropertySceneController implements Initializable{
             admin.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
 
             (new Alert(AlertType.CONFIRMATION,"Property edited!")).showAndWait();
+            backButtonHandler();
         }
 
     }

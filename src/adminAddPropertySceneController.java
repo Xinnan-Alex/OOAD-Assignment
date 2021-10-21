@@ -146,6 +146,8 @@ public class adminAddPropertySceneController implements Initializable{
                     admin.addProperty(propertyToBeAdded);
                     
                     (new Alert(AlertType.CONFIRMATION,"Property added!")).showAndWait();
+                    backButtonHandler();
+
                 }
                 else{
                     (new Alert(AlertType.ERROR,"Error occured please try again.")).show();
