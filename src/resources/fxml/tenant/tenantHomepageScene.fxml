@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tenantHomepageSceneController">
    <children>
-      <Button fx:id="btn1" layoutX="145.0" layoutY="243.0" mnemonicParsing="false" onAction="#handlebtn" prefHeight="47.0" prefWidth="269.0" text="View Profile" />
+      <Button fx:id="btn1" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#handlebtn" prefHeight="40.0" prefWidth="261.0" text="View Profile" />
+      <Button fx:id="propertyBtn" layoutX="170.0" layoutY="258.0" mnemonicParsing="false" onAction="#propertyBtnHandler" prefHeight="40.0" prefWidth="261.0" text="Property" />
+      <Label layoutX="174.0" layoutY="36.0" prefHeight="47.0" prefWidth="252.0" text="Welcome back">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="fullnameLabel" alignment="CENTER" layoutX="85.0" layoutY="89.0" prefHeight="46.0" prefWidth="431.0" textAlignment="JUSTIFY">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
