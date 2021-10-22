@@ -1,4 +1,7 @@
 //ADMIN ADD PERSON INTERFACE CONTROLLER (Admin Feature)
+package controller;
+import model.*;
+import main.*;
 
 //JAVA IMPORT
 import java.io.IOException;

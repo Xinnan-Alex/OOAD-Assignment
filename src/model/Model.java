@@ -1,4 +1,6 @@
 //Model class for mostly doing validation and returning the specific data requested by the interfaces
+package model;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;

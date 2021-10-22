@@ -1,9 +1,12 @@
 //PROFILE SETTING INTERFACE CONTROLLER
+package controller;
 
 //JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import model.*;
+import main.*;
 
 //JAVAFX IMPORTS
 import javafx.fxml.FXML;

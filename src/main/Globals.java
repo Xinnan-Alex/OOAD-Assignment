@@ -1,7 +1,9 @@
 //GLOBALS CLASS FOR INITIALISING GLOBAL VARIABLE FOR EASIER ACCESS OF SOME METHODS
+package main;
 
 //JAVA IMPORTS
 import java.util.concurrent.atomic.AtomicLong;
+import model.*;
 
 //Global class
 public final class Globals {

@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package model;
+import main.*;
 
 //PROPERTY CLASS FOR PROPERTY IN OUR PROGRAM
 

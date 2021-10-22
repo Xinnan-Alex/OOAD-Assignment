@@ -1,4 +1,5 @@
 //GUI CLASS, THE MAIN EXECUTABLE FILE FOR OUR ASSIGNMENT.
+package main;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -54,9 +55,8 @@ public class GUI extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        Model logicModel = new Model();
-        logicModel.loadUserInfo();
-        logicModel.loadPropertyList();
+        Globals.LogicModel.loadUserInfo();
+        Globals.LogicModel.loadPropertyList();
         launch(args); //launching the GUI
     }
 }

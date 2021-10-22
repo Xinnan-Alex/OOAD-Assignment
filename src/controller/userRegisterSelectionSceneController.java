@@ -1,4 +1,5 @@
 //USERTYPE REGISTRATION SELECTION INTERFACE CONTROLLER
+package controller;
 
 //JAVA IMPORTS
 import java.io.IOException;

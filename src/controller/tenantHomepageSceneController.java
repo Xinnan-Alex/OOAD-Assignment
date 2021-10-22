@@ -1,4 +1,5 @@
 //TENANT HOMEPAGE INTERFACE CONTROLLER
+package controller;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.*;
 
 //tenantHomepageSceneController class
 public class tenantHomepageSceneController {

@@ -1,4 +1,7 @@
 //Create Admin Account's Scene Controller (Admin Feature)
+package controller;
+import model.*;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;

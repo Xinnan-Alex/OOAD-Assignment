@@ -1,4 +1,6 @@
 //ADMIN CLASS FOR USERTYPE ADMIN, AND ADMIN RELATED METHODS
+package model;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;

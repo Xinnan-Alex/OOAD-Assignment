@@ -1,4 +1,5 @@
 //TENANT CLASS FOR TENANTS
+package model;
 
 //JAVA IMPORT
 import java.util.UUID;

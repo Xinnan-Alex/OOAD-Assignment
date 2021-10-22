@@ -1,4 +1,5 @@
 //ADMIN PROPERTY LISTING INTERFACE CONTROLLER
+package controller;
 
 //JAVA IMPORTS
 import java.net.URL;
@@ -32,6 +33,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableRow;
 import javafx.event.EventHandler;
+import model.*;
 
 //adminPropertyListingController class
 public class adminPropertyListingController implements Initializable{
@@ -72,8 +74,6 @@ public class adminPropertyListingController implements Initializable{
             }
             });
         noColumn.setSortable(false);
-
-        
         
         propAdressColumn.setCellValueFactory(new PropertyValueFactory<>("projectName"));
         propSizeColumn.setCellValueFactory(new PropertyValueFactory<>("propertySize"));

@@ -1,4 +1,5 @@
 //AGENT AND OWNER CLASS
+package model;
 
 //JAVA IMPORTS
 import java.util.ArrayList;

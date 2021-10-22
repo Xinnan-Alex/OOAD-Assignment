@@ -1,4 +1,7 @@
 //ADMIN EDIT PERSON'S DATA INTERFACE CONTROLLER (Admin Feature)
+package controller;
+import model.*;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;

@@ -1,4 +1,7 @@
 //Admin ADDING PEROPERTY INTERFACE CONTROLLER (Admin Feature)
+package controller;
+import model.*;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;

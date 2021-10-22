@@ -1,4 +1,5 @@
 //ADMIN HOMEPAGE INTERFACE CONTROLLER (Admin Feature)
+package controller;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import model.*;
 
 //adminHomepageSceneController class
 public class adminHomepageSceneController implements Initializable{
@@ -81,7 +83,7 @@ public class adminHomepageSceneController implements Initializable{
         Parent root = loader.load();
 
         adminPropertyListingController propertyListingController =  loader.getController();
-        propertyListingController.initialiseAdminInfo(admin);
+        propertyListingController.initialiseAdminInfo(admin);   
 
         stage = (Stage) propertyListButton.getScene().getWindow();
         stage.setScene(new Scene(root));

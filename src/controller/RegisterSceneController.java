@@ -1,4 +1,6 @@
 //REGISTER INTERFACE CONTROLLER
+package controller;
+import main.*;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -22,7 +24,6 @@ import javafx.stage.Stage;
 public class RegisterSceneController implements Initializable{
 
     private Stage stage;
-    private Model logicModel = new Model();
     
     @FXML
     Button registerNextButton,registerBackButton;
@@ -62,8 +63,8 @@ public class RegisterSceneController implements Initializable{
         String[] registerInfo_write = {registerUsername.getText(),registerPass.getText(),registerFullname.getText(),registerContactNum.getText(),UUID.randomUUID().toString(),userRegisterSelectionSceneController.getUserType()};
         
         //check for existing username in csv file
-        if (logicModel.registerInfoValidation(registerInfo_validation)){
-            logicModel.writeToUserDataCSV(logicModel.addUserInfo(registerInfo_write));
+        if (Globals.LogicModel.registerInfoValidation(registerInfo_validation)){
+            Globals.LogicModel.writeToUserDataCSV(Globals.LogicModel.addUserInfo(registerInfo_write));
 
             Alert registerDoneAlert = new Alert(AlertType.INFORMATION,"Your account has been created successfully!");
             registerDoneAlert.show();
