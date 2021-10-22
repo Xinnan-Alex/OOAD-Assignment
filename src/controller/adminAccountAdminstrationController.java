@@ -120,7 +120,7 @@ public class adminAccountAdminstrationController implements Initializable{
 
         userInfoTableView.setItems(personFilteredList);
 
-        TableViewSelectionModel userInfoTableViewSelectionModel = userInfoTableView.getSelectionModel();
+        TableViewSelectionModel<person> userInfoTableViewSelectionModel = userInfoTableView.getSelectionModel();
         userInfoTableViewSelectionModel.setSelectionMode(SelectionMode.SINGLE);
 
         userInfoTableView.setRowFactory(new Callback<TableView<person>, TableRow<person>>() {  

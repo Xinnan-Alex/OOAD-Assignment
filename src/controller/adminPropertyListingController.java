@@ -131,7 +131,7 @@ public class adminPropertyListingController implements Initializable{
 
         propTableView.setItems(propertyFilteredList);
 
-        TableViewSelectionModel propTableViewSelectionModel = propTableView.getSelectionModel();
+        TableViewSelectionModel<Property> propTableViewSelectionModel = propTableView.getSelectionModel();
         propTableViewSelectionModel.setSelectionMode(SelectionMode.SINGLE);
 
         propTableView.setRowFactory(new Callback<TableView<Property>, TableRow<Property>>() {  
@@ -167,7 +167,6 @@ public class adminPropertyListingController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
         Parent root = loader.load();
 

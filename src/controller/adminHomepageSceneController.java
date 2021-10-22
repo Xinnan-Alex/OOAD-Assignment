@@ -24,7 +24,6 @@ import model.*;
 public class adminHomepageSceneController implements Initializable{
 
     private Admin admin = new Admin();
-    private String usertype;
 
     @FXML
     Label homepageAdminFullname,homepageID;
@@ -50,7 +49,6 @@ public class adminHomepageSceneController implements Initializable{
         admin = passedIN;
         homepageAdminFullname.setText(admin.getFullName());
         homepageID.setText(admin.getID());
-        usertype = admin.getUserType();
 
     }
 
@@ -64,18 +62,6 @@ public class adminHomepageSceneController implements Initializable{
             stage.setScene(new Scene(root));
         }
     }
-
-    // public void settingButtonHandler() throws IOException{
-    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
-    //     Parent root = loader.load();
-
-    //     tenantProfileSceneController settingController =  loader.getController();
-
-    //     settingController.setUserInfo(admin);
-        
-    //     stage = (Stage) logoutButton.getScene().getWindow();
-    //     stage.setScene(new Scene(root));
-    // }
 
     public void propertyListButton() throws IOException{
 
