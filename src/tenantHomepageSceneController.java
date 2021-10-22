@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 //tenantHomepageSceneController class
@@ -17,7 +18,14 @@ public class tenantHomepageSceneController {
     tenant loggedinPerson;
 
     @FXML
-    private Button btn1;
+    private Button btn1, propertyBtn;
+
+    @FXML
+    Label fullnameLabel;
+
+    public void setUserInfo(){
+        fullnameLabel.setText(loggedinPerson.getFullName());
+    }
 
     @FXML
     public void handlebtn() throws IOException {
@@ -34,8 +42,21 @@ public class tenantHomepageSceneController {
 
     public void initUserObejct(tenant passedIN){
         loggedinPerson = passedIN;
-        
+        setUserInfo();
     }
+
+    public void propertyBtnHandler() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantPropertyScene.fxml"));
+        Parent root = fxmlLoader.load();
+        
+        tenantPropertyController controller = fxmlLoader.getController();
+        controller.initUserObejct(loggedinPerson);
+        
+        Stage window = (Stage)propertyBtn.getScene().getWindow();
+        window.setScene(new Scene(root, 750, 500)); 
+    }
+
 }
 
 
