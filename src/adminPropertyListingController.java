@@ -73,6 +73,8 @@ public class adminPropertyListingController implements Initializable{
             });
         noColumn.setSortable(false);
 
+        
+        
         propAdressColumn.setCellValueFactory(new PropertyValueFactory<>("projectName"));
         propSizeColumn.setCellValueFactory(new PropertyValueFactory<>("propertySize"));
         propRentanRateColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
