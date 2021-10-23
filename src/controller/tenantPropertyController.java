@@ -8,6 +8,13 @@ import java.util.ResourceBundle;
 //JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+<<<<<<< Updated upstream:src/controller/tenantPropertyController.java
+=======
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+//JAVAFX IMPORTS
+>>>>>>> Stashed changes:src/tenantPropertyController.java
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -73,13 +80,31 @@ public class tenantPropertyController implements Initializable{
         private Text name;
         private Text price;
 
+        private Button tenantPropertyInfo = new Button("More Info"); //button for addreess pop out
+        
         public CustomListCell() {
             super();
             name = new Text();
             price = new Text();
             VBox vBox = new VBox(name, price);
-            content = new HBox(new Label("[Graphic]"), vBox);
+            content = new HBox(new Label("[Graphic]"), vBox, tenantPropertyInfo);
             content.setSpacing(10);
+            tenantPropertyInfo.setOnAction(new EventHandler() {
+
+                @Override
+                public void handle(Event arg0) {
+                    try{
+                    System.out.println(" shit");
+                    Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/tenant/tenantPropertyInfoScene.fxml"));
+                    
+                    Stage window = (Stage)backButton.getScene().getWindow();
+                    window.setScene(new Scene(root, 750, 500)); 
+
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    } 
+                }  
+                });
         }
 
         @Override
@@ -89,6 +114,7 @@ public class tenantPropertyController implements Initializable{
                 name.setText(property.getProjectName());
                 price.setText(String.format("%d $", property.getRentalRate()));
                 setGraphic(content);
+                
             } else {
                 setGraphic(null);
             }
