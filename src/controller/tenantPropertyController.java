@@ -1,4 +1,5 @@
 package controller;
+import model.*;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -8,13 +9,9 @@ import java.util.ResourceBundle;
 //JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-<<<<<<< Updated upstream:src/controller/tenantPropertyController.java
-=======
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-//JAVAFX IMPORTS
->>>>>>> Stashed changes:src/tenantPropertyController.java
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,7 +26,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.*;
 
 public class tenantPropertyController implements Initializable{
 
@@ -79,6 +75,7 @@ public class tenantPropertyController implements Initializable{
         private HBox content;
         private Text name;
         private Text price;
+        private Property property;
 
         private Button tenantPropertyInfo = new Button("More Info"); //button for addreess pop out
         
@@ -94,8 +91,12 @@ public class tenantPropertyController implements Initializable{
                 @Override
                 public void handle(Event arg0) {
                     try{
-                    System.out.println(" shit");
-                    Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/tenant/tenantPropertyInfoScene.fxml"));
+                    System.out.println(name.getText());
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantPropertyInfoScene.fxml"));
+                    Parent root = fxmlLoader.load();
+                    tenantPropertyInfoController controller = fxmlLoader.getController();
+                    controller.initUserObejct(loggedinPerson);
+                    controller.passPropertyObject(property);
                     
                     Stage window = (Stage)backButton.getScene().getWindow();
                     window.setScene(new Scene(root, 750, 500)); 
@@ -108,11 +109,12 @@ public class tenantPropertyController implements Initializable{
         }
 
         @Override
-        protected void updateItem(Property property, boolean empty) {
-            super.updateItem(property, empty);
-            if (property != null && !empty) { // <== test for null item and empty parameter
-                name.setText(property.getProjectName());
-                price.setText(String.format("%d $", property.getRentalRate()));
+        protected void updateItem(Property p, boolean empty) {
+            super.updateItem(p, empty);
+            if (p != null && !empty) { // <== test for null item and empty parameter
+                name.setText(p.getProjectName());
+                property = p;
+                price.setText(String.format("%d $", p.getRentalRate()));
                 setGraphic(content);
                 
             } else {

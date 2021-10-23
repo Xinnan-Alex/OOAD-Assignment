@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tenantHomepageSceneController">
    <children>
-      <Button fx:id="btn1" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#handlebtn" prefHeight="40.0" prefWidth="261.0" text="View Profile" />
+      <Button fx:id="tenantViewProfileBtn" layoutX="170.0" layoutY="207.0" mnemonicParsing="false" onAction="#tenantViewProfileBtnHandler" prefHeight="40.0" prefWidth="261.0" text="View Profile" />
       <Button fx:id="propertyBtn" layoutX="170.0" layoutY="258.0" mnemonicParsing="false" onAction="#propertyBtnHandler" prefHeight="40.0" prefWidth="261.0" text="Property" />
       <Label layoutX="174.0" layoutY="36.0" prefHeight="47.0" prefWidth="252.0" text="Welcome back">
          <font>
