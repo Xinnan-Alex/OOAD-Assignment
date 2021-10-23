@@ -62,7 +62,7 @@ public class tenantProfileSceneController implements Initializable{
         
         FXMLLoader loader = new FXMLLoader();
         
-        loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
+        loader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantHomepageScene.fxml"));
 
         Parent root = loader.load();
         

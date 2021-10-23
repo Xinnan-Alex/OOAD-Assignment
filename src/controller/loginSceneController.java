@@ -43,7 +43,7 @@ public class loginSceneController implements Initializable{
 
 
     public void registerButtonHandler() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/userRegisterSelectionScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userRegisterSelectionScene.fxml"));
         stage = (Stage) registerButton.getScene().getWindow();
         stage.setScene(new Scene(root));
 
@@ -62,7 +62,7 @@ public class loginSceneController implements Initializable{
 
             FXMLLoader loader = new FXMLLoader();
             if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("tenant")){
-                loader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantHomepageScene.fxml"));
+                loader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantHomepageScene.fxml"));
                 Parent root = loader.load();
                 person user = Globals.LogicModel.getPersonObeject(loginUsernameInput);
 
@@ -80,7 +80,7 @@ public class loginSceneController implements Initializable{
 
                 Admin admin = new Admin(user);
 
-                loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
+                loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminHomepageScene.fxml"));
                 Parent root = loader.load();
 
                 adminHomepageSceneController controller =  loader.getController();
@@ -92,7 +92,7 @@ public class loginSceneController implements Initializable{
 
             }
             else if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("property owner")){
-                loader = new FXMLLoader(getClass().getResource("resources/fxml/property owner/propertyownerHomepageScene.fxml"));
+                loader = new FXMLLoader(getClass().getResource("../resources/fxml/property owner/propertyownerHomepageScene.fxml"));
             }
             
             

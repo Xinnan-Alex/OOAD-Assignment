@@ -58,7 +58,7 @@ public class adminAddPersonSceneController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
         Parent root = loader.load();
 
         adminAccountAdminstrationController controller =  loader.getController();

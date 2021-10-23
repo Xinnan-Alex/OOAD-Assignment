@@ -53,7 +53,7 @@ public class RegisterSceneController implements Initializable{
     }
 
     public void registerBackButtonHandler() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/userRegisterSelectionScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userRegisterSelectionScene.fxml"));
         stage = (Stage) registerBackButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
@@ -69,7 +69,7 @@ public class RegisterSceneController implements Initializable{
             Alert registerDoneAlert = new Alert(AlertType.INFORMATION,"Your account has been created successfully!");
             registerDoneAlert.show();
 
-            Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
             stage = (Stage) registerNextButton.getScene().getWindow();
             stage.setScene(new Scene(root));
 

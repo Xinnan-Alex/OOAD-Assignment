@@ -156,7 +156,7 @@ public class adminPropertyListingController implements Initializable{
     }
 
     public void addPropertyButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminAddPropertyScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminAddPropertyScene.fxml"));
         Parent root = loader.load();
 
         adminAddPropertySceneController controller = loader.getController();
@@ -167,7 +167,7 @@ public class adminPropertyListingController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminHomepageScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminHomepageScene.fxml"));
         Parent root = loader.load();
 
         adminHomepageSceneController controller =  loader.getController();
@@ -204,7 +204,7 @@ public class adminPropertyListingController implements Initializable{
             (new Alert(AlertType.ERROR,"Please select a property to edit")).show();
         }
         else{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/admin/adminEditPropertyScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminEditPropertyScene.fxml"));
             Parent parent = loader.load();
 
             adminEditPropertySceneController controller = loader.getController();

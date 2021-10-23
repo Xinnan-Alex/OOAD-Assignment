@@ -24,14 +24,14 @@ public class GUI extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
 
-        root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
 
         scene = new Scene(root);
 
         primaryStage.setScene(scene);
 
         //importing mmu logo into the program
-        Image stageicon = new Image("resources/images/mmulogo_2.png");
+        Image stageicon = new Image("/resources/images/mmulogo_2.png");
 
         //adding icon to the window
         primaryStage.getIcons().add(stageicon);

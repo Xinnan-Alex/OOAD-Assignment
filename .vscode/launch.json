@@ -6,19 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch_GUI_XinNan",
+            "request": "launch",
+            "mainClass": "main.GUI",
+            "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
+            "projectName": "OOAD-Assignment_10872fde"
+        },
+        {
+            "type": "java",
             "name": "Launch_GUI_Imran",
             "request": "launch",
             "mainClass": "GUI",
             "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
             "projectName": "OOAD-Assignment_95457f91"
-        },
-        {
-            "type": "java",
-            "name": "Launch_GUI_XinNan",
-            "request": "launch",
-            "mainClass": "GUI",
-            "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
-            "projectName": "OOAD-Assignment_10872fde"
         },
         {
             "type": "java",

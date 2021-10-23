@@ -32,7 +32,7 @@ public class tenantHomepageSceneController {
     @FXML
     public void handlebtn() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantProfileScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantProfileScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantProfileSceneController controller = fxmlLoader.getController();
@@ -49,7 +49,7 @@ public class tenantHomepageSceneController {
 
     public void propertyBtnHandler() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/fxml/tenant/tenantPropertyScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantPropertyScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantPropertyController controller = fxmlLoader.getController();
@@ -72,7 +72,7 @@ public class tenantHomepageSceneController {
 //     public void handlebtn() throws IOException {
 
 //         //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenentprofile.fxml"));
-//         Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/tenant/tenantProfileScene.fxml"));
+//         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/tenant/tenantProfileScene.fxml"));
 
 //         Stage window = (Stage)btn1.getScene().getWindow();
 //         window.setScene(new Scene(root, 750, 500)); 

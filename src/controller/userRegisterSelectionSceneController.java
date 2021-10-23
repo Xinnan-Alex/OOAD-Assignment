@@ -23,7 +23,7 @@ public class userRegisterSelectionSceneController {
     public void registerPropertyOwnerButtonHandler() throws IOException{
         usertype = "property owner";
         
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/property owner/propOwnerRegisterScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/property owner/propOwnerRegisterScene.fxml"));
         stage = (Stage) registerTenantButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         
@@ -32,7 +32,7 @@ public class userRegisterSelectionSceneController {
     public void registerTenantButtonHandler() throws IOException{
         usertype = "tenant";
 
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/tenant/tenantRegisterScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/tenant/tenantRegisterScene.fxml"));
         stage = (Stage) registerTenantButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         
@@ -43,7 +43,7 @@ public class userRegisterSelectionSceneController {
     }
 
     public void backButtonHandler() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("resources/fxml/loginScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
         stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
