@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 //JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
