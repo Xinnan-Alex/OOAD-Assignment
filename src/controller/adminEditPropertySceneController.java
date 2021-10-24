@@ -103,13 +103,7 @@ public class adminEditPropertySceneController implements Initializable{
 
         titleLabel.setText("Editing a Property with the ID:" + Long.toString(propertyToBeEdited.getPropertyID()));
         
-        String rentalStatus;
-        if (propertyToBeEdited.getRentStatus()){
-            rentalStatus = "active";
-        }
-        else{
-            rentalStatus = "not Active";
-        }
+        String rentalStatus = propertyToBeEdited.getRentStatus();
 
         propRentalStatusComboBox.setValue(rentalStatus);
         

@@ -19,7 +19,7 @@ public class Property {
         private int numofRoom;
         private int numofBathroom;
         private String facilities;
-        private Boolean rentStatus;
+        private String rentStatus;
         private Boolean hiddenStatus;
 
     //IMPLEMENT BUILDER DP FOR THE CONSTRUCTOR - use propertyBuilder class - different 
@@ -86,7 +86,7 @@ public class Property {
         this.numofBathroom = numofBathroom;
     }
 
-    public void setRentStatus(Boolean rentStatus){
+    public void setRentStatus(String rentStatus){
         this.rentStatus = rentStatus;
     }
     
@@ -115,7 +115,7 @@ public class Property {
         return this.propertyType;
     }
 
-    public Boolean getRentStatus() {
+    public String getRentStatus() {
         return this.rentStatus;
     }
 
@@ -167,7 +167,7 @@ public class Property {
         private int numofRoom = 1; //default number of room is 1
         private int numofBathroom = 1; //default number of bathroom is 1
         private String facilities =  "";
-        private Boolean rentStatus = false; //(true -> has tenant  false -> no tenant/default)
+        private String rentStatus = "active"; //(active/default -> has no tenant  inactive -> has tenant)
         private Boolean hiddenStatus = true; //(true -> keep hidden/default  false -> show on viewboard)
     
         //CONSTRUCTIR FOR MANDATORY PARAMETER
@@ -204,7 +204,7 @@ public class Property {
             return this;
         }
 
-        public propertyBuilder rentStatus(Boolean uRentStatus) {
+        public propertyBuilder rentStatus(String uRentStatus) {
             this.rentStatus = uRentStatus;
             return this;            
         }

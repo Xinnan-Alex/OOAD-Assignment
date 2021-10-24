@@ -9,6 +9,7 @@ import java.io.IOException;
 //JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.beans.value.ObservableValue;
 import javafx.util.Callback;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
@@ -52,13 +54,16 @@ public class adminPropertyListingController implements Initializable{
     TableColumn<Property,Integer> numofRoomColumn,numofBathroomColumn;
 
     @FXML
-    TextField propertyNameSearch;
+    TextField propertyNameSearch,propertyFacilitySearch;
 
     @FXML
     Button addPropertyButton,deletePropertyButton,editPropertyButton,backButton;
 
     @FXML
-    ComboBox<String> propertyTypeFilter;
+    ComboBox<String> propertyTypeFilter,rentalRateComboBox;
+
+    @FXML
+    RadioButton activePropertyRadioButton,inactivePropertyRadioButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,6 +115,24 @@ public class adminPropertyListingController implements Initializable{
 
         });
 
+        propertyFacilitySearch.textProperty().addListener((Observable,oldValue,newValue) -> {
+            propertyFilteredList.setPredicate(Property ->{
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String propertyNameSearchToLowerCase = newValue.toLowerCase();
+
+                if (Property.getFacilities().toLowerCase().contains(propertyNameSearchToLowerCase)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+
+        });
+
         propertyTypeFilter.valueProperty().addListener((Observable,oldValue,newValue) -> {
             propertyFilteredList.setPredicate(Property ->{
                 if (newValue.equals("All") || newValue.isEmpty()){
@@ -128,8 +151,10 @@ public class adminPropertyListingController implements Initializable{
 
         });
 
+        SortedList<Property> propertySortedList = new SortedList<>(propertyFilteredList);
+        //propertySortedList.comparatorProperty().bind(propTableView.comparatorProperty());
 
-        propTableView.setItems(propertyFilteredList);
+        propTableView.setItems(propertySortedList);
 
         TableViewSelectionModel<Property> propTableViewSelectionModel = propTableView.getSelectionModel();
         propTableViewSelectionModel.setSelectionMode(SelectionMode.SINGLE);
@@ -217,5 +242,40 @@ public class adminPropertyListingController implements Initializable{
         
 
     }
+
+    public void activePropertyRadioButtonHandler(){
+        if(activePropertyRadioButton.isSelected()){
+            propertyFilteredList.setPredicate(Property ->{
+
+                if (Property.getRentStatus().equals("active")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        }
+        else{
+            propertyFilteredList.setPredicate(Property->{return true;});
+        }
+    }
+
+    public void inactivePropertyRadioButtonHandler(){
+        if(inactivePropertyRadioButton.isSelected()){
+            propertyFilteredList.setPredicate(Property ->{
+
+                if (Property.getRentStatus().equals("inactive")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        }
+        else{
+            propertyFilteredList.setPredicate(Property->{return true;});
+        }
+    }
+    
     
 }

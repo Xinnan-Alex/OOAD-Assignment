@@ -465,7 +465,7 @@ public final class Model {
             person owner_property1 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
             String [] preloadProperty1 = {"\"5, Jalan 4/2S, Bandar Segambut, 78083 Umbai, Melaka\"","2000","300","Terrace",owner_property1.getFullName(),owner_property1.getPhoneNumber(),"5","4","\"Aircond,Pool,Indoor Gym,Washing Machine,Cooking Utensil\"","false","active"};
             person owner_property2 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
-            String [] preloadProperty2 = {"\"8-6, Jln 5/43I, Bandar Laksamana, 89335 Kota Kinabalu, Sabah \"","1000","100","Townhouse",owner_property2.getFullName(),owner_property2.getPhoneNumber(),"2","1","\"Frontyard,Garage,Backyard,Train near by\"","false","active"};
+            String [] preloadProperty2 = {"\"8-6, Jln 5/43I, Bandar Laksamana, 89335 Kota Kinabalu, Sabah \"","1000","100","Townhouse",owner_property2.getFullName(),owner_property2.getPhoneNumber(),"2","1","\"Frontyard,Garage,Backyard,Train near by\"","false","inactive"};
             // String [] preloadProperty3 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             // String [] preloadProperty4 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             // String [] preloadProperty5 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
@@ -480,7 +480,7 @@ public final class Model {
         }
     }
 
-    public void printPropertyList(){
+    public static void printPropertyList(){
         for (Property p: propertyList){
             System.out.println(p.toString());
         }
@@ -517,17 +517,12 @@ public final class Model {
 
         Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[9]);
 
-        Boolean rentStatus;
+        String rentStatus;
         if (propertyinfo[10]==null){
-            rentStatus = false;
+            rentStatus = "active";
         } 
         else{
-            if (propertyinfo[7].equals("not Active")){
-                rentStatus = true;
-            }
-            else{
-                rentStatus = false;
-            }
+            rentStatus = propertyinfo[10];
         }
         
         
@@ -601,17 +596,12 @@ public final class Model {
 
         Boolean hiddenStatus = Boolean.parseBoolean(propertyinfo[10]);
 
-        Boolean rentStatus;
+        String rentStatus;
         if (propertyinfo[11]==null){
-            rentStatus = false;
+            rentStatus = "active";
         } 
         else{
-            if (propertyinfo[7].equals("not Active")){
-                rentStatus = true;
-            }
-            else{
-                rentStatus = false;
-            }
+            rentStatus = propertyinfo[11];
         }
         
         
