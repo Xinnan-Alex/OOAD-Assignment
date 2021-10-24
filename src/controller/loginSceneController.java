@@ -64,7 +64,7 @@ public class loginSceneController implements Initializable{
             if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("tenant")){
                 loader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantHomepageScene.fxml"));
                 Parent root = loader.load();
-                person user = Globals.LogicModel.getPersonObeject(loginUsernameInput);
+                person user = Globals.LogicModel.getPersonObject(loginUsernameInput);
 
                 tenant initTenant = new tenant(user);
                 tenantHomepageSceneController controller =  loader.getController();
@@ -76,7 +76,7 @@ public class loginSceneController implements Initializable{
 
             }
             else if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("admin")){
-                person user = Globals.LogicModel.getPersonObeject(loginUsernameInput);
+                person user = Globals.LogicModel.getPersonObject(loginUsernameInput);
 
                 Admin admin = new Admin(user);
 

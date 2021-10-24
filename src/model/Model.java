@@ -221,7 +221,7 @@ public final class Model {
 
     //Method for getting person object by passing in the person's username 
     //Written by Leong Xin Nan
-    public person getPersonObeject(String username){
+    public person getPersonObject(String username){
 
         person tempP = new person();
 

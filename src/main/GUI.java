@@ -47,12 +47,6 @@ public class GUI extends Application {
         primaryStage.show();
 
     }
-    public void switchScene(String s) throws IOException{
-            root = FXMLLoader.load(getClass().getResource(s));
-            scene = new Scene(root,Color.LIGHTGREY);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-    }
 
     public static void main(String[] args) throws IOException {
         Globals.LogicModel.loadUserInfo();
