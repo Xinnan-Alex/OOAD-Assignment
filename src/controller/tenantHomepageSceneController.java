@@ -9,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.*;
 
@@ -18,9 +21,10 @@ import model.*;
 public class tenantHomepageSceneController {
 
     tenant loggedinPerson;
+    private Stage stage;
 
     @FXML
-    private Button tenantViewProfileBtn, propertyBtn;
+    private Button tenantViewProfileBtn, propertyBtn, logoutButton ;
 
     @FXML
     Label fullnameLabel;
@@ -59,24 +63,15 @@ public class tenantHomepageSceneController {
         window.setScene(new Scene(root, 750, 500)); 
     }
 
+    public void logoutButtonHandler() throws IOException{
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to logout?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
+
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
+            stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        }
+    }
+
 }
-
-
-
-// public class tenantHomepageSceneController {
-
-//     @FXML
-//     private Button btn1;
-
-//     @FXML
-//     public void handlebtn() throws IOException {
-
-//         //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tenentprofile.fxml"));
-//         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/tenant/tenantProfileScene.fxml"));
-
-//         Stage window = (Stage)btn1.getScene().getWindow();
-//         window.setScene(new Scene(root, 750, 500)); 
-
-        
-//     }
-// }
