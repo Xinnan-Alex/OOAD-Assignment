@@ -10,12 +10,13 @@
             "request": "launch",
             "mainClass": "main.GUI",
             "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
-            "projectName": "OOAD-Assignment_95457f91"
+            "projectName": "OOAD-Assignment_10872fde"
         },
         {
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
+            "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "${file}"
         }
     ]

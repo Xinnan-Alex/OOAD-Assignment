@@ -44,7 +44,7 @@ public class tenantPropertyController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        propertyFilter.addAll(Model.propertyList);
+        propertyFilter = new FilteredList<>(Model.propertyList,b->true);
 
         searchBarInput.textProperty().addListener((Observable,oldValue,newValue) -> {
             propertyFilter.setPredicate(Property ->{
@@ -73,9 +73,9 @@ public class tenantPropertyController implements Initializable{
 
         //propertyFilter = new FilteredList<>(Model.propertyList, b -> true);
 
-        ObservableList<Property> propertyView = propertyFilter;
-        propertyView.removeIf(p -> p.getHiddenStatus() == true); //hidden status
-        propertyListing.setItems(propertyView);
+        //ObservableList<Property> propertyView = propertyFilter;
+        propertyFilter.removeIf(p -> p.getHiddenStatus() == true); //hidden status
+        propertyListing.setItems(propertyFilter);
     }
 
     public void initUserObejct(tenant passedIN){
