@@ -3,6 +3,8 @@ package controller;
 
 //JAVA IMPORTS
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.io.IOException;
 
@@ -42,13 +44,15 @@ public class adminPropertyListingController implements Initializable{
 
     private Admin admin;
     FilteredList<Property> propertyFilteredList;
+    SortedList<Property> propertySortedList;
     public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
+    private String[] rentalRateSortComboBoxList = {"Low to High","High to Low"};
 
     @FXML
     TableView<Property> propTableView;
 
     @FXML
-    TableColumn<Property,String> noColumn,propAdressColumn,propSizeColumn,propRentanRateColumn,propOwnerColumn,propOwnerContactNumColumn,propRentalStatus,propTypeColumn,propIDColumn;
+    TableColumn<Property,String> noColumn,propAdressColumn,propSizeColumn,propRentalRateColumn,propOwnerColumn,propOwnerContactNumColumn,propRentalStatus,propTypeColumn,propIDColumn;
 
     @FXML
     TableColumn<Property,Integer> numofRoomColumn,numofBathroomColumn;
@@ -60,7 +64,7 @@ public class adminPropertyListingController implements Initializable{
     Button addPropertyButton,deletePropertyButton,editPropertyButton,backButton;
 
     @FXML
-    ComboBox<String> propertyTypeFilter,rentalRateComboBox;
+    ComboBox<String> propertyTypeFilter,rentalRateSortComboBox;
 
     @FXML
     RadioButton activePropertyRadioButton,inactivePropertyRadioButton;
@@ -69,9 +73,13 @@ public class adminPropertyListingController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         propTableView.setStyle("-fx-selection-bar: #87CEFA;");
         propertyFilteredList = new FilteredList<>(Model.propertyList,b->true);
+        propertySortedList = new SortedList<>(propertyFilteredList,Comparator.comparing(Property::getRentalRate));
 
+        rentalRateSortComboBox.getItems().addAll(rentalRateSortComboBoxList);
         propertyTypeFilter.getItems().addAll(propertyTypeFilterList);
-        propertyTypeFilter.setValue("All");
+        propertyTypeFilter.setValue(propertyTypeFilterList[0]);
+        rentalRateSortComboBox.setValue(rentalRateSortComboBoxList[0]);
+
         noColumn.setCellValueFactory(new Callback<CellDataFeatures<Property, String>, ObservableValue<String>>() {
             @Override 
             public ObservableValue<String> call(CellDataFeatures<Property, String> p) {
@@ -82,7 +90,7 @@ public class adminPropertyListingController implements Initializable{
         
         propAdressColumn.setCellValueFactory(new PropertyValueFactory<>("projectName"));
         propSizeColumn.setCellValueFactory(new PropertyValueFactory<>("propertySize"));
-        propRentanRateColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
+        propRentalRateColumn.setCellValueFactory(new PropertyValueFactory<>("rentalRate"));
         propOwnerColumn.setCellValueFactory(new PropertyValueFactory<>("propertyOwner"));
         propOwnerContactNumColumn.setCellValueFactory(new PropertyValueFactory<>("contactNum"));
         propRentalStatus.setCellValueFactory(new PropertyValueFactory<>("rentStatus"));
@@ -151,8 +159,7 @@ public class adminPropertyListingController implements Initializable{
 
         });
 
-        SortedList<Property> propertySortedList = new SortedList<>(propertyFilteredList);
-        //propertySortedList.comparatorProperty().bind(propTableView.comparatorProperty());
+        propertySortedList.comparatorProperty().bind(propTableView.comparatorProperty());
 
         propTableView.setItems(propertySortedList);
 
@@ -177,7 +184,7 @@ public class adminPropertyListingController implements Initializable{
             }  
         });  
 
-        
+        rentalRateSortComboBoxHandler();
     }
 
     public void addPropertyButtonHandler() throws IOException{
@@ -276,6 +283,34 @@ public class adminPropertyListingController implements Initializable{
             propertyFilteredList.setPredicate(Property->{return true;});
         }
     }
-    
-    
+
+    public void rentalRateSortComboBoxHandler(){
+        String selectedComboBoxString = rentalRateSortComboBox.getSelectionModel().getSelectedItem().toLowerCase();
+
+        if(selectedComboBoxString.equals("low to high")){
+            
+            propRentalRateColumn.setSortType(TableColumn.SortType.ASCENDING);
+            propTableView.getSortOrder().add(propRentalRateColumn);
+            propTableView.sort();
+        }
+        else if(selectedComboBoxString.equals("high to low")){
+
+            propRentalRateColumn.setSortType(TableColumn.SortType.DESCENDING);
+            propTableView.getSortOrder().add(propRentalRateColumn);
+            propTableView.sort();
+        }
+    }
+
+    class rentralRateAscendingComaprator implements Comparator<Property>{
+        public int compare(Property p1, Property p2) {
+            //first come
+        if (p1.getRentalRate() < p2.getRentalRate()){
+            return -1;
+        }
+        else
+            return 1;
+
+        }
+    }
+
 }
