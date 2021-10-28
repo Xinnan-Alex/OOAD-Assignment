@@ -10,21 +10,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.homepageSceneController">
    <children>
-      <Label layoutX="15.0" layoutY="15.0" prefHeight="39.0" prefWidth="70.0" text="Welcome:">
+      <Label layoutX="15.0" layoutY="15.0" prefHeight="39.0" prefWidth="103.0" text="Welcome:">
          <font>
-            <Font name="Arial Black" size="12.0" />
+            <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label fx:id="homepagePropertyOwnerFullname" layoutX="85.0" layoutY="24.0" prefHeight="22.0" prefWidth="181.0">
+      <Label fx:id="homepagePropertyOwnerFullname" layoutX="115.0" layoutY="21.0" prefHeight="27.0" prefWidth="485.0">
          <font>
-            <Font name="Arial Black" size="12.0" />
+            <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label layoutX="48.0" layoutY="47.0" prefHeight="39.0" prefWidth="37.0" text="User:">
+      <Label layoutX="48.0" layoutY="47.0" prefHeight="39.0" prefWidth="60.0" text="User:">
          <font>
-            <Font name="Arial Black" size="12.0" />
+            <Font name="Arial Black" size="18.0" />
          </font></Label>
-      <Label layoutX="89.0" layoutY="55.0" prefHeight="22.0" prefWidth="122.0" text="Property Owner">
+      <Label layoutX="115.0" layoutY="53.0" prefHeight="27.0" prefWidth="194.0" text="Property Owner">
          <font>
-            <Font name="Arial Black" size="12.0" />
+            <Font name="Arial Black" size="18.0" />
          </font></Label>
       <Button fx:id="logoutButton" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="22.0" prefWidth="37.0" style="-fx-background-color: grey;">
          <graphic>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="accountAdminstrationButton" layoutX="166.0" layoutY="212.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Property Adminstration" textFill="WHITE">
+      <Button fx:id="propertyAdminstrationButton" layoutX="166.0" layoutY="212.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Property Adminstration" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
