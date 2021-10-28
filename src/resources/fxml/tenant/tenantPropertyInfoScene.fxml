@@ -7,17 +7,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tenant.tenantPropertyInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tenant.tenantPropertyInfoController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="750.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../propertyInfo.png" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="660.0" layoutY="438.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="19.0" prefWidth="47.0" text="Back" />
-      <Label fx:id="propertyAddress" layoutX="148.0" layoutY="97.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
-      <Label fx:id="propertySize" layoutX="148.0" layoutY="232.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
-      <Label fx:id="rentalRate" layoutX="148.0" layoutY="142.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
+      <Button fx:id="backButton" layoutX="654.0" layoutY="438.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="25.0" prefWidth="53.0" text="Back">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Label fx:id="propertyAddress" layoutX="148.0" layoutY="97.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
+      <Label fx:id="propertySize" layoutX="148.0" layoutY="232.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
+      <Label fx:id="rentalRate" layoutX="148.0" layoutY="142.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
       <Label layoutX="10.0" layoutY="100.0" prefHeight="25.0" prefWidth="114.0" text="Address:">
          <font>
             <Font name="Bauhaus 93" size="12.0" />
@@ -30,9 +42,18 @@
          <font>
             <Font name="Bauhaus 93" size="12.0" />
          </font></Label>
-      <Label fx:id="propertyOwner" layoutX="148.0" layoutY="367.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
-      <Label fx:id="propertyType" layoutX="148.0" layoutY="187.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
-      <Label fx:id="numofRoom" layoutX="148.0" layoutY="277.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
+      <Label fx:id="propertyOwner" layoutX="148.0" layoutY="367.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
+      <Label fx:id="propertyType" layoutX="148.0" layoutY="187.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
+      <Label fx:id="numofRoom" layoutX="148.0" layoutY="277.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
       <Label layoutX="10.0" layoutY="370.0" prefHeight="25.0" prefWidth="114.0" text="Property Owner:">
          <font>
             <Font name="Bauhaus 93" size="12.0" />
@@ -49,12 +70,18 @@
          <font>
             <Font name="Bauhaus 93" size="12.0" />
          </font></Label>
-      <Label fx:id="facilities" layoutX="148.0" layoutY="322.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
+      <Label fx:id="facilities" layoutX="148.0" layoutY="322.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
       <Label layoutX="10.0" layoutY="415.0" prefHeight="25.0" prefWidth="114.0" text="Owner Contact:">
          <font>
             <Font name="Bauhaus 93" size="12.0" />
          </font></Label>
-      <Label fx:id="contactNum" layoutX="148.0" layoutY="412.0" prefHeight="34.0" prefWidth="360.0" text="Label" />
+      <Label fx:id="contactNum" layoutX="148.0" layoutY="412.0" prefHeight="34.0" prefWidth="360.0" text="Label">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
       <Label alignment="CENTER" layoutX="177.0" layoutY="30.0" prefHeight="54.0" prefWidth="411.0" text="Property Info" textAlignment="CENTER">
          <font>
             <Font name="Bauhaus 93" size="36.0" />
