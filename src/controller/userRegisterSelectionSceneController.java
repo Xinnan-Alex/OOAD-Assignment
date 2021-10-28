@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 
 //userRegisterSelectionSceneController class
 public class userRegisterSelectionSceneController {
-    private Stage stage;
     private static String usertype;
 
     @FXML
@@ -24,7 +23,7 @@ public class userRegisterSelectionSceneController {
         usertype = "property owner";
         
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/property owner/propOwnerRegisterScene.fxml"));
-        stage = (Stage) registerTenantButton.getScene().getWindow();
+        Stage stage = (Stage) registerTenantButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         
     }
@@ -33,7 +32,7 @@ public class userRegisterSelectionSceneController {
         usertype = "tenant";
 
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/tenant/tenantRegisterScene.fxml"));
-        stage = (Stage) registerTenantButton.getScene().getWindow();
+        Stage stage = (Stage) registerTenantButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         
     }
@@ -44,7 +43,7 @@ public class userRegisterSelectionSceneController {
 
     public void backButtonHandler() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
-        stage = (Stage) backButton.getScene().getWindow();
+        Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 }

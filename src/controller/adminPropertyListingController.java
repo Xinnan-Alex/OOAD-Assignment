@@ -43,9 +43,9 @@ import model.*;
 public class adminPropertyListingController implements Initializable{
 
     private Admin admin;
-    FilteredList<Property> propertyFilteredList;
-    SortedList<Property> propertySortedList;
-    public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
+    private FilteredList<Property> propertyFilteredList;
+    private SortedList<Property> propertySortedList;
+    private String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
     private String[] rentalRateSortComboBoxList = {"Low to High","High to Low"};
 
     @FXML
@@ -293,7 +293,7 @@ public class adminPropertyListingController implements Initializable{
             propTableView.getSortOrder().add(propRentalRateColumn);
             propTableView.sort();
         }
-        else if(selectedComboBoxString.equals("high to low")){
+        else if(selectedComboBoxString.equals("high to low")){ 
 
             propRentalRateColumn.setSortType(TableColumn.SortType.DESCENDING);
             propTableView.getSortOrder().add(propRentalRateColumn);

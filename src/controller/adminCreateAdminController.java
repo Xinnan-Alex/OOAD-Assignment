@@ -25,7 +25,7 @@ import javafx.scene.Scene;
 
 //adminCreateAdminController class
 public class adminCreateAdminController implements Initializable{
-    Admin admin;
+    private Admin admin;
 
     @FXML
     TextField adminUsername,adminPassword,adminReenterPassword,adminFullname;

@@ -38,9 +38,9 @@ import javafx.event.EventHandler;
 //adminAccountAdminstrationController java
 public class adminAccountAdminstrationController implements Initializable{
 
-    FilteredList<person> personFilteredList;
+    private FilteredList<person> personFilteredList;
     private String[] personTypeList = {"All","admin","tenant","property owner"};
-    Admin admin;
+    private Admin admin;
 
     @FXML
     Button deletePersonButton,addPersonButton,editPersonButton,backButton;
