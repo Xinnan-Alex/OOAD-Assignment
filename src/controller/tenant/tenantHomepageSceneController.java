@@ -21,7 +21,6 @@ import model.*;
 public class tenantHomepageSceneController {
 
     Tenant loggedinPerson;
-    private Stage stage;
 
     @FXML
     private Button tenantViewProfileBtn, propertyBtn, logoutButton ;
@@ -33,7 +32,6 @@ public class tenantHomepageSceneController {
         fullnameLabel.setText(loggedinPerson.getFullName());
     }
 
-    @FXML
     public void tenantViewProfileBtnHandler() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantProfileScene.fxml"));
@@ -69,7 +67,7 @@ public class tenantHomepageSceneController {
 
         if (confirmation_Alert.getResult() == ButtonType.YES){
             Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
-            stage = (Stage) logoutButton.getScene().getWindow();
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(new Scene(root));
         }
     }
