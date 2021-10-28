@@ -1,5 +1,5 @@
 //PROFILE SETTING INTERFACE CONTROLLER
-package controller;
+package controller.tenant;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -26,7 +26,7 @@ import javafx.scene.Scene;
 //settingSceneController class
 public class tenantProfileSceneController implements Initializable{
 
-    tenant loggedinPerson;
+    Tenant loggedinPerson;
 
     @FXML
     Button changePassword,backButton,changeContactNumber;
@@ -109,7 +109,7 @@ public class tenantProfileSceneController implements Initializable{
     }
 
 
-    public void initUserObejct(tenant passedIN){
+    public void initUserObejct(Tenant passedIN){
         loggedinPerson = passedIN;
         setUserInfo();
     }

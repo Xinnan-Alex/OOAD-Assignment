@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1237.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminPropertyListingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1237.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.adminPropertyListingController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="48.0" prefWidth="1237.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" text="Admin Property Listing View">
          <font>

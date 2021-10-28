@@ -1,5 +1,5 @@
 //ADMIN EDIT PERSON'S DATA INTERFACE CONTROLLER (Admin Feature)
-package controller;
+package controller.admin;
 import model.*;
 import main.*;
 

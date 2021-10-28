@@ -1,5 +1,5 @@
 //TENANT HOMEPAGE INTERFACE CONTROLLER
-package controller;
+package controller.tenant;
 
 //JAVA IMPORTS
 import java.io.IOException;
@@ -20,7 +20,7 @@ import model.*;
 //tenantHomepageSceneController class
 public class tenantHomepageSceneController {
 
-    tenant loggedinPerson;
+    Tenant loggedinPerson;
     private Stage stage;
 
     @FXML
@@ -46,7 +46,7 @@ public class tenantHomepageSceneController {
         window.setScene(new Scene(root, 750, 500)); 
     }
 
-    public void initUserObejct(tenant passedIN){
+    public void initUserObejct(Tenant passedIN){
         loggedinPerson = passedIN;
         setUserInfo();
     }

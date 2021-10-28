@@ -1,4 +1,4 @@
-package controller;
+package controller.tenant;
 import model.*;
 
 //JAVA IMPORTS
@@ -28,7 +28,7 @@ import javafx.util.Callback;
 
 public class tenantPropertyController implements Initializable{
 
-    tenant loggedinPerson;
+    Tenant loggedinPerson;
     FilteredList<Property> propertyFilter;
     public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
 
@@ -102,7 +102,7 @@ public class tenantPropertyController implements Initializable{
         propertyListing.setItems(propertyFilter);
     }
 
-    public void initUserObejct(tenant passedIN){
+    public void initUserObejct(Tenant passedIN){
         loggedinPerson = passedIN;
     }
 

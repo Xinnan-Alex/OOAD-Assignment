@@ -1,5 +1,5 @@
 //ADMIN ACCOUNT ADMINSTRATION INTERFACE CONTROLLER (Admin Feature)
-package controller;
+package controller.admin;
 import model.*;
 
 //JAVA IMPORTS

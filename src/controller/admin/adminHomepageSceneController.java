@@ -1,5 +1,5 @@
 //ADMIN HOMEPAGE INTERFACE CONTROLLER (Admin Feature)
-package controller;
+package controller.admin;
 
 //JAVA IMPORTS
 import java.io.IOException;

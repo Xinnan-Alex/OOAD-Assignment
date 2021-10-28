@@ -1,5 +1,5 @@
 //Create Admin Account's Scene Controller (Admin Feature)
-package controller;
+package controller.admin;
 import model.*;
 import main.*;
 

@@ -5,6 +5,9 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import controller.admin.adminHomepageSceneController;
+import controller.tenant.tenantHomepageSceneController;
 import model.*;
 import main.*;
 
@@ -66,7 +69,7 @@ public class loginSceneController implements Initializable{
                 Parent root = loader.load();
                 person user = Globals.LogicModel.getPersonObject(loginUsernameInput);
 
-                tenant initTenant = new tenant(user);
+                Tenant initTenant = new Tenant(user);
                 tenantHomepageSceneController controller =  loader.getController();
                 controller.initUserObejct(initTenant);
                

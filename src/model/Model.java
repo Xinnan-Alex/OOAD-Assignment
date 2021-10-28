@@ -55,20 +55,20 @@ public final class Model {
             System.out.println("Created the first admin account");
             
             System.out.println("Preloading the property owner accounts");
-            agentxowner preload_PropOwner1 = new agentxowner("hajiwan488", "zdahalan8083", "Haji Wan Luthfi", "0160660488", UUID.randomUUID(), "property owner");
-            agentxowner preload_PropOwner2 = new agentxowner("wenchao", "9aef5cd5", "Wen Chew Zao", "0155838897", UUID.randomUUID(), "property owner");
-            agentxowner preload_PropOwner3 = new agentxowner("zhonzee", "6bc5f52d", "Zhong Thee Zee", "01112562590", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner1 = new propertyOwner("hajiwan488", "zdahalan8083", "Haji Wan Luthfi", "0160660488", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner2 = new propertyOwner("wenchao", "9aef5cd5", "Wen Chew Zao", "0155838897", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner3 = new propertyOwner("zhonzee", "6bc5f52d", "Zhong Thee Zee", "01112562590", UUID.randomUUID(), "property owner");
             writeToUserDataCSV(preload_PropOwner1);
             writeToUserDataCSV(preload_PropOwner2);
             writeToUserDataCSV(preload_PropOwner3);
             System.out.println("Preloaded the property owner accounts");
 
             System.out.println("Preloading the tenant accounts");
-            tenant preload_Tenant1 = new tenant("chiewpei", "db9612f8", "Chiew Thok Pei", "0152221731", UUID.randomUUID(), "tenant");
-            tenant preload_Tenant2 = new tenant("hjhmarzi", "4cf3ae40", "Marlina Robani", "0193086426", UUID.randomUUID(), "tenant");
-            tenant preload_Tenant3 = new tenant("rameshan", "4e39290b", "Ramesh Sivanesan", "0188404994", UUID.randomUUID(), "tenant");
-            tenant preload_Tenant4 = new tenant("kangpoh", "d01d29a4", "Kang Sui Poh", "0109426448", UUID.randomUUID(), "tenant");
-            tenant preload_Tenant5 = new tenant("muhamif", "33f7536e", "Muhamed Zakri Yusseri", "0154945845", UUID.randomUUID(), "tenant");
+            Tenant preload_Tenant1 = new Tenant("chiewpei", "db9612f8", "Chiew Thok Pei", "0152221731", UUID.randomUUID(), "tenant");
+            Tenant preload_Tenant2 = new Tenant("hjhmarzi", "4cf3ae40", "Marlina Robani", "0193086426", UUID.randomUUID(), "tenant");
+            Tenant preload_Tenant3 = new Tenant("rameshan", "4e39290b", "Ramesh Sivanesan", "0188404994", UUID.randomUUID(), "tenant");
+            Tenant preload_Tenant4 = new Tenant("kangpoh", "d01d29a4", "Kang Sui Poh", "0109426448", UUID.randomUUID(), "tenant");
+            Tenant preload_Tenant5 = new Tenant("muhamif", "33f7536e", "Muhamed Zakri Yusseri", "0154945845", UUID.randomUUID(), "tenant");
             writeToUserDataCSV(preload_Tenant1);
             writeToUserDataCSV(preload_Tenant2);
             writeToUserDataCSV(preload_Tenant3);

@@ -1,5 +1,5 @@
 //ADMIN EDIT PROPERTY INTERFACE CONTROLLER (Admin Feature)
-package controller;
+package controller.propertyowner;
 import model.*;
 import main.*;
 
@@ -27,10 +27,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 
 //adminEditPropertySceneController class
-public class adminEditPropertySceneController implements Initializable{
+public class propertyOwnerEditPropertySceneController implements Initializable{
 
     Property propertyToBeEdited;
-    Admin admin;
+    propertyOwner owner;
 
     @FXML
     ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
@@ -122,7 +122,7 @@ public class adminEditPropertySceneController implements Initializable{
 
             String[] selectedPropertyData_TobeValided  = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 
-            admin.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
+            owner.editSelectedPropertyData(propertyToBeEdited,selectedPropertyData_Edited,selectedPropertyData_TobeValided);
 
             (new Alert(AlertType.CONFIRMATION,"Property edited!")).showAndWait();
             backButtonHandler();
@@ -134,8 +134,8 @@ public class adminEditPropertySceneController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminPropertyListing.fxml"));
         Parent root = loader.load();
 
-        adminPropertyListingController controller =  loader.getController();
-        controller.initialiseAdminInfo(admin);
+        propertyOwnerPropertyListingController controller =  loader.getController();
+        controller.initialiseOwnerInfo(owner);
 
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -147,8 +147,9 @@ public class adminEditPropertySceneController implements Initializable{
     }
 
     //Passing in admin object from previous interface(Admin Feature)
-    public void passedInAdminObject(Admin a){
-        admin = a;
+    public void passedInOwnerObject(propertyOwner a){
+        owner = a;
     }
     
 }
+

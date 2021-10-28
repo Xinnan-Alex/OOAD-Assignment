@@ -1,5 +1,5 @@
 //Admin ADDING PEROPERTY INTERFACE CONTROLLER (Admin Feature)
-package controller;
+package controller.admin;
 import model.*;
 import main.*;
 

@@ -1,6 +1,6 @@
-package controller;
+package controller.tenant;
 import model.Property;
-import model.tenant;
+import model.Tenant;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class tenantPropertyInfoController {
 
-    tenant loggedinPerson;
+    Tenant loggedinPerson;
     Property property;
 
     @FXML
@@ -35,7 +35,7 @@ public class tenantPropertyInfoController {
         window.setScene(new Scene(root, 750, 500)); 
     }
 
-    public void initUserObejct(tenant passedIN){
+    public void initUserObejct(Tenant passedIN){
         loggedinPerson = passedIN;
     }
     

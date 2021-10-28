@@ -1,5 +1,5 @@
 //ADMIN PROPERTY LISTING INTERFACE CONTROLLER
-package controller;
+package controller.admin;
 
 //JAVA IMPORTS
 import java.net.URL;
