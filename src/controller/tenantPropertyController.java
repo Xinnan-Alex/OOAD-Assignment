@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-//JAVAFX IMPORTS
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -17,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -31,6 +30,7 @@ public class tenantPropertyController implements Initializable{
 
     tenant loggedinPerson;
     FilteredList<Property> propertyFilter;
+    public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
 
     @FXML
     ListView<Property> propertyListing;
@@ -40,6 +40,9 @@ public class tenantPropertyController implements Initializable{
 
     @FXML
     TextField searchBarInput;
+
+    @FXML
+    ComboBox<String> propertyTypeFilter;
 
 
     @Override
@@ -54,7 +57,28 @@ public class tenantPropertyController implements Initializable{
 
                 String propertyNameSearchToLowerCase = newValue.toLowerCase();
 
-                if (Property.getPropertyType().toLowerCase().contains(propertyNameSearchToLowerCase)){
+                if (Property.getFacilities().toLowerCase().contains(propertyNameSearchToLowerCase)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+
+        });
+
+        propertyTypeFilter.getItems().addAll(propertyTypeFilterList);
+        propertyTypeFilter.setValue(propertyTypeFilterList[0]);
+
+        propertyTypeFilter.valueProperty().addListener((Observable,oldValue,newValue) -> {
+            propertyFilter.setPredicate(Property ->{
+                if (newValue.equals("All") || newValue.isEmpty()){
+                    return true;
+                }
+
+                String propertyTypeToLowerCase = newValue.toLowerCase();
+
+                if (Property.getPropertyType().toLowerCase().equals(propertyTypeToLowerCase)){
                     return true;
                 }
                 else{
@@ -98,6 +122,7 @@ public class tenantPropertyController implements Initializable{
         private HBox content;
         private Text name;
         private Text price;
+        private Text propertyType;
         private Property property;
         
 
@@ -108,9 +133,11 @@ public class tenantPropertyController implements Initializable{
             super();
             name = new Text();
             price = new Text();
+            propertyType = new Text();
+
             VBox vBox = new VBox(name, price);
-            content = new HBox(new Label("k"), vBox, tenantPropertyInfo);
-            content.setSpacing(10);
+            content = new HBox(propertyType, vBox, tenantPropertyInfo);
+            content.setSpacing(30);
             tenantPropertyInfo.setOnAction(new EventHandler() {
 
                 @Override
@@ -139,9 +166,11 @@ public class tenantPropertyController implements Initializable{
             super.updateItem(p, empty);
             if (p != null && !empty) { // <== test for null item and empty parameter
                 name.setText(p.getProjectName());
+                propertyType.setText(p.getPropertyType());
                 property = p;
                 price.setText(String.format("%d $", p.getRentalRate()));
                 setGraphic(content);
+                
                 
             } else {
                 setGraphic(null);

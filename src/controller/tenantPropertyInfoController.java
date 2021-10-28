@@ -18,7 +18,7 @@ public class tenantPropertyInfoController {
     Property property;
 
     @FXML
-    private Label propertyAddress, propertySize, rentalRate, propertyOwner, propertyType, numofRoom, numofBathroom, contactNum;
+    private Label propertyAddress, propertySize, rentalRate, propertyOwner, propertyType, numofRoom, facilities, contactNum;
     
     @FXML
     private Button backButton;
@@ -53,7 +53,7 @@ public class tenantPropertyInfoController {
         propertyOwner.setText(property.getPropertyOwner());
         propertyType.setText(property.getPropertyType());
         numofRoom.setText(String.valueOf(property.getNumofRoom()));
-        numofBathroom.setText(String.valueOf(property.getNumofBathroom()));
+        facilities.setText(String.valueOf(property.getFacilities()));
         contactNum.setText(property.getContactNum());
     } 
 }
