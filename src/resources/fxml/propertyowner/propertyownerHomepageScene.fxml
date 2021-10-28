@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.homepageSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.propertyOwnerHomepageSceneController">
    <children>
       <Label layoutX="15.0" layoutY="15.0" prefHeight="39.0" prefWidth="103.0" text="Welcome:">
          <font>
@@ -68,7 +68,7 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="propertyListButton" layoutX="176.0" layoutY="151.0" mnemonicParsing="false" onAction="#propertyListButton" style="-fx-background-color: grey;" text="View Property Listing" textFill="WHITE">
+      <Button fx:id="propertyListButton" layoutX="176.0" layoutY="151.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="View Property Listing" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="propertyAdminstrationButton" layoutX="166.0" layoutY="212.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Property Adminstration" textFill="WHITE">
+      <Button fx:id="propertyAdminstrationButton" layoutX="166.0" layoutY="212.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Property Adminstration" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>

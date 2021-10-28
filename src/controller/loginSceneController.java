@@ -47,7 +47,7 @@ public class loginSceneController implements Initializable{
 
 
     public void registerButtonHandler() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userRegisterSelectionScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/userRegisterSelectionScene.fxml"));
         stage = (Stage) registerButton.getScene().getWindow();
         stage.setScene(new Scene(root));
 

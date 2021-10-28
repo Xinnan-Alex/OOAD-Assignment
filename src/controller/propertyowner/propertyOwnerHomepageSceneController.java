@@ -24,7 +24,7 @@ import model.*;
 public class propertyOwnerHomepageSceneController implements Initializable{
 
 
-    private propertyOwner owner = new propertyOwner();
+    private propertyOwner owner;
 
     @FXML
     Label homepagePropertyOwnerFullname,homepageID;
@@ -44,10 +44,21 @@ public class propertyOwnerHomepageSceneController implements Initializable{
 
     }
 
+    public void logoutButtonHandler() throws IOException{
+        Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to logout?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        confirmation_Alert.showAndWait();
+
+        if (confirmation_Alert.getResult() == ButtonType.YES){
+            Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/loginScene.fxml"));
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        }
+    }
+
     // public void propertyListButton() throws IOException{
 
     //     //CHNAGE TO PROPERTYOWNERPROPERTYLISTINGCONTROLLER]
-    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/propertyownerHomepageScene.fxml"));
+    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/propertyownerHomepageScene.fxml"));
     //     Parent root = loader.load();
 
     //     propertyOwnerPropertyListingController propertyListingController =  loader.getController();

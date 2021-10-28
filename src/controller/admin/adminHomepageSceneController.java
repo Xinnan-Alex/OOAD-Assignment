@@ -57,7 +57,7 @@ public class adminHomepageSceneController implements Initializable{
         confirmation_Alert.showAndWait();
 
         if (confirmation_Alert.getResult() == ButtonType.YES){
-            Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/loginScene.fxml"));
             stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(new Scene(root));
         }
@@ -65,7 +65,7 @@ public class adminHomepageSceneController implements Initializable{
 
     public void propertyListButton() throws IOException{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminPropertyListing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
         Parent root = loader.load();
 
         adminPropertyListingController propertyListingController =  loader.getController();
@@ -76,7 +76,7 @@ public class adminHomepageSceneController implements Initializable{
     }
 
     public void accountAdminstrationButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
         Parent root = loader.load();
 
         adminAccountAdminstrationController accountAdminstrationController =  loader.getController();
@@ -88,7 +88,7 @@ public class adminHomepageSceneController implements Initializable{
     }
 
     public void createaAdminButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminCreateAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminCreateAdmin.fxml"));
         Parent root = loader.load();
 
         adminCreateAdminController controller =  loader.getController();

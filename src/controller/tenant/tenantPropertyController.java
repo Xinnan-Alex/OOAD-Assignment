@@ -108,7 +108,7 @@ public class tenantPropertyController implements Initializable{
 
     public void backButtonHandler() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantHomepageScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantHomepageScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantHomepageSceneController controller = fxmlLoader.getController();
@@ -145,7 +145,7 @@ public class tenantPropertyController implements Initializable{
 
                     try{                        
                     System.out.println(name.getText());
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantPropertyInfoScene.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantPropertyInfoScene.fxml"));
                     Parent root = fxmlLoader.load();
                     tenantPropertyInfoController controller = fxmlLoader.getController();
                     controller.initUserObejct(loggedinPerson);

@@ -25,7 +25,7 @@ public class tenantPropertyInfoController {
 
     public void backButtonHandler() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantPropertyScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantPropertyScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantPropertyController controller = fxmlLoader.getController();

@@ -176,7 +176,7 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
 
     public void backButtonHandler() throws IOException{
         //CHANGE TO PROPERTYOWNERPROPERTYLISTING.FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminPropertyListing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
         Parent root = loader.load();
 
         propertyOwnerPropertyListingController controller =  loader.getController();

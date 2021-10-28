@@ -131,7 +131,7 @@ public class adminEditPropertySceneController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminPropertyListing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
         Parent root = loader.load();
 
         adminPropertyListingController controller =  loader.getController();

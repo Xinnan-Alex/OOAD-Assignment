@@ -34,7 +34,7 @@ public class tenantHomepageSceneController {
 
     public void tenantViewProfileBtnHandler() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantProfileScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantProfileScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantProfileSceneController controller = fxmlLoader.getController();
@@ -51,7 +51,7 @@ public class tenantHomepageSceneController {
 
     public void propertyBtnHandler() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/fxml/tenant/tenantPropertyScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantPropertyScene.fxml"));
         Parent root = fxmlLoader.load();
         
         tenantPropertyController controller = fxmlLoader.getController();
@@ -66,7 +66,7 @@ public class tenantHomepageSceneController {
         confirmation_Alert.showAndWait();
 
         if (confirmation_Alert.getResult() == ButtonType.YES){
-            Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/loginScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/loginScene.fxml"));
             Stage stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(new Scene(root));
         }

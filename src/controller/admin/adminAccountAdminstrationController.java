@@ -148,7 +148,7 @@ public class adminAccountAdminstrationController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminHomepageScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminHomepageScene.fxml"));
         Parent root = loader.load();
 
         adminHomepageSceneController controller =  loader.getController();
@@ -159,7 +159,7 @@ public class adminAccountAdminstrationController implements Initializable{
     }
 
     public void addPersonButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminAddPersonScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminAddPersonScene.fxml"));
         Parent root = loader.load();
 
         adminAddPersonSceneController controller =  loader.getController();
@@ -202,7 +202,7 @@ public class adminAccountAdminstrationController implements Initializable{
 
             if (confirmation_Alert.getResult() == ButtonType.YES){
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminEditPersonScene.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminEditPersonScene.fxml"));
                 Parent root = loader.load();
 
                 adminEditPersonSceneController controller =  loader.getController();
