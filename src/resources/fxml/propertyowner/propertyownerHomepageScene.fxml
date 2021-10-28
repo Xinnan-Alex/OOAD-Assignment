@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.homepageSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.homepageSceneController">
    <children>
       <Label layoutX="15.0" layoutY="15.0" prefHeight="39.0" prefWidth="70.0" text="Welcome:">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="homepageUsername" layoutX="85.0" layoutY="24.0" prefHeight="22.0" prefWidth="181.0">
+      <Label fx:id="homepagePropertyOwnerFullname" layoutX="85.0" layoutY="24.0" prefHeight="22.0" prefWidth="181.0">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
@@ -60,7 +60,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip text="Setting" />
+            <Tooltip text="Profile Setting" />
          </tooltip>
       </Button>
       <Label alignment="CENTER" layoutX="158.0" layoutY="94.0" prefHeight="39.0" prefWidth="304.0" text="What would you like to do?">
@@ -68,38 +68,26 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="propertyListButton" layoutX="176.0" layoutY="133.0" mnemonicParsing="false" onAction="#propertyListButton" style="-fx-background-color: grey;" text="Access Property List" textFill="WHITE">
+      <Button fx:id="propertyListButton" layoutX="176.0" layoutY="151.0" mnemonicParsing="false" onAction="#propertyListButton" style="-fx-background-color: grey;" text="View Property Listing" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0">
                <image>
-                  <Image url="@../../images/propertylist.png" />
+                  <Image url="@../../images/HomeIcon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="createaAdminButton" layoutX="168.0" layoutY="243.0" mnemonicParsing="false" onAction="#createaAdminButtonHandler" prefHeight="47.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Create Admin Account" textFill="WHITE">
-         <font>
-            <Font name="Arial Black" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/admin.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="accountAdminstrationButton" layoutX="166.0" layoutY="189.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Account Adminstration" textFill="WHITE">
+      <Button fx:id="accountAdminstrationButton" layoutX="166.0" layoutY="212.0" mnemonicParsing="false" onAction="#accountAdminstrationButtonHandler" prefHeight="43.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Property Adminstration" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/creatingaccount.png" />
+                  <Image url="@../../images/home_automation_96px.png" />
                </image>
             </ImageView>
          </graphic>

@@ -23,26 +23,18 @@ import model.*;
 //adminHomepageSceneController class
 public class propertyOwnerHomepageSceneController implements Initializable{
 
+
     private propertyOwner owner = new propertyOwner();
 
     @FXML
     Label homepagePropertyOwnerFullname,homepageID;
-    @FXML
-    Button settingButton,propertyListButton;
 
-    private Stage stage;
+    @FXML
+    Button settingButton,propertyListButton,propertyAdminstrationButton,logoutButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
      
-    }
-
-    public void displayName(String name){
-        homepagePropertyOwnerFullname.setText(name);
-    }
-
-    public void displayID(String ID){
-        homepageID.setText(ID);
     }
 
     public void initUserObejct(propertyOwner passedIN){
@@ -52,18 +44,18 @@ public class propertyOwnerHomepageSceneController implements Initializable{
 
     }
 
-    public void propertyListButton() throws IOException{
+    // public void propertyListButton() throws IOException{
 
-        //CHNAGE TO PROPERTYOWNERPROPERTYLISTINGCONTROLLER]
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/adminPropertyListing.fxml"));
-        Parent root = loader.load();
+    //     //CHNAGE TO PROPERTYOWNERPROPERTYLISTINGCONTROLLER]
+    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../resources/fxml/admin/propertyownerHomepageScene.fxml"));
+    //     Parent root = loader.load();
 
-        propertyOwnerPropertyListingController propertyListingController =  loader.getController();
-        propertyListingController.initialiseOwnerInfo(owner);   
+    //     propertyOwnerPropertyListingController propertyListingController =  loader.getController();
+    //     propertyListingController.initialiseOwnerInfo(owner);   
 
-        stage = (Stage) propertyListButton.getScene().getWindow();
-        stage.setScene(new Scene(root));
-    }
+    //     Stage stage = (Stage) propertyListButton.getScene().getWindow();
+    //     stage.setScene(new Scene(root));
+    // }
 
 }
 

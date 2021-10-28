@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.admin.adminHomepageSceneController;
+import controller.propertyowner.propertyOwnerHomepageSceneController;
 import controller.tenant.tenantHomepageSceneController;
 import model.*;
 import main.*;
@@ -95,7 +96,17 @@ public class loginSceneController implements Initializable{
 
             }
             else if(Globals.LogicModel.getUsertype(loginUsernameInput).equals("property owner")){
-                loader = new FXMLLoader(getClass().getResource("../resources/fxml/property owner/propertyownerHomepageScene.fxml"));
+                loader = new FXMLLoader(getClass().getResource("../resources/fxml/propertyowner/propertyownerHomepageScene.fxml"));
+                Parent root = loader.load();
+
+                person user = Globals.LogicModel.getPersonObject(loginUsernameInput);
+
+                propertyOwner initPropertyOwner = new propertyOwner(user);
+                propertyOwnerHomepageSceneController controller =  loader.getController();
+                controller.initUserObejct(initPropertyOwner);
+
+                stage = (Stage) loginButton.getScene().getWindow();
+                stage.setScene(new Scene(root));
             }
             
             
