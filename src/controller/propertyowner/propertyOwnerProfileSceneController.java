@@ -1,10 +1,12 @@
 //PROFILE SETTING INTERFACE CONTROLLER
-package controller.tenant;
+package controller.propertyowner;
 
 //JAVA IMPORTS
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import controller.tenant.tenantHomepageSceneController;
 import model.*;
 import main.*;
 
@@ -25,22 +27,22 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 
 //settingSceneController class
-public class tenantProfileSceneController implements Initializable{
+public class propertyOwnerProfileSceneController implements Initializable{
 
-    Tenant loggedinPerson;
+    propertyOwner owner;
 
     @FXML
     Button changePassword,backButton,changeContactNumber;
 
     @FXML
-    TextField tenantContactNumber, tenantPassword;
+    TextField propertyOwnerContactNumber, propertyOwnerPassword;
 
     @FXML
     Label fullnameLabel,usernameLabel,useridLabel,usertypeLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tenantContactNumber.setTextFormatter(new TextFormatter<>(c -> {
+        propertyOwnerContactNumber.setTextFormatter(new TextFormatter<>(c -> {
             if (!c.getControlNewText().matches("\\d*")) 
                 return null;
             else
@@ -51,73 +53,68 @@ public class tenantProfileSceneController implements Initializable{
     }
     
     public void setUserInfo(){
-        fullnameLabel.setText(loggedinPerson.getFullName());
-        usernameLabel.setText(loggedinPerson.getUsername());
-        useridLabel.setText(loggedinPerson.getID());
-        usertypeLabel.setText(loggedinPerson.getUserType());
-        
+        fullnameLabel.setText(owner.getFullName());
+        usernameLabel.setText(owner.getUsername());
+        useridLabel.setText(owner.getID());
+        usertypeLabel.setText(owner.getUserType());
+        propertyOwnerContactNumber.setText(owner.getPhoneNumber());
     }
 
-
     public void backButtonHandler() throws IOException{
-        
-        FXMLLoader loader = new FXMLLoader();
-        
-        loader = new FXMLLoader(getClass().getResource("../../resources/fxml/tenant/tenantHomepageScene.fxml"));
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyownerHomepageScene.fxml"));
         Parent root = loader.load();
-        
-        tenantHomepageSceneController controller =  loader.getController();
-  
-        controller.initUserObejct(loggedinPerson);
-        
+
+        propertyOwnerHomepageSceneController controller =  loader.getController();
+        controller.initUserObejct(owner);
+
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 
     public void changePassword() throws IOException{
-        
+
         TextInputDialog passwordConfirmationdDialog = new TextInputDialog();
         passwordConfirmationdDialog.setHeaderText("Please input your password");
         passwordConfirmationdDialog.showAndWait();
 
-        if(passwordConfirmationdDialog.getEditor().getText().equals(loggedinPerson.getPassword())){
+        if(passwordConfirmationdDialog.getEditor().getText().equals(owner.getPassword())){
             Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to change to this password?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
             confirmation_Alert.showAndWait();
     
             if (confirmation_Alert.getResult() == ButtonType.YES){
                 for(person p: Model.userInfo){
-                    if(p.getID().equals(loggedinPerson.getID())){
-                        p.setPassword(tenantPassword.getText());
-                        loggedinPerson.setPassword(tenantPassword.getText());
+                    if(p.getID().equals(owner.getID())){
+                        p.setPassword(propertyOwnerPassword.getText());
+                        owner.setPassword(propertyOwnerPassword.getText());
                     }
                 }
                 Globals.LogicModel.writeToUserDataCSV();
                 (new Alert(AlertType.INFORMATION,"Your password has successfully changed")).show();
             }
             else{
-                tenantPassword.clear();
+                propertyOwnerPassword.clear();
             }
         }
         else{
             (new Alert(AlertType.ERROR,"Invalid Password, Please try again")).show();
-            tenantPassword.clear();
+            propertyOwnerPassword.clear();
         }
+        
     }
 
     public void changeContactNumber() throws IOException{
         TextInputDialog passwordConfirmationdDialog = new TextInputDialog();
         passwordConfirmationdDialog.setHeaderText("Please input your password");
         passwordConfirmationdDialog.showAndWait();
-        if(passwordConfirmationdDialog.getEditor().getText().equals(loggedinPerson.getPassword())){
+        if(passwordConfirmationdDialog.getEditor().getText().equals(owner.getPassword())){
             Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to change to this contact number?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
             confirmation_Alert.showAndWait();
             if (confirmation_Alert.getResult() == ButtonType.YES){
-                if(Globals.LogicModel.ContactnumValidation(tenantContactNumber.getText())){
+                if(Globals.LogicModel.ContactnumValidation(propertyOwnerContactNumber.getText())){
                     for(person p: Model.userInfo){
-                        if(p.getID().equals(loggedinPerson.getID())){
-                            p.setPhonenumber(tenantContactNumber.getText());
-                            loggedinPerson.setPassword(tenantContactNumber.getText());
+                        if(p.getID().equals(owner.getID())){
+                            p.setPhonenumber(propertyOwnerContactNumber.getText());
+                            owner.setPassword(propertyOwnerContactNumber.getText());
                         }
                     }
                     Globals.LogicModel.writeToUserDataCSV();
@@ -125,7 +122,7 @@ public class tenantProfileSceneController implements Initializable{
                 }
                 else{
                     (new Alert(AlertType.ERROR,"Invalid Phone Number, Please try again")).show();
-                    tenantContactNumber.setText(loggedinPerson.getPhoneNumber());
+                    propertyOwnerContactNumber.setText(owner.getPhoneNumber());
                 }
             }  
         }
@@ -133,16 +130,12 @@ public class tenantProfileSceneController implements Initializable{
             (new Alert(AlertType.ERROR,"Invalid Password, Please try again")).show();
         }
        
+
     }
 
-    public void initUserObejct(Tenant passedIN){
-        loggedinPerson = passedIN;
+    public void initUserObejct(propertyOwner passedIN){
+        owner = passedIN;
         setUserInfo();
     }
-
-
-    
-
-        
  
-    }
+}

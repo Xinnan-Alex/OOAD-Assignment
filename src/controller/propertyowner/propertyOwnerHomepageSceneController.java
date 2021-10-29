@@ -30,7 +30,7 @@ public class propertyOwnerHomepageSceneController implements Initializable{
     Label homepagePropertyOwnerFullname,homepageID;
 
     @FXML
-    Button settingButton,propertyListButton,propertyAdminstrationButton,logoutButton;
+    Button propertyOwnerProfileButton,propertyListButton,propertyAdminstrationButton,logoutButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,18 +55,42 @@ public class propertyOwnerHomepageSceneController implements Initializable{
         }
     }
 
-    // public void propertyListButton() throws IOException{
+    public void propertyListButtonHandler() throws IOException{
 
-    //     //CHNAGE TO PROPERTYOWNERPROPERTYLISTINGCONTROLLER]
-    //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/propertyownerHomepageScene.fxml"));
-    //     Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerPropertyListingScene.fxml"));
+        Parent root = loader.load();
 
-    //     propertyOwnerPropertyListingController propertyListingController =  loader.getController();
-    //     propertyListingController.initialiseOwnerInfo(owner);   
+        propertyOwnerPropertyListingController propertyListingController =  loader.getController();
+        propertyListingController.passedInOwnerObject(owner);   
 
-    //     Stage stage = (Stage) propertyListButton.getScene().getWindow();
-    //     stage.setScene(new Scene(root));
-    // }
+        Stage stage = (Stage) propertyListButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+    
+    public void propertyAdminstrationButtonHandler() throws IOException{
+
+        //CHNAGE TO PROPERTYOWNERPROPERTYLISTINGCONTROLLER]
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerPropertyConfigurationScene.fxml"));
+        Parent root = loader.load();
+
+        propertyOwnerPropertyConfigurationSceneController propertyListingController =  loader.getController();
+        propertyListingController.initialiseOwnerInfo(owner);   
+
+        Stage stage = (Stage) propertyAdminstrationButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }
+
+    public void propertyOwnerProfileButtonHandler() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerProfileScene.fxml"));
+        Parent root = fxmlLoader.load();
+        
+        propertyOwnerProfileSceneController controller = fxmlLoader.getController();
+        controller.initUserObejct(owner);
+        
+        Stage window = (Stage)propertyOwnerProfileButton.getScene().getWindow();
+        window.setScene(new Scene(root, 750, 500)); 
+    }
 
 }
 

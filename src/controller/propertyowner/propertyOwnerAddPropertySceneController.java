@@ -13,7 +13,6 @@ import java.util.stream.IntStream;
 //JAVAFX IMPORTS
 import javafx.scene.control.TextFormatter;
 import javafx.fxml.FXMLLoader;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,7 +34,7 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
     propertyOwner owner;
 
     @FXML
-    ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox,propOwnerComboBox;
+    ComboBox<String> propTypeComboBox,propHiddenStatusComboBox,propRentalStatusComboBox;
     
     @FXML
     ComboBox<Integer> propNumofRoomComboBox,propNumofBathroomComboBox;
@@ -50,7 +49,7 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
     TextArea commentsTextBox;
 
     @FXML
-    Label titleLabel;
+    Label titleLabel,propertyOwnerFullnameLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,11 +70,6 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
         propRentalStatusComboBox.getItems().clear();
         propRentalStatusComboBox.setValue("");
         propRentalStatusComboBox.getItems().addAll("active", "not Active");
-
-        //Setting the propOwnerComboBox value into a blank string, and populate it with list of property owner
-        propOwnerComboBox.getItems().clear();
-        propOwnerComboBox.setValue("");
-        propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
         //Setting the propNumofRoomComboBox value to the default value "1", and populate it with the range of 100
         propNumofRoomComboBox.getItems().clear();
@@ -120,11 +114,6 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
         
     }
 
-    public void propOwnerComboBoxHandler(ActionEvent e) {
-        propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue())));
-    
-    }
-
     public void confirmButtonHandler() throws IOException{
         Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to add in this property?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         confirmation_Alert.showAndWait();
@@ -132,9 +121,9 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
         if (confirmation_Alert.getResult() == ButtonType.YES){
              //Extract info from TextFields
             String[] propInfoList_tobeAdded = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),Integer.toString(propNumofRoomComboBox.getValue()),Integer.toString(propNumofBathroomComboBox.getValue()),
+                propertyOwnerFullnameLabel.getText(),propOwnerContactNumTextField.getText(),Integer.toString(propNumofRoomComboBox.getValue()),Integer.toString(propNumofBathroomComboBox.getValue()),
                 commentsTextBox.getText(),propHiddenStatusComboBox.getValue(),propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
-            String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
+            String[] propInfoList_TobeValided = {propHiddenStatusComboBox.getValue(),propertyOwnerFullnameLabel.getText()};
 
             //If property rental status = active means the property is active and there is no tenant = false
             //If property rental status = not active means the property is not active and there is tenant = true
@@ -165,7 +154,6 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
     public void clearButtonHandler(){
 
         propNameTextField.clear();
-        propOwnerComboBox.setValue("");
         propOwnerContactNumTextField.clear();
         propRentalRateTextField.clear();
         propTypeComboBox.setValue("Unspecified");
@@ -175,11 +163,10 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        //CHANGE TO PROPERTYOWNERPROPERTYLISTING.FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerPropertyConfigurationScene.fxml"));
         Parent root = loader.load();
 
-        propertyOwnerPropertyListingController controller =  loader.getController();
+        propertyOwnerPropertyConfigurationSceneController controller =  loader.getController();
         controller.initialiseOwnerInfo(owner);
 
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -188,5 +175,8 @@ public class propertyOwnerAddPropertySceneController implements Initializable{
 
     public void passedInOwnerObject(propertyOwner owner2){
         owner = owner2;
+        propertyOwnerFullnameLabel.setText(owner.getFullName());
+        propOwnerContactNumTextField.setText(owner.getPhoneNumber());
+
     }
 }

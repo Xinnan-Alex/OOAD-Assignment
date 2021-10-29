@@ -1,12 +1,11 @@
 //ADMIN PROPERTY LISTING INTERFACE CONTROLLER
-package controller.admin;
+package controller.propertyowner;
 
 //JAVA IMPORTS
-import java.net.URL;
 import java.util.Comparator;
-import java.util.ResourceBundle;
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
 //JAVAFX IMPORTS
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,7 +15,6 @@ import javafx.util.Callback;
 import javafx.fxml.FXML;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,12 +37,13 @@ import javafx.event.EventHandler;
 import model.*;
 
 //adminPropertyListingController class
-public class adminPropertyListingController implements Initializable{
+public class propertyOwnerPropertyConfigurationSceneController{
 
-    private Admin admin;
-    private FilteredList<Property> propertyFilteredList;
-    private SortedList<Property> propertySortedList;
-    private String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
+    propertyOwner owner;
+    ObservableList<Property> propertyObservableList = FXCollections.observableArrayList();
+    FilteredList<Property> propertyFilteredList;
+    SortedList<Property> propertySortedList;
+    public static String[] propertyTypeFilterList = {"All","Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
     private String[] rentalRateSortComboBoxList = {"Low to High","High to Low"};
 
     @FXML
@@ -68,10 +67,9 @@ public class adminPropertyListingController implements Initializable{
     @FXML
     RadioButton activePropertyRadioButton,inactivePropertyRadioButton;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void populateTable() {
         propTableView.setStyle("-fx-selection-bar: #87CEFA;");
-        propertyFilteredList = new FilteredList<>(Model.propertyList,b->true);
+        propertyFilteredList = new FilteredList<>(Model.propertyList,b->b.getPropertyOwner().equals(owner.getFullName()));
         propertySortedList = new SortedList<>(propertyFilteredList,Comparator.comparing(Property::getRentalRate));
 
         rentalRateSortComboBox.getItems().addAll(rentalRateSortComboBoxList);
@@ -159,7 +157,6 @@ public class adminPropertyListingController implements Initializable{
         });
 
         propertySortedList.comparatorProperty().bind(propTableView.comparatorProperty());
-
         propTableView.setItems(propertySortedList);
 
         TableViewSelectionModel<Property> propTableViewSelectionModel = propTableView.getSelectionModel();
@@ -187,29 +184,31 @@ public class adminPropertyListingController implements Initializable{
     }
 
     public void addPropertyButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminAddPropertyScene.fxml"));
+        //CHANGE TO PROPERTYOWNERADDPROPERTYSCENE.FXML 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerAddPropertyScene.fxml"));
         Parent root = loader.load();
 
-        adminAddPropertySceneController controller = loader.getController();
-        controller.passedInAdminObject(admin);
+        propertyOwnerAddPropertySceneController controller = loader.getController();
+        controller.passedInOwnerObject(owner);
 
         Stage stage = (Stage) addPropertyButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminHomepageScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyownerHomepageScene.fxml"));
         Parent root = loader.load();
 
-        adminHomepageSceneController controller =  loader.getController();
-        controller.initUserObejct(admin);
+        propertyOwnerHomepageSceneController controller =  loader.getController();
+        controller.initUserObejct(owner);
 
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 
-    public void initialiseAdminInfo(Admin passedIn){
-        admin = passedIn;
+    public void initialiseOwnerInfo(propertyOwner passedIn){
+        owner = passedIn;
+        populateTable();
     }
     
     public void deletePropertyButtonHandler() throws IOException{
@@ -223,7 +222,7 @@ public class adminPropertyListingController implements Initializable{
             confirmation_Alert.showAndWait();
             
             if (confirmation_Alert.getResult() == ButtonType.YES){
-                admin.removeSelectedProperty(propertyToBeDeleted);
+                owner.removeSelectedProperty(propertyToBeDeleted);
             }
         }
     }
@@ -235,12 +234,12 @@ public class adminPropertyListingController implements Initializable{
             (new Alert(AlertType.ERROR,"Please select a property to edit")).show();
         }
         else{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminEditPropertyScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerEditPropertyScene.fxml"));
             Parent parent = loader.load();
 
-            adminEditPropertySceneController controller = loader.getController();
+            propertyOwnerEditPropertySceneController controller = loader.getController();
             controller.passPropertyToBeEdited(propertyToBeEdited.get(0));
-            controller.passedInAdminObject(admin);
+            controller.passedInOwnerObject(owner);
             
             Stage stage = (Stage) editPropertyButton.getScene().getWindow();
             stage.setScene(new Scene(parent));
@@ -292,7 +291,7 @@ public class adminPropertyListingController implements Initializable{
             propTableView.getSortOrder().add(propRentalRateColumn);
             propTableView.sort();
         }
-        else if(selectedComboBoxString.equals("high to low")){ 
+        else if(selectedComboBoxString.equals("high to low")){
 
             propRentalRateColumn.setSortType(TableColumn.SortType.DESCENDING);
             propTableView.getSortOrder().add(propRentalRateColumn);
@@ -313,3 +312,4 @@ public class adminPropertyListingController implements Initializable{
     }
 
 }
+

@@ -131,10 +131,10 @@ public class propertyOwnerEditPropertySceneController implements Initializable{
     }
 
     public void backButtonHandler() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/propertyowner/propertyOwnerPropertyConfigurationScene.fxml"));
         Parent root = loader.load();
 
-        propertyOwnerPropertyListingController controller =  loader.getController();
+        propertyOwnerPropertyConfigurationSceneController controller =  loader.getController();
         controller.initialiseOwnerInfo(owner);
 
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -146,7 +146,6 @@ public class propertyOwnerEditPropertySceneController implements Initializable{
     
     }
 
-    //Passing in admin object from previous interface(Admin Feature)
     public void passedInOwnerObject(propertyOwner a){
         owner = a;
     }
