@@ -3,13 +3,10 @@ package controller.propertyowner;
 
 //JAVA IMPORTS
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 //JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -21,7 +18,7 @@ import javafx.scene.control.Alert;
 import model.*;
 
 //adminHomepageSceneController class
-public class propertyOwnerHomepageSceneController implements Initializable{
+public class propertyOwnerHomepageSceneController{
 
 
     private propertyOwner owner;
@@ -31,11 +28,6 @@ public class propertyOwnerHomepageSceneController implements Initializable{
 
     @FXML
     Button propertyOwnerProfileButton,propertyListButton,propertyAdminstrationButton,logoutButton;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-     
-    }
 
     public void initUserObejct(propertyOwner passedIN){
         owner = passedIN;

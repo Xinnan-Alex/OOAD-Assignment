@@ -20,7 +20,7 @@ import model.*;
 //tenantHomepageSceneController class
 public class tenantHomepageSceneController {
 
-    Tenant loggedinPerson;
+    private Tenant loggedinPerson;
 
     @FXML
     private Button tenantViewProfileBtn, propertyBtn, logoutButton ;

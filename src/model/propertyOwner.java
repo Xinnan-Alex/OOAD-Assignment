@@ -14,14 +14,10 @@ import javafx.collections.ObservableList;
 //Property Owner class
 public class propertyOwner extends person{
 
-    //secret phrase for creating admin account
-    //static String secretPhrase = "No-Brainer";
-
     //Property Owner constructor
     propertyOwner(String username, String password, String fullName, String phoneNumber, UUID ID, String userType) {
         super(username, password, fullName, phoneNumber, ID, userType);
     }
-
 
     //Property Owner overloaded constructor that takes in person object as parameter
     public propertyOwner (person p){

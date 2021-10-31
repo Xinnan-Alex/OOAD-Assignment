@@ -3,13 +3,10 @@ package controller.admin;
 
 //JAVA IMPORTS
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 //JAVAFX IMPORTS
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -21,7 +18,7 @@ import javafx.scene.control.Alert;
 import model.*;
 
 //adminHomepageSceneController class
-public class adminHomepageSceneController implements Initializable{
+public class adminHomepageSceneController{
 
     private Admin admin = new Admin();
 
@@ -29,21 +26,6 @@ public class adminHomepageSceneController implements Initializable{
     Label homepageAdminFullname,homepageID;
     @FXML
     Button logoutButton,profileSettingButton,propertyListButton,accountAdminstrationButton,createaAdminButton;
-
-    private Stage stage;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-     
-    }
-
-    public void displayName(String name){
-        homepageAdminFullname.setText(name);
-    }
-
-    public void displayID(String ID){
-        homepageID.setText(ID);
-    }
 
     public void initUserObejct(Admin passedIN){
         admin = passedIN;
@@ -58,7 +40,7 @@ public class adminHomepageSceneController implements Initializable{
 
         if (confirmation_Alert.getResult() == ButtonType.YES){
             Parent root = FXMLLoader.load(getClass().getResource("../../resources/fxml/loginScene.fxml"));
-            stage = (Stage) logoutButton.getScene().getWindow();
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
             stage.setScene(new Scene(root));
         }
     }
@@ -71,7 +53,7 @@ public class adminHomepageSceneController implements Initializable{
         adminPropertyListingController propertyListingController =  loader.getController();
         propertyListingController.initialiseAdminInfo(admin);   
 
-        stage = (Stage) propertyListButton.getScene().getWindow();
+        Stage stage = (Stage) propertyListButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 
@@ -82,19 +64,19 @@ public class adminHomepageSceneController implements Initializable{
         adminAccountAdminstrationController accountAdminstrationController =  loader.getController();
         accountAdminstrationController.initialiseAdminInfo(admin);
 
-        stage = (Stage) accountAdminstrationButton.getScene().getWindow();
+        Stage stage = (Stage) accountAdminstrationButton.getScene().getWindow();
         stage.setScene(new Scene(root));
         
     }
 
-    public void createaAdminButtonHandler() throws IOException{
+    public void createAdminButtonHandler() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminCreateAdmin.fxml"));
         Parent root = loader.load();
 
         adminCreateAdminController controller =  loader.getController();
         controller.initialiseAdminInfo(admin);
 
-        stage = (Stage) createaAdminButton.getScene().getWindow();
+        Stage stage = (Stage) createaAdminButton.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
 

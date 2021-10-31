@@ -121,7 +121,7 @@ public class adminAddPropertySceneController implements Initializable{
     }
 
     public void propOwnerComboBoxHandler(ActionEvent e) {
-        propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue())));
+        propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue(),"property owner")));
     
     }
 

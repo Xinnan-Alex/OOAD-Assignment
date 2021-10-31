@@ -107,14 +107,16 @@ public final class Model {
 
     //Method for getting persons's username by passing in the person's fullname
     //Written by Leong Xin Nan
-    public String getUsername(String fullname){
+    public String getUsername(String fullname,String usertype){
         String username = "";
 
         for (person p: userInfo){
             if (p.getFullName().equals(fullname)){
-
-                username = p.getUsername();
-                break;
+                if(p.getUserType().equals(usertype)){
+                    username = p.getUsername();
+                    break;
+                }
+               
             }
             else{
                 username = "user not found";
@@ -122,7 +124,7 @@ public final class Model {
         }
 
         return username;
-    }
+    }   
 
     //Method for getting person's fullname by passing in the person's username 
     //Written by Leong Xin Nan
@@ -300,34 +302,6 @@ public final class Model {
         return registerusernameValid;
     }
 
-    //Method for validating the fullname for account registration
-    //Written by Leong Xin Nan
-    public boolean registerFullnameValidation(String fullname){
-        boolean registerFullnameValid = false;
-
-        if (fullname.length() == 0){
-            registerFullnameValid = false;
-        }
-        else{
-            if (userInfo.size() == 0){
-                registerFullnameValid = true;
-            }
-            else{
-                for (int i=0;i<userInfo.size();i++){
-                    if (fullname.equals(userInfo.get(i).getFullName())){
-                         registerFullnameValid = false;
-                         break;
-                    }
-                    else{
-                         registerFullnameValid = true;
-                    }
-                }
-            }
-        }
-        
-        return registerFullnameValid;
-    }
-
     //Method for validating the password for account registration
     //Written by Leong Xin Nan
     public boolean registerPasswordValidation(String password, String rePassword){
@@ -379,11 +353,10 @@ public final class Model {
         
         boolean registerInfoValid = false;
         boolean registerusernameValid = registerUsernameValidation(registerInfo[0]);
-        boolean registerFullnameValid= registerFullnameValidation(registerInfo[1]);
         boolean registerPasswordValid = registerPasswordValidation(registerInfo[2],registerInfo[3]);
         boolean registerContactnumValid = ContactnumValidation(registerInfo[4]);
 
-        if (registerusernameValid && registerFullnameValid && registerPasswordValid && registerContactnumValid){
+        if (registerusernameValid && registerPasswordValid && registerContactnumValid){
             registerInfoValid = true;
         }
         else{
@@ -391,11 +364,6 @@ public final class Model {
 
             if (registerusernameValid == false){
                 Alert alert = new Alert(AlertType.ERROR,"Invalid Username, Please try again!");
-                alert.show();
-            }
-            
-            if(registerFullnameValid == false){
-                Alert alert = new Alert(AlertType.ERROR,"Invalid Fullname, Please try again!");
                 alert.show();
             }
 

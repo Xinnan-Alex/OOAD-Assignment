@@ -27,8 +27,6 @@ import javafx.scene.control.TextFormatter;
 //loginSceneController class
 public class loginSceneController implements Initializable{
 
-    private Stage stage;
-
     @FXML
     Button registerButton,loginButton;
     @FXML
@@ -48,7 +46,7 @@ public class loginSceneController implements Initializable{
 
     public void registerButtonHandler() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/userRegisterSelectionScene.fxml"));
-        stage = (Stage) registerButton.getScene().getWindow();
+        Stage stage = (Stage) registerButton.getScene().getWindow();
         stage.setScene(new Scene(root));
 
     }
@@ -75,7 +73,7 @@ public class loginSceneController implements Initializable{
                 controller.initUserObejct(initTenant);
                
 
-                stage = (Stage) loginButton.getScene().getWindow();
+                Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
 
             }
@@ -91,7 +89,7 @@ public class loginSceneController implements Initializable{
                 controller.initUserObejct(admin);
                 
                 
-                stage = (Stage) loginButton.getScene().getWindow();
+                Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
 
             }
@@ -105,7 +103,7 @@ public class loginSceneController implements Initializable{
                 propertyOwnerHomepageSceneController controller =  loader.getController();
                 controller.initUserObejct(initPropertyOwner);
 
-                stage = (Stage) loginButton.getScene().getWindow();
+                Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(root));
             }
             
@@ -114,12 +112,7 @@ public class loginSceneController implements Initializable{
         else{
             Alert usernameIncorrect = new Alert(AlertType.ERROR,"Invalid login details please try again");
             usernameIncorrect.show();
-        }
-
-
-        
+        }  
     }
-
-
     
 }
