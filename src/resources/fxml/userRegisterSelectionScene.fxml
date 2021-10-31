@@ -5,29 +5,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userRegisterSelectionSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="302.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" stylesheets="@../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.userRegisterSelectionSceneController">
    <children>
-      <Label alignment="CENTER" layoutX="246.0" layoutY="98.0" prefHeight="39.0" prefWidth="108.0" text="You are :">
+      <Label alignment="CENTER" layoutX="97.0" layoutY="90.0" prefHeight="39.0" prefWidth="108.0" text="You are :">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="151.0" layoutY="40.0" prefHeight="58.0" prefWidth="298.0" text="Please select a choice below">
+      <Label alignment="CENTER" layoutX="2.0" layoutY="32.0" prefHeight="58.0" prefWidth="298.0" text="Please select a choice below">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="registerPropertyOwnerButton" layoutX="211.0" layoutY="151.0" mnemonicParsing="false" onAction="#registerPropertyOwnerButtonHandler" text="Property Owner">
+      <Button fx:id="registerPropertyOwnerButton" layoutX="62.0" layoutY="143.0" mnemonicParsing="false" onAction="#registerPropertyOwnerButtonHandler" text="Property Owner">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerTenantButton" layoutX="258.0" layoutY="210.0" mnemonicParsing="false" onAction="#registerTenantButtonHandler" text="Tenant">
+      <Button fx:id="registerTenantButton" layoutX="109.0" layoutY="202.0" mnemonicParsing="false" onAction="#registerTenantButtonHandler" text="Tenant">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="268.0" layoutY="300.0" mnemonicParsing="false" onAction="#backButtonHandler" text="Back">
+      <Button fx:id="backButton" layoutX="119.0" layoutY="292.0" mnemonicParsing="false" onAction="#backButtonHandler" text="Back">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
