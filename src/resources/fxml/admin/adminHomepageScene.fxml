@@ -84,7 +84,7 @@
             <Tooltip text="Logout" />
          </tooltip>
       </Button>
-      <Button fx:id="settingButton" layoutX="55.0" layoutY="360.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: grey;">
+      <Button fx:id="profileSettingButton" layoutX="55.0" layoutY="360.0" mnemonicParsing="false" onAction="#profileSettingButtonHandler" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: grey;">
          <graphic>
             <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>

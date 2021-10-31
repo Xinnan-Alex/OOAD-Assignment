@@ -28,7 +28,7 @@ public class adminHomepageSceneController implements Initializable{
     @FXML
     Label homepageAdminFullname,homepageID;
     @FXML
-    Button logoutButton,settingButton,propertyListButton,accountAdminstrationButton,createaAdminButton;
+    Button logoutButton,profileSettingButton,propertyListButton,accountAdminstrationButton,createaAdminButton;
 
     private Stage stage;
 
@@ -96,5 +96,16 @@ public class adminHomepageSceneController implements Initializable{
 
         stage = (Stage) createaAdminButton.getScene().getWindow();
         stage.setScene(new Scene(root));
+    }
+
+    public void profileSettingButtonHandler() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminProfileScene.fxml"));
+        Parent root = fxmlLoader.load();
+        
+        adminProfileSceneController controller = fxmlLoader.getController();
+        controller.initUserObejct(admin);
+        
+        Stage window = (Stage)profileSettingButton.getScene().getWindow();
+        window.setScene(new Scene(root, 750, 500)); 
     }
 }

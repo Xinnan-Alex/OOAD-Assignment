@@ -43,7 +43,6 @@ public class tenantPropertyController implements Initializable{
     @FXML
     ComboBox<String> propertyTypeFilter;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         propertyFilter = new FilteredList<>(Model.propertyList,b->true);
