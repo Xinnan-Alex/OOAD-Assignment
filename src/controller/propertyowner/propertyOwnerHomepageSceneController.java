@@ -89,7 +89,7 @@ public class propertyOwnerHomepageSceneController implements Initializable{
         controller.initUserObejct(owner);
         
         Stage window = (Stage)propertyOwnerProfileButton.getScene().getWindow();
-        window.setScene(new Scene(root, 750, 500)); 
+        window.setScene(new Scene(root)); 
     }
 
 }

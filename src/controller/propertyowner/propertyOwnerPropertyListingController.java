@@ -150,7 +150,7 @@ public class propertyOwnerPropertyListingController implements Initializable{
                     controller.passPropertyObject(property);
                     
                     Stage window = (Stage)backButton.getScene().getWindow();
-                    window.setScene(new Scene(root, 750, 500)); 
+                    window.setScene(new Scene(root)); 
 
                     }catch(Exception e){
                         e.printStackTrace();

@@ -41,7 +41,7 @@ public class tenantHomepageSceneController {
         controller.initUserObejct(loggedinPerson);
         
         Stage window = (Stage)tenantViewProfileBtn.getScene().getWindow();
-        window.setScene(new Scene(root, 750, 500)); 
+        window.setScene(new Scene(root, 600, 400)); 
     }
 
     public void initUserObejct(Tenant passedIN){
@@ -58,7 +58,7 @@ public class tenantHomepageSceneController {
         controller.initUserObejct(loggedinPerson);
         
         Stage window = (Stage)propertyBtn.getScene().getWindow();
-        window.setScene(new Scene(root, 750, 500)); 
+        window.setScene(new Scene(root)); 
     }
 
     public void logoutButtonHandler() throws IOException{

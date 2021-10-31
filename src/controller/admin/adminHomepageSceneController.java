@@ -106,6 +106,6 @@ public class adminHomepageSceneController implements Initializable{
         controller.initUserObejct(admin);
         
         Stage window = (Stage)profileSettingButton.getScene().getWindow();
-        window.setScene(new Scene(root, 750, 500)); 
+        window.setScene(new Scene(root)); 
     }
 }

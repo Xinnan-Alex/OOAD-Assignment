@@ -149,8 +149,8 @@ public class tenantPropertyController implements Initializable{
                     controller.initUserObejct(loggedinPerson);
                     controller.passPropertyObject(property);
                     
-                    Stage window = (Stage)backButton.getScene().getWindow();
-                    window.setScene(new Scene(root, 750, 500)); 
+                    Stage window = (Stage)tenantPropertyInfo.getScene().getWindow();
+                    window.setScene(new Scene(root)); 
 
                     }catch(Exception e){
                         e.printStackTrace();

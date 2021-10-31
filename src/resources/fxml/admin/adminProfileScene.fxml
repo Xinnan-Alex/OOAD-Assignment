@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.adminProfileSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.adminProfileSceneController">
    <children>
       <Label layoutX="121.0" layoutY="129.0" text="Username:">
          <font>
@@ -63,19 +63,19 @@
             <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="changeContactNumber" layoutX="387.0" layoutY="167.0" mnemonicParsing="false" onAction="#changeContactNumber" style="-fx-border-color: black; -fx-background-color: lightgrey;" text="Change">
+      <Button fx:id="changeContactNumber" layoutX="387.0" layoutY="167.0" mnemonicParsing="false" onAction="#changeContactNumber" style="-fx-background-color: grey;" text="Change">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="534.0" layoutY="359.0" mnemonicParsing="false" onAction="#backButtonHandler" style="-fx-border-color: black; -fx-background-color: lightgrey;" text="Back">
+      <Button fx:id="backButton" layoutX="534.0" layoutY="359.0" mnemonicParsing="false" onAction="#backButtonHandler" style="-fx-background-color: grey;" text="Back">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
       </Button>
       <TextField fx:id="adminContactNumber" layoutX="226.0" layoutY="168.0" />
       <TextField fx:id="adminPassword" layoutX="226.0" layoutY="208.0" />
-      <Button fx:id="changePassword" layoutX="387.0" layoutY="207.0" mnemonicParsing="false" onAction="#changePassword" style="-fx-border-color: black; -fx-background-color: lightgrey;" text="Change">
+      <Button fx:id="changePassword" layoutX="387.0" layoutY="207.0" mnemonicParsing="false" onAction="#changePassword" style="-fx-background-color: grey;" text="Change">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
