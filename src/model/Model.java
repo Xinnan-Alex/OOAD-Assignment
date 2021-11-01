@@ -609,16 +609,6 @@ public final class Model {
             String [] preloadProperty30 = {"\"Pangsapuri Rakyat, Bandar Putra, Kulai, Jalan Cengal, Bandar Putra, 81000, Johor\"","978","1600","Duplex",owner_property30.getFullName(),owner_property30.getPhoneNumber(),"3","2","\"Car Park, Gym, 24-hours security, Pool, Playgorund\"","false","active"};
             WriteToPropertyListCsv(getPropertyObject(preloadProperty30));
 
-            // String [] preloadProperty3 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
-            // String [] preloadProperty4 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
-            // String [] preloadProperty5 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
-            
-
-            
-            // WriteToPropertyListCsv(getPropertyObject(preloadProperty3));
-            // WriteToPropertyListCsv(getPropertyObject(preloadProperty4));
-            // WriteToPropertyListCsv(getPropertyObject(preloadProperty5));
-
             System.out.println("Preloading property list completed");
         }
     }
