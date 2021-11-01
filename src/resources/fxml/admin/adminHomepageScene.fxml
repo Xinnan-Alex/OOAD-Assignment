@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="createAdminButton" layoutX="166.0" layoutY="238.0" mnemonicParsing="false" onAction="#createaAdminButtonHandler" prefHeight="47.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Create Admin Account" textFill="WHITE">
+      <Button fx:id="createAdminButton" layoutX="166.0" layoutY="238.0" mnemonicParsing="false" onAction="#createAdminButtonHandler" prefHeight="47.0" prefWidth="287.0" style="-fx-background-color: grey;" text="Create Admin Account" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
