@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1237.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../../css/focus_css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.propertyowner.propertyOwnerPropertyConfigurationSceneController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="48.0" prefWidth="1237.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" text="Admin Property Listing View">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="48.0" prefWidth="1237.0" style="-fx-background-color: #F0F8FF; -fx-border-color: black;" text="Property Administration">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>
