@@ -430,16 +430,26 @@ public final class Model {
 
             Random rand = new Random();
 
+            //step 1
             person owner_property1 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            //step 2
             String [] preloadProperty1 = {"\"5, Jalan 4/2S, Bandar Segambut, 78083 Umbai, Melaka\"","2000","300","Terrace",owner_property1.getFullName(),owner_property1.getPhoneNumber(),"5","4","\"Aircond,Pool,Indoor Gym,Washing Machine,Cooking Utensil\"","false","active"};
+            //step 3
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty1));
+        
+            //step 1
             person owner_property2 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            //step 2
             String [] preloadProperty2 = {"\"8-6, Jln 5/43I, Bandar Laksamana, 89335 Kota Kinabalu, Sabah \"","1000","100","Townhouse",owner_property2.getFullName(),owner_property2.getPhoneNumber(),"2","1","\"Frontyard,Garage,Backyard,Train near by\"","false","inactive"};
+            //step 3
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty2));
+            
             // String [] preloadProperty3 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             // String [] preloadProperty4 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             // String [] preloadProperty5 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             
-            WriteToPropertyListCsv(getPropertyObject(preloadProperty1));
-            WriteToPropertyListCsv(getPropertyObject(preloadProperty2));
+           
+            
             // WriteToPropertyListCsv(getPropertyObject(preloadProperty3));
             // WriteToPropertyListCsv(getPropertyObject(preloadProperty4));
             // WriteToPropertyListCsv(getPropertyObject(preloadProperty5));
