@@ -66,6 +66,25 @@ public final class Model {
             propertyOwner preload_PropOwner9 = new propertyOwner("DavidYee", "urwcg7i4", "David Yee", "0122865787", UUID.randomUUID(), "property owner");
             propertyOwner preload_PropOwner10 = new propertyOwner("StevenFoong", "hmf5k9a8", "Steven Foong", "0123986141", UUID.randomUUID(), "property owner");
             propertyOwner preload_PropOwner11 = new propertyOwner("WillianLooi", "fzvetpmr", "Willian Looi", "0192225337", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner12 = new propertyOwner("BrandonAnn", "9aef5cd5", "Brandon Ann", "0177788251", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner13 = new propertyOwner("JudyWatkins", "6bc5f52d", "Judy Watkins", "0176438890", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner14 = new propertyOwner("AaronWaters", "02vos0uf", "Aaron Waters", "01110655009", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner15 = new propertyOwner("JeremiahFrancis", "w2z2am24", "Jeremiah Francis", "0182889222 ", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner16 = new propertyOwner("EdwardMay", "weyx2r40", "Edward May", "0123321188", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner17 = new propertyOwner("DwayneFoster", "qbh05hq6", "Dwayne Foster", "0163885371", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner18 = new propertyOwner("Pat Long", "nxnc7ic0", "Pat Long", "0126362428", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner19 = new propertyOwner("DougSparks", "urwcg7i4", "Doug Sparks", "0122865787", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner20 = new propertyOwner("GeoffreyChristensen", "hmf5k9a8", "Geoffrey Christensen", "0123986141", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner21 = new propertyOwner("CarltonLindsey", "zdahalan8083", "Carlton Lindsey", "0160660488", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner22 = new propertyOwner("FelixMoreno", "9aef5cd5", "Felix Moreno", " 0129727137", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner23 = new propertyOwner("JaimeLeonard", "6bc5f52d", "Jaime Leonard", "0176438890", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner24 = new propertyOwner("JonCohen", "02vos0uf", "Jon Cohen", "01110655009", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner25 = new propertyOwner("DianneMitchell", "w2z2am24", "Dianne Mitchell", "0182889222 ", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner26 = new propertyOwner("OtisKelly", "weyx2r40", "Otis Kelly", "0123321188", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner27 = new propertyOwner("MarshaSnyder", "qbh05hq6", "Marsha Snyder", "0163885371", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner28 = new propertyOwner("SheilaJohnston", "nxnc7ic0", "Sheila Johnston", "0126362428", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner29 = new propertyOwner("MattieJensen", "urwcg7i4", "Mattie Jensen", "0122865787", UUID.randomUUID(), "property owner");
+            propertyOwner preload_PropOwner30 = new propertyOwner("GraceHouston", "hmf5k9a8", "Grace Houston", "0123986141", UUID.randomUUID(), "property owner");
 
             writeToUserDataCSV(preload_PropOwner1);
             writeToUserDataCSV(preload_PropOwner2);
@@ -78,6 +97,26 @@ public final class Model {
             writeToUserDataCSV(preload_PropOwner9);
             writeToUserDataCSV(preload_PropOwner10);
             writeToUserDataCSV(preload_PropOwner11);
+            writeToUserDataCSV(preload_PropOwner12);
+            writeToUserDataCSV(preload_PropOwner13);
+            writeToUserDataCSV(preload_PropOwner14);
+            writeToUserDataCSV(preload_PropOwner15);
+            writeToUserDataCSV(preload_PropOwner16);
+            writeToUserDataCSV(preload_PropOwner17);
+            writeToUserDataCSV(preload_PropOwner18);
+            writeToUserDataCSV(preload_PropOwner19);
+            writeToUserDataCSV(preload_PropOwner20);
+            writeToUserDataCSV(preload_PropOwner21);
+            writeToUserDataCSV(preload_PropOwner22);
+            writeToUserDataCSV(preload_PropOwner23);
+            writeToUserDataCSV(preload_PropOwner24);
+            writeToUserDataCSV(preload_PropOwner25);
+            writeToUserDataCSV(preload_PropOwner26);
+            writeToUserDataCSV(preload_PropOwner27);
+            writeToUserDataCSV(preload_PropOwner28);
+            writeToUserDataCSV(preload_PropOwner29);
+            writeToUserDataCSV(preload_PropOwner30);
+
             System.out.println("Preloaded the property owner accounts");
 
             System.out.println("Preloading the tenant accounts");
@@ -493,6 +532,82 @@ public final class Model {
             person owner_property11 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
             String [] preloadProperty11 = {"\"18, Jalan SS23/19B, Selangor, 47301, Selangor\"","2200","2450","Terrace",owner_property11.getFullName(),owner_property11.getPhoneNumber(),"5","3","\"Car Park, Air Conditioner, Kitchen Cabinet\"","false","active"};
             WriteToPropertyListCsv(getPropertyObject(preloadProperty11));
+
+            person owner_property12 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty12 = {"\"Jalan Dutamas 1, Duta Tropika, 50480, Kuala Lumpur\"","3600","9000","Terrace",owner_property12.getFullName(),owner_property12.getPhoneNumber(),"1","1","\"Car Park,Game room,Jacuzzi,Clubhouse\"","false","inactive"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty12));
+
+            person owner_property13 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty13 = {"\"Jalan Bayu 6, Bandar Seri Alam, 81750, Johor\"","1300","1300","Terrace",owner_property13.getFullName(),owner_property13.getPhoneNumber(),"6","3","\"Aircond,Pool,Near to SMK SeaPark,Near to LRT,Cooking Utensil\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty13));
+
+            person owner_property14 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty14 = {"\"Jalan Selengdang 1x, Taman Mewah，81000 Kulai Johor\"","1100","800","Terrace",owner_property14.getFullName(),owner_property14.getPhoneNumber(),"3","2","\"Car Park,Playground,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty14));
+
+            person owner_property15 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty15 = {"\"Jalan Gelang Patah, Taman Nusa Perintis, 81550, Johor\"","1033","1000","Apartment",owner_property15.getFullName(),owner_property15.getPhoneNumber(),"5","4","\"Car Park,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty15));
+
+            person owner_property16 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty16 = {"\"Southlink, Bangsar South, Kampung Kerinchi (Bangsar South), Lebuhraya Persekutuan, Bangsar South, 59200, Kuala Lumpur\"","500","1499","Apartment",owner_property16.getFullName(),owner_property16.getPhoneNumber(),"5","4","\"Car Park,24 hours security, Pool, kitchen cabinet \"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty16));
+
+            person owner_property17 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty17 = {"\"Melody Homes, Farlim, Ayer Itam, Lebuhraya Thean Teik, Farlim, 11500, Penang\"","900","950","Apartment",owner_property17.getFullName(),owner_property17.getPhoneNumber(),"6","6","\"Big Car Park,Pool,Near DesaParkCity,Fully Furnished\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty17));
+
+            person owner_property18 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty18 = {"\"Jalan Mewah 4, Taman Pandan Mewah, 68000, Ampang, Selangor\"","828","1200","Apartment",owner_property18.getFullName(),owner_property18.getPhoneNumber(),"2","1","\"Car Park, Gym, Pool, Playground\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty18));
+
+            person owner_property19 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty19 = {"\"Southlink, Bangsar South, Kampung Kerinchi (Bangsar South), Lebuhraya Persekutuan, Bangsar South, 59200, Kuala Lumpur\"","495","1550","Apartment",owner_property19.getFullName(),owner_property19.getPhoneNumber(),"4","2","\"Car Park,Playground,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty19));
+
+            person owner_property20 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty20 = {"\"eco sanctuary, Eco Sanctuary, Eco Santuari, Kota Kemuning, Selangor\"","3052","3500","Semi-D",owner_property20.getFullName(),owner_property20.getPhoneNumber(),"3","2","\"Car Park, Gym, 24-hours security, Pool, Playgorund\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty20));
+
+            person owner_property21 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty21 = {"\"Jalan Dutamas Raya, MESRA TERRACE, DUTAMAS, JALAN DUTAMAS RAYA, 51200, Kuala Lumpur\"","3590","8000","Semi-D",owner_property21.getFullName(),owner_property21.getPhoneNumber(),"5","3","\"Car Park, Air Conditioner, Kitchen Cabinet\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty21));
+
+            person owner_property22 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty22 = {"\"Mutiara Damansara Petaling Jaya, Selangor\"","6000","13000","Semi-D",owner_property22.getFullName(),owner_property22.getPhoneNumber(),"1","1","\"Car Park,Game room,Jacuzzi,Clubhouse\"","false","inactive"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty22));
+
+            person owner_property23 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty23 = {"\"Ss2/3, SS2, Petaling Jaya, Selangor\"","4500","7000","Bungalow",owner_property23.getFullName(),owner_property23.getPhoneNumber(),"6","3","\"Aircond,Pool,Near to SMK SeaPark,Near to LRT,Cooking Utensil\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty23));
+
+            person owner_property24 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty24 = {"\"Kota Kemuning JLN AMAN CHERIA,TROPICANA AMAN, 42500, Selangor\"","3670","3800","Semi-D",owner_property24.getFullName(),owner_property24.getPhoneNumber(),"3","2","\"Car Park,Playground,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty24));
+
+            person owner_property25 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty25 = {"\"Bukit Indah, Nusa Duta 2 storey cluster 34x80, 79150, Johor\"","2923","2600","Semi-D",owner_property25.getFullName(),owner_property25.getPhoneNumber(),"5","4","\"Car Park,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty25));
+
+            person owner_property26 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty26 = {"\"Jalan Ceria 22, Nusa Indah near Bukit Indah, Nusa Snetral, Nusa Idaman, Taman Perling, Taman Nusa Indah , 79100, Johor\"","1878","1200","Townhouse",owner_property26.getFullName(),owner_property26.getPhoneNumber(),"5","4","\"Car Park,24 hours security, Pool, kitchen cabinet \"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty26));
+
+            person owner_property27 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty27 = {"\"Jalan Abadi 15, Mutiara Rini home 2, 81300, Johor\"","3245","1200","Townhouse",owner_property27.getFullName(),owner_property27.getPhoneNumber(),"6","6","\"Big Car Park,Pool,Near DesaParkCity,Fully Furnished\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty27));
+
+            person owner_property28 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty28 = {"\"Horizon Residence, Jalan Lingkungan Indah Utama, Taman Bukit Indah, 81200, Johor\"","1213","1800","Apartment",owner_property28.getFullName(),owner_property28.getPhoneNumber(),"2","1","\"Car Park, Gym, Pool, Playground\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty28));
+
+            person owner_property29 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty29 = {"\"Jalan Permas 3, Bandar Baru Permas Jaya, 81750, Johor\"","1400","1000","Duplex",owner_property29.getFullName(),owner_property29.getPhoneNumber(),"4","2","\"Car Park,Playground,24 hours security\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty29));
+
+            person owner_property30 = getListofPropertyOwner().get(rand.nextInt(getListofPropertyOwner().size())); 
+            String [] preloadProperty30 = {"\"Pangsapuri Rakyat, Bandar Putra, Kulai, Jalan Cengal, Bandar Putra, 81000, Johor\"","978","1600","Duplex",owner_property30.getFullName(),owner_property30.getPhoneNumber(),"3","2","\"Car Park, Gym, 24-hours security, Pool, Playgorund\"","false","active"};
+            WriteToPropertyListCsv(getPropertyObject(preloadProperty30));
 
             // String [] preloadProperty3 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
             // String [] preloadProperty4 = {projectName,propertySize,rentalRate,propertyType,propertyOwner,contactNum,numofRoom,numofBathroom,facilities,hiddenStatus,rentStatus};
