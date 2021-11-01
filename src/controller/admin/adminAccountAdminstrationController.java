@@ -143,6 +143,7 @@ public class adminAccountAdminstrationController implements Initializable{
 
     }
 
+    //Method for passing in the admin object from the previous interface
     public void initialiseAdminInfo(Admin passedIn){
         admin = passedIn;
     }

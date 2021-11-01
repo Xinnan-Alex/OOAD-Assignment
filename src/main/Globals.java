@@ -12,6 +12,7 @@ public final class Globals {
     public static String[] propertyType = {"Bungalow","Semi-D","Terrace","Townhouse","Penthouse","Condominium","Duplex","Apartment","Unspecified"};
     public static String[] personType = {"admin","tenant","property owner"};
 
+    //Method for generating property ID
     public static Long generatePropertyID(){
         for (Property propertyList : Model.propertyList ){
             setCurrentID(propertyList.getPropertyID());
@@ -23,6 +24,7 @@ public final class Globals {
         
     }
 
+    //Method for restting the most lastest ID generated for the property so that the property ID generation will be up to date
     public static void setCurrentID(Long currntid){
         currentPropID = currntid;
     }

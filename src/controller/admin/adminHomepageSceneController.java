@@ -27,6 +27,7 @@ public class adminHomepageSceneController{
     @FXML
     Button logoutButton,profileSettingButton,propertyListButton,accountAdminstrationButton,createaAdminButton;
 
+    //Method for passing in the admin object from the previous interface
     public void initUserObejct(Admin passedIN){
         admin = passedIN;
         homepageAdminFullname.setText(admin.getFullName());
@@ -34,6 +35,7 @@ public class adminHomepageSceneController{
 
     }
 
+    //Admin logout button handler
     public void logoutButtonHandler() throws IOException{
         Alert confirmation_Alert = new Alert(AlertType.CONFIRMATION,"Do you wish to logout?",ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         confirmation_Alert.showAndWait();
@@ -45,6 +47,7 @@ public class adminHomepageSceneController{
         }
     }
 
+    //Admin property listing administration button handler
     public void propertyListButton() throws IOException{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminPropertyListing.fxml"));
@@ -57,6 +60,7 @@ public class adminHomepageSceneController{
         stage.setScene(new Scene(root));
     }
 
+    //Admin account administration button handler
     public void accountAdminstrationButtonHandler() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminAccountAdminstrationScene.fxml"));
         Parent root = loader.load();
@@ -69,6 +73,7 @@ public class adminHomepageSceneController{
         
     }
 
+    //Admin create admin account button handler
     public void createAdminButtonHandler() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminCreateAdmin.fxml"));
         Parent root = loader.load();
@@ -80,6 +85,7 @@ public class adminHomepageSceneController{
         stage.setScene(new Scene(root));
     }
 
+    //Admin profile setting button handler
     public void profileSettingButtonHandler() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../resources/fxml/admin/adminProfileScene.fxml"));
         Parent root = fxmlLoader.load();

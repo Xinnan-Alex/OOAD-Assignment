@@ -120,6 +120,7 @@ public class adminAddPropertySceneController implements Initializable{
         
     }
 
+    //Auto inserting the property owner's contact number
     public void propOwnerComboBoxHandler(ActionEvent e) {
         propOwnerContactNumTextField.setText(Globals.LogicModel.getUserContactNum(Globals.LogicModel.getUsername(propOwnerComboBox.getValue(),"property owner")));
     
@@ -185,6 +186,7 @@ public class adminAddPropertySceneController implements Initializable{
         stage.setScene(new Scene(root));
     }
 
+    //Method for passing in the admin object from the previous interface
     public void passedInAdminObject(Admin a){
         admin = a;
     }

@@ -158,6 +158,7 @@ public class adminPropertyListingController implements Initializable{
 
         });
 
+        //Bind the table comparator property to our table
         propertySortedList.comparatorProperty().bind(propTableView.comparatorProperty());
 
         propTableView.setItems(propertySortedList);
@@ -249,6 +250,7 @@ public class adminPropertyListingController implements Initializable{
 
     }
 
+    //Active property radio button handler
     public void activePropertyRadioButtonHandler(){
         if(activePropertyRadioButton.isSelected()){
             propertyFilteredList.setPredicate(Property ->{
@@ -266,6 +268,7 @@ public class adminPropertyListingController implements Initializable{
         }
     }
 
+    //Inactive property radio button handler
     public void inactivePropertyRadioButtonHandler(){
         if(inactivePropertyRadioButton.isSelected()){
             propertyFilteredList.setPredicate(Property ->{
@@ -283,6 +286,7 @@ public class adminPropertyListingController implements Initializable{
         }
     }
 
+    //Sort by rental rate combobox hanlder
     public void rentalRateSortComboBoxHandler(){
         String selectedComboBoxString = rentalRateSortComboBox.getSelectionModel().getSelectedItem().toLowerCase();
 
@@ -300,6 +304,7 @@ public class adminPropertyListingController implements Initializable{
         }
     }
 
+    //Comparator class that sort the property list by the rental rate either from ascending or descending
     class rentralRateAscendingComaprator implements Comparator<Property>{
         public int compare(Property p1, Property p2) {
             //first come

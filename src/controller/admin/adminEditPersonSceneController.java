@@ -64,6 +64,7 @@ public class adminEditPersonSceneController implements Initializable{
         
     }
 
+    //Method for passing in the admin object from the previous interface
     public void initialiseAdminInfo(Admin passedin){
         admin = passedin;
     }
