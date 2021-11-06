@@ -57,7 +57,7 @@ public class adminEditPropertySceneController implements Initializable{
 
         propHiddenStatusComboBox.getItems().addAll("true","false");
 
-        propRentalStatusComboBox.getItems().addAll("active", "not Active");
+        propRentalStatusComboBox.getItems().addAll("active", "inactive");
 
         propOwnerComboBox.getItems().addAll(Globals.LogicModel.getListofPropOwnerName());
 
@@ -116,9 +116,16 @@ public class adminEditPropertySceneController implements Initializable{
         confirmation_Alert.showAndWait();
 
         if (confirmation_Alert.getResult() == ButtonType.YES){
-            String[] selectedPropertyData_Edited = new String[]{propNameTextField.getText(),propSizeTextField.getText(),propRentalRateTextField.getText(),propTypeComboBox.getSelectionModel().getSelectedItem(),
-                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),propHiddenStatusComboBox.getValue(),
-                propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
+            String[] selectedPropertyData_Edited = new String[]{propNameTextField.getText(),
+                                                                propSizeTextField.getText(),
+                                                                propRentalRateTextField.getText(),
+                                                                propTypeComboBox.getSelectionModel().getSelectedItem(),
+                                                                propOwnerComboBox.getValue(),propOwnerContactNumTextField.getText(),
+                                                                Integer.toString(propNumofRoomComboBox.getValue()),
+                                                                Integer.toString(propNumofBathroomComboBox.getValue()),
+                                                                commentsTextBox.getText(),
+                                                                propHiddenStatusComboBox.getValue(),
+                                                                propRentalStatusComboBox.getSelectionModel().getSelectedItem()};
 
             String[] selectedPropertyData_TobeValided  = {propHiddenStatusComboBox.getValue(),propOwnerComboBox.getValue()};
 

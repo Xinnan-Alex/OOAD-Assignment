@@ -55,7 +55,6 @@ public class loginSceneController implements Initializable{
         //Globals.LogicModel.loadUserInfo();
         String loginUsernameInput = loginUsername.getText();
         String loginPassInput = loginPass.getText(); 
-        
 
         if (Globals.LogicModel.loginStatus(loginUsernameInput,loginPassInput)){
 
