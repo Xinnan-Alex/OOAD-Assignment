@@ -25,6 +25,3 @@ After you clone the repository, right click the GUI.java and click on run, it wi
 and change the name from "Launch GUI" to "Launch_GUI_URNAME" and copy the content in the parentheses, do not copy the parentheses 
 ( "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml" )
 and paste it below the ( "mainClass": "GUI", ) line.
-
-
-If you have any problem, please whatsapp me I will help you fix the problem.
