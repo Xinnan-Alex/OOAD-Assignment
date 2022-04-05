@@ -26,9 +26,8 @@ and change the name from "Launch GUI" to "Launch_GUI_URNAME" and copy the conten
 ( "vmArgs": "--module-path javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml" )
 and paste it below the ( "mainClass": "GUI", ) line.
 
-summary for OOAD assignment [due date: 24/10/2021]
-
-title: cyberjaya online rental managment system
+----------------------------------------------------------------------------------------
+**#Title: Cyberjaya Online Rental Managment System**
 
 - properties will be listed by property types
 - each properties will have their own special ID
@@ -38,7 +37,7 @@ title: cyberjaya online rental managment system
 ----------------------------------------------------------------------------------------
 features that are available for diff type of users
 
-admin
+**admin**
 - create more admin accounts
 - can configure on all properties projects(view/comments/remove/add)
 - can view a report 
@@ -50,11 +49,11 @@ admin
 	6. list of projects/posts with comments
 	7. list of facilities
 
-agent/property owner
+**agent/property owner**
 - list or publish their properties projects
 - can edit their published projects (set to hidden/edit texts/ add or remove pictures)
 
-tenant
+**tenant**
 - can view listt of projects
 
 
