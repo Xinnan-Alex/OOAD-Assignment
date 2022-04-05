@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------
-#**Title: Cyberjaya Online Rental Managment System**
+# **Title: Cyberjaya Online Rental Managment System**
 
 - properties will be listed by property types
 - each properties will have their own special ID
@@ -7,9 +7,9 @@
 - save and load properties can be saved as txt file
 
 ----------------------------------------------------------------------------------------
-##Features that are available for diff type of users
+## Features that are available for diff type of users
 
-###**Admin**
+### **Admin**
 - create more admin accounts
 - can configure on all properties projects(view/comments/remove/add)
 - can view a report 
@@ -21,11 +21,11 @@
 	6. list of projects/posts with comments
 	7. list of facilities
 
-###**Agent/Property Owner**
+### **Agent/Property Owner**
 - list or publish their properties projects
 - can edit their published projects (set to hidden/edit texts/ add or remove pictures)
 
-###**Tenant**
+### **Tenant**
 - can view listt of projects
 
 ----------------------------------------------------------------------------------------
